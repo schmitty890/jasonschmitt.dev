@@ -1,0 +1,71 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "MarketNews",
+      "description": "A responsive website that provides news, updated quotation and advanced charting tools",
+      "tags": ["Next.js", "React", "Bootstrap"],
+      "imgUrl": "/images/projects/marketnews.jpg",
+      "liveUrl": "https://marketnews-next.vercel.app/",
+      "repoUrl": "https://github.com/claytonfaria/market-news-nextJS",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "My Personal Website",
+      "description": "My personal/portfolio website, this one you are browsing, created using Next.js and Chakra UI",
+      "tags": ["Next.js", "React", "TypeScript", "Chakra-ui"],
+      "imgUrl": "/images/projects/portfolio.jpg",
+      "liveUrl": "",
+      "repoUrl": "https://github.com/claytonfaria/claytonfaria.dev",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "COVID-19 Tracker",
+      "description": "Responsive React website that uses an API to display Covid-19 virus worldwide situation",
+      "tags": ["CRA", "React", "Material UI"],
+      "imgUrl": "/images/projects/covid19.webp",
+      "liveUrl": "https://claytonfaria.github.io/COVID19/",
+      "repoUrl": "https://github.com/claytonfaria/COVID19/tree/master",
+      "featured": false
+    },
+    {
+      "id": 4,
+      "title": "Contacts Agenda",
+      "description": "MERN simple project with user authentification and database connection",
+      "tags": ["CRA", "React", "Express", "MongoDB", "Nodejs"],
+      "imgUrl": "/images/projects/contactkeeper.webp",
+      "liveUrl": "https://mern-contactkeeper.herokuapp.com/",
+      "repoUrl": "https://github.com/claytonfaria/contact-list",
+      "featured": false
+    },
+    {
+      "id": 5,
+      "title": "Task Management API",
+      "description": "RestAPI created using Nest.js, Express, Postgres,Swagger and deployed at Heroku",
+      "tags": ["Node.js", "Express", "Nest.js", "Postgres", "authentication"],
+      "imgUrl": "/images/projects/taskmanagement.jpg",
+      "liveUrl": "https://taskmanagement-nest.herokuapp.com/",
+      "repoUrl": "https://github.com/claytonfaria/taskmanagement-restapi-nestjs",
+      "featured": true
+    },
+    {
+      "id": 6,
+      "title": "Taiwan Cars Auto Dealer",
+      "description": "Responsive website created with Next.js, Material UI, MongoDB, SWR, Formik and others",
+      "tags": [
+        "React",
+        "Next.js",
+        "MongoDB",
+        "SWR",
+        "Framer-Motion",
+        "BlurHash"
+      ],
+      "imgUrl": "/images/projects/taiwancars.jpg",
+      "liveUrl": "https://taiwancars.vercel.app",
+      "repoUrl": "https://github.com/claytonfaria/taiwan-cars-mui",
+      "featured": true
+    }
+  ]
+}
