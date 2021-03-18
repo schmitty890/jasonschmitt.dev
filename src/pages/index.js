@@ -13,6 +13,7 @@ import {
   Text,
   Badge,
   Divider,
+  Link,
 } from "@chakra-ui/react"
 import me from "../images/jasonschmitt2.png"
 import nodejs from "../images/node.jpeg"
@@ -20,6 +21,8 @@ import boaLogo from "../images/boa.jpg"
 import lowesLogo from "../images/lowesLogo.jpg"
 import brooksBellLogo from "../images/brooksbell.png"
 import unccLogo from "../images/uncc.png"
+import linkedInLogo from "../images/linkedin.png"
+import githubLogo from "../images/github.png"
 
 export default function Home() {
   return (
@@ -41,15 +44,15 @@ export default function Home() {
               display={"inline-flex"}
             >
               <Flex>
-                <Avatar src={me} />
+                <Avatar src={me} size="lg" />
                 <Box ml="3">
                   <Text fontWeight="bold">Jason Schmitt</Text>
-                  <Text fontSize="sm">Front End Engineer</Text>
+                  <Text fontSize="sm">Website Developer</Text>
                   <Text fontSize="xs">Location: North Carolina</Text>
                 </Box>
               </Flex>
               <Flex>
-                <Avatar src={unccLogo} />
+                <Avatar src={unccLogo} size="lg" />
                 <Box ml="3">
                   <Text fontWeight="bold">
                     UNC Charlotte
@@ -70,10 +73,15 @@ export default function Home() {
               bg={{ base: "white" }}
               p={4}
             >
-              Hi, I am Jason, a North Carolina based front end web developer.
-              Currently pursuing a Masters in Information Technology at UNC
-              Charlotte, I am excited about progressing my career in full stack
-              web development.
+              <Text fontSize="2xl">About me</Text>
+              <Text fontSize="md">
+                Hi, I am Jason, a North Carolina based front end web developer.
+                Currently pursuing a Masters in Information Technology,
+                concentrating in Software Systems Design and Engineering at UNC
+                Charlotte, I am excited about progressing my career in full
+                stack web development as well as learning more about website
+                architecture.
+              </Text>
             </GridItem>
             <GridItem
               rowSpan={1}
@@ -250,6 +258,28 @@ export default function Home() {
               p={4}
             >
               Project 3
+            </GridItem>
+            <GridItem
+              p={4}
+              rowSpan={6}
+              colSpan={{ base: 12 }}
+              bg={{ base: "white" }}
+              justifyContent={"center"}
+              display={"inline-flex"}
+            >
+              <Flex>
+                <Link
+                  href="https://www.linkedin.com/in/jasonlschmitt/"
+                  isExternal
+                >
+                  <Avatar src={linkedInLogo} size="lg" />
+                </Link>
+              </Flex>
+              <Flex>
+                <Link href="https://github.com/schmitty890" isExternal>
+                  <Avatar src={githubLogo} size="lg" />
+                </Link>
+              </Flex>
             </GridItem>
           </Grid>
         </Box>
