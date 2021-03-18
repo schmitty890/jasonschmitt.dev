@@ -19,6 +19,7 @@ import nodejs from "../images/node.jpeg"
 import boaLogo from "../images/boa.jpg"
 import lowesLogo from "../images/lowesLogo.jpg"
 import brooksBellLogo from "../images/brooksbell.png"
+import unccLogo from "../images/uncc.png"
 
 export default function Home() {
   return (
@@ -36,17 +37,29 @@ export default function Home() {
               rowSpan={6}
               colSpan={{ base: 12 }}
               bg={{ base: "white" }}
+              justifyContent={"space-between"}
+              display={"inline-flex"}
             >
               <Flex>
                 <Avatar src={me} />
                 <Box ml="3">
+                  <Text fontWeight="bold">Jason Schmitt</Text>
+                  <Text fontSize="sm">Front End Engineer</Text>
+                </Box>
+              </Flex>
+              <Flex>
+                <Avatar src={unccLogo} />
+                <Box ml="3">
                   <Text fontWeight="bold">
-                    Jason Schmitt
-                    <Badge ml="1" colorScheme="green">
-                      New
+                    UNC Charlotte
+                    <Badge ml="1" colorScheme="yellow">
+                      In Progress
                     </Badge>
                   </Text>
-                  <Text fontSize="sm">Front End Engineer</Text>
+                  <Text fontSize="sm">Information Technology, M.S.</Text>
+                  <Text fontSize="xs">
+                    Concentation: Software Systems Design and Engineering
+                  </Text>
                 </Box>
               </Flex>
             </GridItem>
@@ -57,8 +70,9 @@ export default function Home() {
               p={4}
             >
               Hi, I am Jason, a North Carolina based front end web developer.
-              Currently pursuing a Masters in Information Technology, I am
-              excited about progressing my career in full stack web development.
+              Currently pursuing a Masters in Information Technology at UNC
+              Charlotte, I am excited about progressing my career in full stack
+              web development.
             </GridItem>
             <GridItem
               rowSpan={1}
