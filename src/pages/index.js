@@ -13,6 +13,7 @@ import {
   Text,
   Badge,
 } from "@chakra-ui/react"
+import me from "../../public/images/jasonschmitt.jpg"
 
 export default function Home() {
   return (
@@ -32,7 +33,7 @@ export default function Home() {
               bg={{ base: "white" }}
             >
               <Flex>
-                <Avatar src="/images/jasonschmitt.jpg" />
+                <Avatar src={me} />
                 <Box ml="3">
                   <Text fontWeight="bold">
                     Jason Schmitt
@@ -55,7 +56,6 @@ export default function Home() {
               rowSpan={1}
               colSpan={{ base: 12, md: 6, lg: 4 }}
               bg={{ base: "black", md: "green", lg: "green" }}
-              centerContent
             >
               here is text
             </GridItem>
@@ -63,7 +63,6 @@ export default function Home() {
               rowSpan={1}
               colSpan={{ base: 12, md: 6, lg: 4 }}
               bg={{ base: "black", md: "green", lg: "red" }}
-              centerContent
             >
               here is text
             </GridItem>
