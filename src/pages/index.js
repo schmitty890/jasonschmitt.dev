@@ -45,6 +45,7 @@ export default function Home() {
                 <Box ml="3">
                   <Text fontWeight="bold">Jason Schmitt</Text>
                   <Text fontSize="sm">Front End Engineer</Text>
+                  <Text fontSize="xs">Location: North Carolina</Text>
                 </Box>
               </Flex>
               <Flex>
