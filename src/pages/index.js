@@ -13,7 +13,7 @@ import {
   Text,
   Badge,
 } from "@chakra-ui/react"
-import me from "../images/jasonschmitt.jpg"
+import me from "../images/jasonschmitt2.png"
 
 export default function Home() {
   return (
@@ -21,14 +21,13 @@ export default function Home() {
       <Container maxW="4xl" centerContent>
         <Box padding="4" bg="gray.100" maxW="4xl" width="100%">
           <Grid
-            h="200px"
             templateRows="repeat(2, 1fr)"
             templateColumns="repeat(12, 1fr)"
             gap={4}
           >
             <GridItem
               p={4}
-              rowSpan={1}
+              rowSpan={6}
               colSpan={{ base: 12 }}
               bg={{ base: "white" }}
             >
@@ -47,24 +46,53 @@ export default function Home() {
             </GridItem>
             <GridItem
               rowSpan={1}
-              colSpan={{ base: 12, md: 6, lg: 4 }}
-              bg={{ base: "black", md: "green", lg: "blue" }}
+              colSpan={{ base: 12, md: 6, lg: 8 }}
+              bg={{ base: "white" }}
+              p={4}
             >
-              here is text
+              Hi, I am Jason. Currently pursuing a Masters in Information
+              Technology, I am excited about progressing my career in full stack
+              web development.
             </GridItem>
             <GridItem
               rowSpan={1}
               colSpan={{ base: 12, md: 6, lg: 4 }}
-              bg={{ base: "black", md: "green", lg: "green" }}
+              bg={{ base: "white" }}
+              p={4}
             >
-              here is text
+              Employment
+            </GridItem>
+            <GridItem
+              rowSpan={1}
+              colSpan={{ base: 12 }}
+              bg={{ base: "white" }}
+              p={4}
+            >
+              Projects
             </GridItem>
             <GridItem
               rowSpan={1}
               colSpan={{ base: 12, md: 6, lg: 4 }}
-              bg={{ base: "black", md: "green", lg: "red" }}
+              bg={{ base: "white" }}
+              p={4}
             >
-              here is text
+              Project 1
+            </GridItem>
+            <GridItem
+              rowSpan={1}
+              colSpan={{ base: 12, md: 6, lg: 4 }}
+              bg={{ base: "white" }}
+              p={4}
+            >
+              Project 2
+            </GridItem>
+            <GridItem
+              rowSpan={1}
+              colSpan={{ base: 12, md: 6, lg: 4 }}
+              bg={{ base: "white" }}
+              p={4}
+            >
+              Project 3
             </GridItem>
           </Grid>
         </Box>
