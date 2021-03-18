@@ -13,7 +13,7 @@ import {
   Text,
   Badge,
 } from "@chakra-ui/react"
-import me from "../../public/images/jasonschmitt.jpg"
+import me from "../images/jasonschmitt.jpg"
 
 export default function Home() {
   return (
