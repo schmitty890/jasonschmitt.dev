@@ -62,7 +62,7 @@ export default function Home() {
                   </Text>
                   <Text fontSize="sm">Information Technology, M.S.</Text>
                   <Text fontSize="xs">
-                    Concentation: Software Systems Design and Engineering
+                    Concentration: Software Systems Design and Engineering
                   </Text>
                 </Box>
               </Flex>
