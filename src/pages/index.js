@@ -15,16 +15,12 @@ import {
   Divider,
   Link,
 } from "@chakra-ui/react"
-import me from "../images/jasonschmitt2.png"
-import nodejs from "../images/node.jpeg"
-import boaLogo from "../images/boa.jpg"
-import lowesLogo from "../images/lowesLogo.jpg"
-import brooksBellLogo from "../images/brooksbell.png"
-import unccLogo from "../images/uncc.png"
-import linkedInLogo from "../images/linkedin.png"
-import githubLogo from "../images/github.png"
+// import unccLogo from "../../images/uncc.png"
 import { SocialIcon } from "react-social-icons"
 import { IconContext } from "react-icons"
+
+import Work from "../data/work.json"
+
 import {
   FaNodeJs,
   FaReact,
@@ -79,7 +75,7 @@ export default function Home() {
                 display={"inline-flex"}
               >
                 <Flex>
-                  <Avatar src={me} size="lg" />
+                  {/* <Avatar src={me} size="lg" /> */}
                   <Box ml="3">
                     <Text fontWeight="bold">Jason Schmitt</Text>
                     <Text fontSize="sm">Website Developer</Text>
@@ -87,7 +83,7 @@ export default function Home() {
                   </Box>
                 </Flex>
                 <Flex>
-                  <Avatar src={unccLogo} size="lg" />
+                  {/* <Avatar src={unccLogo} size="lg" /> */}
                   <Box ml="3">
                     <Text fontWeight="bold">
                       UNC Charlotte
@@ -126,35 +122,19 @@ export default function Home() {
                 p={4}
               >
                 <Text fontSize="md" mb="3">
-                  Places of employment
+                  {Work.title}
                 </Text>
                 <Divider mb="3" />
-                <Flex mb="3">
-                  <Avatar src={boaLogo} />
-                  <Box ml="3">
-                    <Text fontWeight="bold">Bank of America</Text>
-                    <Text fontSize="sm">Front End Engineer</Text>
-                    <Text fontSize="xs">Oct 2018 - Present</Text>
-                  </Box>
-                </Flex>
-                <Divider mb="3" />
-                <Flex mb="3">
-                  <Avatar src={brooksBellLogo} />
-                  <Box ml="3">
-                    <Text fontWeight="bold">Brooks Bell</Text>
-                    <Text fontSize="sm">JavaScript Developer</Text>
-                    <Text fontSize="xs">July 2017 - Oct 2018</Text>
-                  </Box>
-                </Flex>
-                <Divider mb="3" />
-                <Flex mb="3">
-                  <Avatar src={lowesLogo} />
-                  <Box ml="3">
-                    <Text fontWeight="bold">Lowes Home Improvement</Text>
-                    <Text fontSize="sm">Software Developer</Text>
-                    <Text fontSize="xs">Jan 2015 - July 2017</Text>
-                  </Box>
-                </Flex>
+                {Work.employers.map(item => (
+                  <Flex mb="3">
+                    <Avatar src={item.image} />
+                    <Box ml="3">
+                      <Text fontWeight="bold">{item.company}</Text>
+                      <Text fontSize="sm">{item.title}</Text>
+                      <Text fontSize="xs">{item.duration}</Text>
+                    </Box>
+                  </Flex>
+                ))}
               </GridItem>
 
               <GridItem

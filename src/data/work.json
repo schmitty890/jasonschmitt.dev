@@ -1,0 +1,23 @@
+{
+  "title": "Places of employment",
+  "employers": [
+    {
+      "company": "Bank of America",
+      "title": "Front End Engineer",
+      "image": "/images/boa.jpg",
+      "duration": "Oct 2018 - Present"
+    },
+    {
+      "company": "Brooks Bell",
+      "title": "JavaScript Developer",
+      "image": "/images/brooksbell.png",
+      "duration": "July 2017 - Oct 2018"
+    },
+    {
+      "company": "Lowe's Home Improvement",
+      "title": "Software Developer",
+      "image": "/images/lowesLogo.jpg",
+      "duration": "Jan 2015 - July 2017"
+    }
+  ]
+}
