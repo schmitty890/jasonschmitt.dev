@@ -18,6 +18,7 @@ import {
 // import unccLogo from "../../images/uncc.png"
 import { SocialIcon } from "react-social-icons"
 import { IconContext } from "react-icons"
+import Header from "../components/Header/Header"
 
 import Work from "../data/work.json"
 
@@ -66,38 +67,7 @@ export default function Home() {
               gap={0.5}
               borderRadius="5px"
             >
-              <GridItem
-                p={4}
-                rowSpan={6}
-                colSpan={{ base: 12 }}
-                bg={{ base: "white" }}
-                justifyContent={"space-between"}
-                display={"inline-flex"}
-              >
-                <Flex>
-                  {/* <Avatar src={me} size="lg" /> */}
-                  <Box ml="3">
-                    <Text fontWeight="bold">Jason Schmitt</Text>
-                    <Text fontSize="sm">Website Developer</Text>
-                    <Text fontSize="xs">Location: North Carolina</Text>
-                  </Box>
-                </Flex>
-                <Flex>
-                  {/* <Avatar src={unccLogo} size="lg" /> */}
-                  <Box ml="3">
-                    <Text fontWeight="bold">
-                      UNC Charlotte
-                      <Badge ml="1" colorScheme="yellow">
-                        In Progress
-                      </Badge>
-                    </Text>
-                    <Text fontSize="sm">Information Technology, M.S.</Text>
-                    <Text fontSize="xs">
-                      Concentration: Software Systems Design and Engineering
-                    </Text>
-                  </Box>
-                </Flex>
-              </GridItem>
+              <Header />
               <GridItem
                 rowSpan={1}
                 colSpan={{ base: 12, md: 6, lg: 8 }}
