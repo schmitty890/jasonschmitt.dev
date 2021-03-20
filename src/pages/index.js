@@ -24,7 +24,6 @@ import About from "../components/About/About"
 import Employers from "../components/Employers/Employers"
 import Efforts from "../components/Efforts/Efforts"
 import Social from "../components/Social/Social"
-import ProjectHeader from "../components/ProjectHeader/ProjectHeader"
 import Projects from "../components/Projects/Projects"
 
 export default function Home() {
