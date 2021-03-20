@@ -23,6 +23,7 @@ import brooksBellLogo from "../images/brooksbell.png"
 import unccLogo from "../images/uncc.png"
 import linkedInLogo from "../images/linkedin.png"
 import githubLogo from "../images/github.png"
+import { SocialIcon } from "react-social-icons"
 
 export default function Home() {
   return (
@@ -268,17 +269,18 @@ export default function Home() {
               display={"inline-flex"}
             >
               <Flex>
-                <Link
-                  href="https://www.linkedin.com/in/jasonlschmitt/"
-                  isExternal
-                >
-                  <Avatar src={linkedInLogo} size="lg" />
-                </Link>
+                <SocialIcon
+                  target="_blank"
+                  url="https://www.linkedin.com/in/jasonlschmitt/"
+                />
               </Flex>
-              <Flex>
-                <Link href="https://github.com/schmitty890" isExternal>
-                  <Avatar src={githubLogo} size="lg" />
-                </Link>
+
+              <Flex ml={3}>
+                <SocialIcon
+                  target="_blank"
+                  bgColor="#000"
+                  url="https://github.com/schmitty890"
+                />
               </Flex>
             </GridItem>
           </Grid>
