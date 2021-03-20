@@ -20,6 +20,7 @@ import { SocialIcon } from "react-social-icons"
 import { IconContext } from "react-icons"
 import Header from "../components/Header/Header"
 import CarouselOfTech from "../components/CarouselOfTech/CarouselOfTech"
+import About from "../components/About/About"
 
 import Work from "../data/work.json"
 
@@ -36,23 +37,8 @@ export default function Home() {
               borderRadius="5px"
             >
               <Header />
-              <GridItem
-                rowSpan={1}
-                colSpan={{ base: 12, md: 6, lg: 8 }}
-                bg={{ base: "white" }}
-                p={4}
-              >
-                <Text fontSize="2xl">About me</Text>
-                <Text fontSize="md">
-                  Hi, I am Jason, a North Carolina based front end web
-                  developer. Currently pursuing a Masters in Information
-                  Technology, concentrating in Software Systems Design and
-                  Engineering at UNC Charlotte, I am excited about progressing
-                  my career in full stack web development as well as learning
-                  more about website architecture.
-                </Text>
-              </GridItem>
 
+              <About />
               <GridItem
                 rowSpan={1}
                 colSpan={{ base: 12, md: 6, lg: 4 }}
