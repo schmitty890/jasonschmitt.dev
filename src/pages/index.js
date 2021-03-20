@@ -25,6 +25,7 @@ import Employers from "../components/Employers/Employers"
 import Efforts from "../components/Efforts/Efforts"
 import Social from "../components/Social/Social"
 import Projects from "../components/Projects/Projects"
+import ContactForm from "../components/ContactForm/ContactForm"
 
 export default function Home() {
   return (
@@ -49,6 +50,7 @@ export default function Home() {
               <CarouselOfTech />
             </Grid>
             {/* <Projects /> */}
+            <ContactForm />
             <Social />
           </Box>
         </Container>
