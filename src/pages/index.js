@@ -162,6 +162,18 @@ export default function Home() {
                 colSpan={{ base: 12 }}
                 bg={{ base: "white" }}
                 p={4}
+                justifyContent={"center"}
+                display={"inline-flex"}
+              >
+                I focus my efforts in becoming proficient in the following
+                technologies
+              </GridItem>
+
+              <GridItem
+                rowSpan={1}
+                colSpan={{ base: 12 }}
+                bg={{ base: "white" }}
+                p={4}
                 pb={10}
               >
                 <Slider {...settings}>
@@ -282,15 +294,6 @@ export default function Home() {
                     <SiBootstrap style={{ margin: "auto", color: "#602C50" }} />
                   </GridItem>
                 </Slider>
-              </GridItem>
-
-              <GridItem
-                rowSpan={1}
-                colSpan={{ base: 12 }}
-                bg={{ base: "white" }}
-                p={4}
-              >
-                I focus my efforts in learning the following technologies
               </GridItem>
 
               <GridItem
