@@ -24,6 +24,8 @@ import About from "../components/About/About"
 import Employers from "../components/Employers/Employers"
 import Efforts from "../components/Efforts/Efforts"
 import Social from "../components/Social/Social"
+import ProjectHeader from "../components/ProjectHeader/ProjectHeader"
+import Projects from "../components/Projects/Projects"
 
 export default function Home() {
   return (
@@ -46,43 +48,9 @@ export default function Home() {
               <Efforts />
 
               <CarouselOfTech />
-
-              <GridItem
-                rowSpan={1}
-                colSpan={{ base: 12 }}
-                bg={{ base: "white" }}
-                p={4}
-              >
-                Projects - Below are a few projects I have worked on that state
-                the tech stack, a url to view/demo the site, as well as the
-                github repository associated with the project
-              </GridItem>
-              <GridItem
-                rowSpan={1}
-                colSpan={{ base: 12, md: 6, lg: 4 }}
-                bg={{ base: "white" }}
-                p={4}
-              >
-                Project 1
-              </GridItem>
-              <GridItem
-                rowSpan={1}
-                colSpan={{ base: 12, md: 6, lg: 4 }}
-                bg={{ base: "white" }}
-                p={4}
-              >
-                Project 2
-              </GridItem>
-              <GridItem
-                rowSpan={1}
-                colSpan={{ base: 12, md: 6, lg: 4 }}
-                bg={{ base: "white" }}
-                p={4}
-              >
-                Project 3
-              </GridItem>
-              <Social />
             </Grid>
+            {/* <Projects /> */}
+            <Social />
           </Box>
         </Container>
       </IconContext.Provider>
