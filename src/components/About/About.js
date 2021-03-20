@@ -1,7 +1,7 @@
 import React from "react"
 import { GridItem, Text } from "@chakra-ui/react"
 
-const CarouselOfTech = () => {
+const About = () => {
   return (
     <GridItem
       rowSpan={1}
@@ -21,4 +21,4 @@ const CarouselOfTech = () => {
   )
 }
 
-export default CarouselOfTech
+export default About
