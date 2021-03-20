@@ -96,7 +96,7 @@ export default function Home() {
                 </Text>
                 <Divider mb="3" />
                 {Work.employers.map(item => (
-                  <Flex mb="3">
+                  <Flex mb="3" key={item.id}>
                     <Avatar src={item.image} />
                     <Box ml="3">
                       <Text fontWeight="bold">{item.company}</Text>
