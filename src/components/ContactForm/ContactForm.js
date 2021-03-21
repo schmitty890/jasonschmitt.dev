@@ -57,7 +57,6 @@ const ContactForm = () => {
       postTestRoute(values) // post route
       setIsLoading(false)
       setMsgSent(true)
-      errors.successMessage = "Your message has been sent :)"
       // }, 2000)
       // values = {"yourName":"ramen","yourEmail":"mountains"}
     },
@@ -114,8 +113,13 @@ const ContactForm = () => {
             ) : null}
           </FormControl>
 
-          <Button mt={4} colorScheme="teal" isLoading={isLoading} type="submit">
-            submit
+          <Button
+            mt={4}
+            colorScheme="linkedin"
+            isLoading={isLoading}
+            type="submit"
+          >
+            Send!
           </Button>
           {msgSent ? (
             <Alert mt={4} status="success">
