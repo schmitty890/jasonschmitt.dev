@@ -16,6 +16,7 @@ import {
   Link,
 } from "@chakra-ui/react"
 // import unccLogo from "../../images/uncc.png"
+import { getTestRoute } from "../api/test"
 
 import { IconContext } from "react-icons"
 import Header from "../components/Header/Header"
@@ -27,34 +28,42 @@ import Social from "../components/Social/Social"
 import Projects from "../components/Projects/Projects"
 import ContactForm from "../components/ContactForm/ContactForm"
 
-export default function Home() {
-  return (
-    <ChakraProvider>
-      <IconContext.Provider value={{ size: "2em" }}>
-        <Container maxW="4xl" centerContent>
-          <Box padding="2" bg="gray.100" maxW="4xl" width="100%">
-            <Grid
-              templateRows="repeat(2, 1fr)"
-              templateColumns="repeat(12, 1fr)"
-              gap={0.5}
-              borderRadius="5px"
-            >
-              <Header />
+// export default function Home() {
+class Home extends Component {
+  componentDidMount() {
+    getTestRoute()
+  }
+  render() {
+    return (
+      <ChakraProvider>
+        <IconContext.Provider value={{ size: "2em" }}>
+          <Container maxW="4xl" centerContent>
+            <Box padding="2" bg="gray.100" maxW="4xl" width="100%">
+              <Grid
+                templateRows="repeat(2, 1fr)"
+                templateColumns="repeat(12, 1fr)"
+                gap={0.5}
+                borderRadius="5px"
+              >
+                <Header />
 
-              <About />
+                <About />
 
-              <Employers />
+                <Employers />
 
-              <Efforts />
+                <Efforts />
 
-              <CarouselOfTech />
-            </Grid>
-            {/* <Projects /> */}
-            <ContactForm />
-            <Social />
-          </Box>
-        </Container>
-      </IconContext.Provider>
-    </ChakraProvider>
-  )
+                <CarouselOfTech />
+              </Grid>
+              {/* <Projects /> */}
+              <ContactForm />
+              <Social />
+            </Box>
+          </Container>
+        </IconContext.Provider>
+      </ChakraProvider>
+    )
+  }
 }
+
+export default Home

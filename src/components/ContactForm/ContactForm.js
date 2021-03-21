@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-
+import { getTestRoute, postTestRoute } from "../../api/test"
 import { useFormik } from "formik"
 
 import {
@@ -49,7 +49,9 @@ const ContactForm = () => {
       setIsLoading(true)
       // make post request here
       setTimeout(() => {
-        console.log(JSON.stringify(values))
+        // console.log(values)
+        getTestRoute() // get route
+        postTestRoute(values) // post route
         setIsLoading(false)
       }, 2000)
       // values = {"yourName":"ramen","yourEmail":"mountains"}
