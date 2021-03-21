@@ -51,12 +51,13 @@ const ContactForm = () => {
     onSubmit: values => {
       setIsLoading(true)
       // make post request here
-      // setTimeout(() => {
       // console.log(values)
       postEmailRoute(values) // post route
       setIsLoading(false)
       setMsgSent(true)
-      // }, 2000)
+      setTimeout(() => {
+        setMsgSent(false)
+      }, 5000)
       // values = {"yourName":"ramen","yourEmail":"mountains"}
     },
   })
