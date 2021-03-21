@@ -11,10 +11,13 @@ import {
   Button,
   Text,
   FormControl,
+  Alert,
+  AlertIcon,
 } from "@chakra-ui/react"
 
 const ContactForm = () => {
   const [isLoading, setIsLoading] = useState(false)
+  const [msgSent, setMsgSent] = useState(false)
 
   function validate(values) {
     const errors = {}
@@ -48,12 +51,14 @@ const ContactForm = () => {
     onSubmit: values => {
       setIsLoading(true)
       // make post request here
-      setTimeout(() => {
-        // console.log(values)
-        getTestRoute() // get route
-        postTestRoute(values) // post route
-        setIsLoading(false)
-      }, 2000)
+      // setTimeout(() => {
+      // console.log(values)
+      // getTestRoute() // get route
+      postTestRoute(values) // post route
+      setIsLoading(false)
+      setMsgSent(true)
+      errors.successMessage = "Your message has been sent :)"
+      // }, 2000)
       // values = {"yourName":"ramen","yourEmail":"mountains"}
     },
   })
@@ -112,6 +117,12 @@ const ContactForm = () => {
           <Button mt={4} colorScheme="teal" isLoading={isLoading} type="submit">
             submit
           </Button>
+          {msgSent ? (
+            <Alert mt={4} status="success">
+              <AlertIcon />
+              Your message has been sent :)
+            </Alert>
+          ) : null}
         </form>
       </GridItem>
     </Grid>
