@@ -5,7 +5,7 @@ export const postEmailRoute = async data => {
     let baseURL =
       window.location.hostname === "localhost"
         ? "http://localhost:8081"
-        : "https://jasonschmitt-dev-api-9w29o.ondigitalocean.app"
+        : "https://www.jasonsprojects.com"
     // post data to a url endpoint
     const response = await axios.post(`${baseURL}/email`, data)
     console.log(response)
