@@ -9,8 +9,8 @@ const { Provider, Consumer } = React.createContext()
 
 class GithubProvider extends Component {
   state = {
-    uiRepoLastUpdated: "test",
-    apiRepoLastUpdated: null,
+    uiRepoLastUpdated: "a day ago",
+    apiRepoLastUpdated: "a day ago",
     test: "ourTextExample",
   }
 
