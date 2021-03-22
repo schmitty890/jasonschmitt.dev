@@ -24,7 +24,7 @@ export const test = async () => {
 export const listGithubRepos = async () => {
   // basic auth
   var gh = new GitHub({
-    token: "3b5ff73a12871bea22f520e20bc841f63acda16f",
+    token: process.env.GITHUB_OAUTH_TOKEN,
   })
   var me = gh.getUser("schmitty890")
 
