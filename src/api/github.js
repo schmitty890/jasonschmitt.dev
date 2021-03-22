@@ -22,25 +22,16 @@ export const test = async () => {
 }
 
 export const listGithubRepos = async () => {
-  // export const listGithubRepos = async () => {
   // basic auth
   var gh = new GitHub({
     token: "3b5ff73a12871bea22f520e20bc841f63acda16f",
   })
   var me = gh.getUser("schmitty890")
-  const dataObj = {
-    uiRepoLastUpdated: "",
-    apiRepoLastUpdated: "",
-  }
+
   const repos = me.listRepos((err, repos) => {
-    // look at all the starred repos!
-    return dataObj
+    // look at all the repos!
   })
   return repos
-
-  // me.getProfile(function (err, info) {
-  //   console.log(info)
-  // })
 }
 
 // export const lastUpdateForUiAndAPIPortfolioRepos = async () => {

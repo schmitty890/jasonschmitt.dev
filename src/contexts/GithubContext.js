@@ -1,5 +1,8 @@
 import React, { Component } from "react"
-import { listGithubRepos } from "../api/github"
+import { listGithubRepos, test } from "../api/github"
+import dayjs from "dayjs"
+var relativeTime = require("dayjs/plugin/relativeTime")
+dayjs.extend(relativeTime)
 
 const { Provider, Consumer } = React.createContext()
 // Context.Consumer, Context.Provider
@@ -8,16 +11,43 @@ class GithubProvider extends Component {
   state = {
     uiRepoLastUpdated: "test",
     apiRepoLastUpdated: null,
+    test: "ourTextExample",
   }
 
   componentDidMount() {
-    console.log("ehre")
-    // const lastUpdated = listGithubRepos()
-    listGithubRepos()
-    // console.log(lastUpdated)
+    this.getData()
+    this.getGithubData()
   }
-  getGithubData = () => {
-    this.setState({ uiRepoLastUpdated: "Bob" })
+
+  getData = async () => {
+    const testHere = await test()
+    console.log(testHere)
+    this.setState({ test: testHere.data })
+  }
+
+  getGithubData = async () => {
+    const githubData = await listGithubRepos()
+
+    let URLsForPorfolioUiAndAPI = ["jasonschmitt.dev", "jasonschmitt.dev-api"]
+
+    const dataObj = {
+      uiRepoLastUpdated: "",
+      apiRepoLastUpdated: "",
+    }
+    if (githubData != undefined) {
+      githubData.data.forEach(arrayItem => {
+        if (arrayItem.name == URLsForPorfolioUiAndAPI[0]) {
+          dataObj.uiRepoLastUpdated = dayjs(arrayItem.updated_at).fromNow()
+        } else if (arrayItem.name == URLsForPorfolioUiAndAPI[1]) {
+          dataObj.apiRepoLastUpdated = dayjs(arrayItem.updated_at).fromNow()
+        }
+      })
+      console.log(dataObj)
+      this.setState({ uiRepoLastUpdated: dataObj.uiRepoLastUpdated })
+      this.setState({ apiRepoLastUpdated: dataObj.apiRepoLastUpdated })
+    }
+
+    // console.log(githubData)
   }
 
   render() {
@@ -26,7 +56,7 @@ class GithubProvider extends Component {
         value={{
           uiRepoLastUpdated: this.state.uiRepoLastUpdated,
           apiRepoLastUpdated: this.state.apiRepoLastUpdated,
-          getGithubData: this.getGithubData,
+          test: this.state.test,
         }}
       >
         {this.props.children}
