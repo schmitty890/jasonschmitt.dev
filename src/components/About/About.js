@@ -21,14 +21,14 @@ const About = () => {
             web development as well as learning more about website architecture.
           </Text>
           <Text fontSize="md" mt={4}>
-            This is also my playground servers. This site was built with reacts
-            gatsby.js for the frontend, where the UI repo was last updated{" "}
-            {uiRepoLastUpdated}, and is hosted on netlify. And built with
-            node.js for the backend API and data services, where the API repo
-            was last updated {apiRepoLastUpdated}, and is hosted on digital
-            ocean. I enjoy tinkering and testing out projects and new node
-            modules with this playground site, that also acts as a portfolio
-            site.
+            This site also acts as a playground for my UI and API projects. The
+            site was built with reacts gatsby.js for the frontend, where the UI
+            repo was last updated {uiRepoLastUpdated}, and is hosted on netlify.
+            And built with node.js for the backend API and data services, where
+            the API repo was last updated {apiRepoLastUpdated}, and is hosted on
+            digital ocean. I enjoy tinkering and testing out projects and new
+            node modules with this playground site, that also acts as a
+            portfolio site.
           </Text>
         </GridItem>
       )}
