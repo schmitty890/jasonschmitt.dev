@@ -29,7 +29,7 @@ const TableData = () => {
         >
           <Table size="sm" variant="striped" colorScheme="teal">
             <Thead>
-              <Tr>
+              <Tr className="animal-crossing--stickyHead">
                 <Th>Name</Th>
                 <Th>Icon</Th>
                 <Th isNumeric>Price</Th>
@@ -39,6 +39,23 @@ const TableData = () => {
                 <Th display={{ base: "none", md: "table-cell" }}>
                   Shadow size
                 </Th>
+                {/* <Th display={{ base: "none", md: "table-cell" }}>
+                  Month Northern
+                </Th>
+                <Th display={{ base: "none", md: "table-cell" }}>
+                  Month Southern
+                </Th>
+                <Th display={{ base: "none", md: "table-cell" }}>Time</Th>
+                <Th display={{ base: "none", md: "table-cell" }}>All Day</Th>
+                <Th display={{ base: "none", md: "table-cell" }}>All Year</Th>
+                <Th display={{ base: "none", md: "table-cell" }}>Location</Th>
+                <Th display={{ base: "none", md: "table-cell" }}>Rarity</Th>
+                <Th display={{ base: "none", md: "table-cell" }}>
+                  Months North
+                </Th>
+                <Th display={{ base: "none", md: "table-cell" }}>
+                  Months South
+                </Th> */}
               </Tr>
             </Thead>
             <Tbody>
@@ -55,6 +72,33 @@ const TableData = () => {
                   <Td display={{ base: "none", md: "table-cell" }}>
                     {item.shadow}
                   </Td>
+                  {/* <Td display={{ base: "none", md: "table-cell" }}>
+                    {item.availability["month-northern"]}
+                  </Td>
+                  <Td display={{ base: "none", md: "table-cell" }}>
+                    {item.availability["month-southern"]}
+                  </Td>
+                  <Td display={{ base: "none", md: "table-cell" }}>
+                    {item.availability.time}
+                  </Td>
+                  <Td display={{ base: "none", md: "table-cell" }}>
+                    {item.availability.isAllDay ? "true" : "false"}
+                  </Td>
+                  <Td display={{ base: "none", md: "table-cell" }}>
+                    {item.availability.isAllYear ? "true" : "false"}
+                  </Td>
+                  <Td display={{ base: "none", md: "table-cell" }}>
+                    {item.availability.location}
+                  </Td>
+                  <Td display={{ base: "none", md: "table-cell" }}>
+                    {item.availability.rarity}
+                  </Td>
+                  <Td display={{ base: "none", md: "table-cell" }}>
+                    {item.availability["month-array-northern"]}
+                  </Td>
+                  <Td display={{ base: "none", md: "table-cell" }}>
+                    {item.availability["month-array-southern"]}
+                  </Td> */}
                 </Tr>
               ))}
             </Tbody>

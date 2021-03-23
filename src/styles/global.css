@@ -12,3 +12,9 @@
   left: -15px !important;
   z-index: 1;
 }
+
+.animal-crossing--stickyHead th {
+  position: sticky;
+  top: 0;
+  background: white;
+}
