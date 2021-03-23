@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { ChakraProvider, Box, Container, Grid } from "@chakra-ui/react"
 import Header from "../projects/animalCrossingProject/components/Header/Header"
+import Navigation from "../projects/animalCrossingProject/components/Navigation/Navigation"
 import TableData from "../projects/animalCrossingProject/components/TableData/TableData"
 import {
   AnimalCrossingProvider,
@@ -20,6 +21,7 @@ export default function AnimalCrossingProject() {
               borderRadius="5px"
             >
               <Header />
+              <Navigation />
               <TableData />
             </Grid>
           </Box>

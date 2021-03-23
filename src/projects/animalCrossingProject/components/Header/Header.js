@@ -1,5 +1,14 @@
 import React from "react"
-import { Box, GridItem, Flex, Avatar, Text, Badge } from "@chakra-ui/react"
+import {
+  Box,
+  GridItem,
+  Flex,
+  Avatar,
+  Text,
+  Badge,
+  Heading,
+  Button,
+} from "@chakra-ui/react"
 import me from "../../../../../static/images/jasonschmitt2.png"
 import unccLogo from "../../../../../static/images/uncc.png"
 
@@ -13,29 +22,16 @@ const Header = () => {
       justifyContent={"space-between"}
       display={"inline-flex"}
     >
-      <Flex>
-        <Avatar src={me} size="lg" />
-        <Box ml="3">
-          <Text fontWeight="bold">Jason Schmitt</Text>
-          <Text fontSize="sm">Website Developer</Text>
-          <Text fontSize="xs">Location: North Carolina</Text>
-        </Box>
-      </Flex>
-      <Flex>
-        <Avatar src={unccLogo} size="lg" />
-        <Box ml="3">
-          <Text fontWeight="bold">
-            UNC Charlotte
-            <Badge ml="1" colorScheme="yellow">
-              In Progress
-            </Badge>
-          </Text>
-          <Text fontSize="sm">Information Technology, M.S.</Text>
-          <Text fontSize="xs">
-            Concentration: Software Systems Design and Engineering
-          </Text>
-        </Box>
-      </Flex>
+      <Box>
+        <Heading mb={4}>Animal Crossing Lookup</Heading>
+        <Text fontSize="xl">
+          The Animal Crossing New Horizons directory. Lookup fish, sea
+          creatures, bugs, fossils, villagers, art, houseware, etc...
+        </Text>
+        {/* <Button size="lg" colorScheme="green" mt="24px">
+          Create a free account
+        </Button> */}
+      </Box>
     </GridItem>
   )
 }
