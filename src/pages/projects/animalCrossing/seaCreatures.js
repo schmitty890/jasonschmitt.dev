@@ -1,12 +1,12 @@
 import React, { Component } from "react"
 import { ChakraProvider, Box, Container, Grid } from "@chakra-ui/react"
-import Header from "../animalCrossing/components/Header/Header"
-import Navigation from "../animalCrossing/components/Navigation/Navigation"
-import TableData from "../animalCrossing/components/TableData/TableDataSeaCreatures"
+import Header from "../../../projects/animalCrossing/components/Header/Header"
+import Navigation from "../../../projects/animalCrossing/components/Navigation/Navigation"
+import TableDataSeaCreatures from "../../../projects/animalCrossing/components/TableData/TableDataSeaCreatures"
 import {
   AnimalCrossingSeaCreatureProvider,
   AnimalCrossingSeaCreatureConsumer,
-} from "../animalCrossing/contexts/animalCrossingSeaCreatureContext"
+} from "../../../projects/animalCrossing/contexts/animalCrossingSeaCreatureContext"
 
 export default function SeaCreaturePage() {
   return (
@@ -22,7 +22,7 @@ export default function SeaCreaturePage() {
             >
               <Header />
               <Navigation />
-              <TableData />
+              <TableDataSeaCreatures />
             </Grid>
           </Box>
         </Container>

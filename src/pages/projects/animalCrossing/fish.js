@@ -1,14 +1,14 @@
 import React, { Component } from "react"
 import { ChakraProvider, Box, Container, Grid } from "@chakra-ui/react"
-import Header from "../animalCrossing/components/Header/Header"
-import Navigation from "../animalCrossing/components/Navigation/Navigation"
-import TableData from "../animalCrossing/components/TableData/TableDataFish"
+import Header from "../../../projects/animalCrossing/components/Header/Header"
+import Navigation from "../../../projects/animalCrossing/components/Navigation/Navigation"
+import TableDataFish from "../../../projects/animalCrossing/components/TableData/TableDataFish"
 import {
   AnimalCrossingFishProvider,
   AnimalCrossingFishConsumer,
-} from "../animalCrossing/contexts/animalCrossingFishContext"
+} from "../../../projects/animalCrossing/contexts/animalCrossingFishContext"
 
-export default function AnimalCrossingProject() {
+export default function FishPage() {
   return (
     <ChakraProvider>
       <AnimalCrossingFishProvider>
@@ -22,7 +22,7 @@ export default function AnimalCrossingProject() {
             >
               <Header />
               <Navigation />
-              <TableData />
+              <TableDataFish />
             </Grid>
           </Box>
         </Container>

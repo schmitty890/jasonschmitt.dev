@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 // import { listGithubRepos, test } from "../api/github"
-import { getFish, getSeaCreatures } from "../api/animalCrossingAPICalls"
+import { getSeaCreatures } from "../api/animalCrossingAPICalls"
 import dayjs from "dayjs"
 var relativeTime = require("dayjs/plugin/relativeTime")
 dayjs.extend(relativeTime)

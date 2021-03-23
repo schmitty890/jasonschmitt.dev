@@ -1,11 +1,11 @@
-import React, { Component } from "react"
+import React from "react"
 import { ChakraProvider, Box, Container, Grid } from "@chakra-ui/react"
-import Header from "../animalCrossing/components/Header/Header"
-import Navigation from "../animalCrossing/components/Navigation/Navigation"
+import Header from "../../../projects/animalCrossing/components/Header/Header"
+import Navigation from "../../../projects/animalCrossing/components/Navigation/Navigation"
 import {
   AnimalCrossingFishProvider,
   AnimalCrossingFishConsumer,
-} from "../animalCrossing/contexts/animalCrossingFishContext"
+} from "../../../projects/animalCrossing/contexts/animalCrossingFishContext"
 
 export default function AnimalCrossingProject() {
   return (

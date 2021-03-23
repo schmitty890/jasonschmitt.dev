@@ -1,11 +1,6 @@
 import React, { Component } from "react"
 import {
-  Box,
   GridItem,
-  Flex,
-  Avatar,
-  Badge,
-  Text,
   Image,
   Table,
   Thead,
@@ -13,13 +8,12 @@ import {
   Th,
   Td,
   Tbody,
-  Tfoot,
   Button,
 } from "@chakra-ui/react"
 import { AnimalCrossingSeaCreatureConsumer } from "../../contexts/animalCrossingSeaCreatureContext"
 
 // const TableData = () => {
-class TableData extends Component {
+class TableDataSeaCreatures extends Component {
   logState = (e, logOutTheState) => {
     logOutTheState()
   }
@@ -116,4 +110,4 @@ class TableData extends Component {
   }
 }
 
-export default TableData
+export default TableDataSeaCreatures
