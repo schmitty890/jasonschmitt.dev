@@ -33,8 +33,12 @@ const TableData = () => {
                 <Th>Name</Th>
                 <Th>Icon</Th>
                 <Th isNumeric>Price</Th>
-                <Th isNumeric>Price from CJ</Th>
-                <Th>Shadow size</Th>
+                <Th isNumeric display={{ base: "none", md: "table-cell" }}>
+                  Price from CJ
+                </Th>
+                <Th display={{ base: "none", md: "table-cell" }}>
+                  Shadow size
+                </Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -45,8 +49,12 @@ const TableData = () => {
                     <Image boxSize="50px" src={item.icon_uri} />
                   </Td>
                   <Td isNumeric>{item.price}</Td>
-                  <Td isNumeric>{item["price-cj"]}</Td>
-                  <Td>{item.shadow}</Td>
+                  <Td isNumeric display={{ base: "none", md: "table-cell" }}>
+                    {item["price-cj"]}
+                  </Td>
+                  <Td display={{ base: "none", md: "table-cell" }}>
+                    {item.shadow}
+                  </Td>
                 </Tr>
               ))}
             </Tbody>
