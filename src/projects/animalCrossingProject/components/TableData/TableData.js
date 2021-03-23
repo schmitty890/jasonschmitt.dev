@@ -33,6 +33,8 @@ const TableData = () => {
                 <Th>Name</Th>
                 <Th>Icon</Th>
                 <Th isNumeric>Price</Th>
+                <Th isNumeric>Price from CJ</Th>
+                <Th>Shadow size</Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -42,28 +44,12 @@ const TableData = () => {
                   <Td>
                     <Image boxSize="50px" src={item.icon_uri} />
                   </Td>
-
                   <Td isNumeric>{item.price}</Td>
+                  <Td isNumeric>{item["price-cj"]}</Td>
+                  <Td>{item.shadow}</Td>
                 </Tr>
               ))}
-              <Tr>
-                <Td>feet</Td>
-                <Td>centimetres (cm)</Td>
-                <Td isNumeric>30.48</Td>
-              </Tr>
-              <Tr>
-                <Td>yards</Td>
-                <Td>metres (m)</Td>
-                <Td isNumeric>0.91444</Td>
-              </Tr>
             </Tbody>
-            <Tfoot>
-              <Tr>
-                <Th>To convert</Th>
-                <Th>into</Th>
-                <Th isNumeric>multiply by</Th>
-              </Tr>
-            </Tfoot>
           </Table>
         </GridItem>
       )}
