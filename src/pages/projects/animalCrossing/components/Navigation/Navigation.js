@@ -14,8 +14,6 @@ import {
   MenuItemOption,
   MenuDivider,
 } from "@chakra-ui/react"
-import me from "../../../../../static/images/jasonschmitt2.png"
-import unccLogo from "../../../../../static/images/uncc.png"
 
 const Navigation = () => {
   return (

@@ -11,3 +11,15 @@ export const getFish = async () => {
     console.log(error) // catches both errors
   }
 }
+
+export const getSeaCreatures = async () => {
+  try {
+    let URL = "https://acnhapi.com/v1a/sea"
+    // fetch data from a url endpoint
+    const response = await axios.get(`${URL}`)
+    // console.log(response)
+    return response
+  } catch (error) {
+    console.log(error) // catches both errors
+  }
+}

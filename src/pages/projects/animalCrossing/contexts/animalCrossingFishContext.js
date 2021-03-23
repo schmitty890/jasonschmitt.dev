@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 // import { listGithubRepos, test } from "../api/github"
-import { getFish } from "../api/animalCrossingAPICalls"
+import { getFish, getSeaCreatures } from "../api/animalCrossingAPICalls"
 import dayjs from "dayjs"
 var relativeTime = require("dayjs/plugin/relativeTime")
 dayjs.extend(relativeTime)
@@ -8,7 +8,7 @@ dayjs.extend(relativeTime)
 const { Provider, Consumer } = React.createContext()
 // Context.Consumer, Context.Provider
 
-class AnimalCrossingProvider extends Component {
+class AnimalCrossingFishProvider extends Component {
   state = {
     fish: [],
   }
@@ -23,13 +23,16 @@ class AnimalCrossingProvider extends Component {
     this.setState({ fish: fish.data })
   }
 
+  logOutTheState = () => {
+    console.log(this.state)
+  }
+
   render() {
     return (
       <Provider
         value={{
-          // uiRepoLastUpdated: this.state.uiRepoLastUpdated,
-          // apiRepoLastUpdated: this.state.apiRepoLastUpdated,
           fish: this.state.fish,
+          logOutTheState: this.logOutTheState,
         }}
       >
         {this.props.children}
@@ -38,4 +41,4 @@ class AnimalCrossingProvider extends Component {
   }
 }
 
-export { AnimalCrossingProvider, Consumer as AnimalCrossingConsumer }
+export { AnimalCrossingFishProvider, Consumer as AnimalCrossingFishConsumer }
