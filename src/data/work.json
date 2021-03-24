@@ -2,26 +2,23 @@
   "title": "Places of employment",
   "employers": [
     {
-      "id": 1,
       "company": "Bank of America",
       "title": "Front End Engineer",
-      "src": "../../images/boa.jpg",
+      "src": "/images/boa.jpg",
       "imageAlt": "bank of america logo",
       "duration": "Oct 2018 - Present"
     },
     {
-      "id": 2,
       "company": "Brooks Bell",
       "title": "JavaScript Developer",
-      "src": "../../images/brooksbell.png",
+      "src": "/images/brooksbell.png",
       "imageAlt": "brooks bell logo",
       "duration": "July 2017 - Oct 2018"
     },
     {
-      "id": 3,
       "company": "Lowe's Home Improvement",
       "title": "Software Developer",
-      "src": "../../images/lowesLogo.jpg",
+      "src": "/images/lowesLogo.jpg",
       "imageAlt": "lowes home improvement logo",
       "duration": "Jan 2015 - July 2017"
     }
