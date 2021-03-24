@@ -15,7 +15,7 @@ const Header = () => {
       <Flex>
         <StaticImage
           src="../../images/jasonschmitt2.png"
-          alt="A dinosaur"
+          alt="Jason Schmitt image"
           loading="eager"
           className="my-avatars"
         />
@@ -28,7 +28,7 @@ const Header = () => {
       <Flex>
         <StaticImage
           src="../../images/uncc.png"
-          alt="A dinosaur"
+          alt="uncc logo"
           loading="eager"
           className="my-avatars"
         />

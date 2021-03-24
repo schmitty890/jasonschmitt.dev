@@ -1,7 +1,6 @@
 import React from "react"
 import { GridItem, Text, Divider, Flex, Avatar, Box } from "@chakra-ui/react"
 import Work from "../../data/work.json"
-import { StaticImage } from "gatsby-plugin-image"
 
 const Employers = () => {
   return (
@@ -17,13 +16,7 @@ const Employers = () => {
       <Divider mb="3" />
       {Work.employers.map(item => (
         <Flex mb="3" key={item.id}>
-          <StaticImage
-            src={item.image}
-            alt="A dinosaur"
-            loading="eager"
-            className="my-avatars"
-          />
-          <Avatar src={item.image} />
+          <Avatar src={item.src} />
           <Box ml="3">
             <Text fontWeight="bold">{item.company}</Text>
             <Text fontSize="sm">{item.title}</Text>
