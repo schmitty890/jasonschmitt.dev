@@ -1,5 +1,13 @@
 import React from "react"
-import { GridItem, Text, Divider, Flex, Avatar, Box } from "@chakra-ui/react"
+import {
+  GridItem,
+  Text,
+  Divider,
+  Flex,
+  Avatar,
+  Box,
+  Spinner,
+} from "@chakra-ui/react"
 import Work from "../../data/work.json"
 
 const Employers = () => {
@@ -16,7 +24,14 @@ const Employers = () => {
       <Divider mb="3" />
       {Work.employers.map(item => (
         <Flex mb="3" key={item.id}>
-          <Avatar src={item.src} alt={item.imageAlt} />
+          <Avatar
+            src={item.src}
+            alt={item.imageAlt}
+            loading="eager"
+            bg="gray.300"
+            color="white"
+            icon={<Spinner />}
+          />
           <Box ml="3">
             <Text fontWeight="bold">{item.company}</Text>
             <Text fontSize="sm">{item.title}</Text>
