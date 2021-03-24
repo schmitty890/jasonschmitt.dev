@@ -1,7 +1,5 @@
 import React from "react"
 import { Box, GridItem, Flex, Avatar, Text, Badge } from "@chakra-ui/react"
-import me from "../../../static/images/jasonschmitt2.png"
-import unccLogo from "../../../static/images/uncc.png"
 import { StaticImage } from "gatsby-plugin-image"
 
 const Header = () => {
@@ -21,7 +19,6 @@ const Header = () => {
           loading="eager"
           className="my-avatars"
         />
-        <Avatar src={me} size="lg" />
         <Box ml="3">
           <Text fontWeight="bold">Jason Schmitt</Text>
           <Text fontSize="sm">Website Developer</Text>
@@ -29,7 +26,12 @@ const Header = () => {
         </Box>
       </Flex>
       <Flex>
-        <Avatar src={unccLogo} size="lg" />
+        <StaticImage
+          src="../../images/uncc.png"
+          alt="A dinosaur"
+          loading="eager"
+          className="my-avatars"
+        />
         <Box ml="3">
           <Text fontWeight="bold">
             UNC Charlotte
