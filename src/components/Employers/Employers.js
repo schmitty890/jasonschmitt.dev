@@ -7,6 +7,7 @@ import {
   Avatar,
   Box,
   Spinner,
+  SkeletonCircle,
 } from "@chakra-ui/react"
 import Work from "../../data/work.json"
 
@@ -28,9 +29,7 @@ const Employers = () => {
             src={item.src}
             alt={item.imageAlt}
             loading="eager"
-            bg="gray.300"
-            color="white"
-            icon={<Spinner />}
+            icon={<SkeletonCircle size="12" />}
           />
           <Box ml="3">
             <Text fontWeight="bold">{item.company}</Text>
