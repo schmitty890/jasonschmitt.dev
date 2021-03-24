@@ -2,6 +2,7 @@ import React from "react"
 import { Box, GridItem, Flex, Avatar, Text, Badge } from "@chakra-ui/react"
 import me from "../../../static/images/jasonschmitt2.png"
 import unccLogo from "../../../static/images/uncc.png"
+import { StaticImage } from "gatsby-plugin-image"
 
 const Header = () => {
   return (
@@ -14,6 +15,12 @@ const Header = () => {
       display={"inline-flex"}
     >
       <Flex>
+        <StaticImage
+          src="../../images/jasonschmitt2.png"
+          alt="A dinosaur"
+          loading="eager"
+          className="my-avatars"
+        />
         <Avatar src={me} size="lg" />
         <Box ml="3">
           <Text fontWeight="bold">Jason Schmitt</Text>

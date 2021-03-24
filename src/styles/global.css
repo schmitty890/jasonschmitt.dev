@@ -18,3 +18,33 @@
   top: 0;
   background: white;
 }
+
+.my-avatars {
+  border-radius: var(--chakra-radii-full);
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: var(--chakra-fontWeights-medium);
+  position: relative;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  background: var(--chakra-colors-gray-400);
+  color: var(--chakra-colors-gray-800);
+  border-color: var(--chakra-colors-white);
+  vertical-align: top;
+  width: var(--chakra-sizes-16);
+  height: var(--chakra-sizes-16);
+  font-size: calc(4rem / 2.5);
+}
