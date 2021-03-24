@@ -20,7 +20,7 @@
 }
 
 .my-avatars {
-  border-radius: var(--chakra-radii-full);
+  border-radius: 50%;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
