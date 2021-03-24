@@ -16,7 +16,7 @@ const Employers = () => {
       <Divider mb="3" />
       {Work.employers.map(item => (
         <Flex mb="3" key={item.id}>
-          <Avatar src={item.src} />
+          <Avatar src={item.src} alt={item.imageAlt} />
           <Box ml="3">
             <Text fontWeight="bold">{item.company}</Text>
             <Text fontSize="sm">{item.title}</Text>
