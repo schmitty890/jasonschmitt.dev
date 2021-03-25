@@ -13,6 +13,7 @@ import {
   FormControl,
   Alert,
   AlertIcon,
+  useToast,
 } from "@chakra-ui/react"
 
 const ContactForm = () => {
@@ -54,13 +55,25 @@ const ContactForm = () => {
       // console.log(values)
       postEmailRoute(values) // post route
       setIsLoading(false)
-      setMsgSent(true)
-      setTimeout(() => {
-        setMsgSent(false)
-      }, 5000)
+      toast({
+        title: "Email sent!",
+        description: "I'll get back to you asap",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      })
+
+      document.getElementById("yourName").value = ""
+      document.getElementById("yourEmail").value = ""
+      document.getElementById("yourMessage").value = ""
+      // setMsgSent(true)
+      // setTimeout(() => {
+      //   setMsgSent(false)
+      // }, 5000)
       // values = {"yourName":"ramen","yourEmail":"mountains"}
     },
   })
+  const toast = useToast()
 
   return (
     <Grid templateColumns="repeat(12, 1fr)" gap={0.5}>
@@ -71,6 +84,7 @@ const ContactForm = () => {
               Your name
             </FormLabel>
             <Input
+              id="yourName"
               type="text"
               name="yourName"
               onChange={handleChange}
@@ -86,6 +100,7 @@ const ContactForm = () => {
               Your email:
             </FormLabel>
             <Input
+              id="yourEmail"
               type="text"
               name="yourEmail"
               onChange={handleChange}
@@ -102,6 +117,7 @@ const ContactForm = () => {
               Your message
             </FormLabel>
             <Textarea
+              id="yourMessage"
               name="yourMessage"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -121,12 +137,12 @@ const ContactForm = () => {
           >
             Send!
           </Button>
-          {msgSent ? (
+          {/* {msgSent ? (
             <Alert mt={4} status="success">
               <AlertIcon />
               Your message has been sent :)
             </Alert>
-          ) : null}
+          ) : null} */}
         </form>
       </GridItem>
     </Grid>
