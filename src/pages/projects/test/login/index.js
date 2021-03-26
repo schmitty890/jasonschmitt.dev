@@ -21,6 +21,10 @@ import {
   LogInProvider,
   LogInConsumer,
 } from "../../../../projects/test/contexts/LogInContext"
+import {
+  AuthProvider,
+  AuthConsumer,
+} from "../../../../projects/test/contexts/AuthContext"
 
 export default function LogIn() {
   console.log("logIn")
@@ -64,64 +68,74 @@ export default function LogIn() {
   const toast = useToast()
   return (
     <ChakraProvider>
-      <LogInProvider>
-        <Container maxW="4xl" centerContent>
-          <Box padding="2" bg="gray.100" maxW="4xl" width="100%">
-            <Grid
-              templateRows="repeat(2, 1fr)"
-              templateColumns="repeat(12, 1fr)"
-              gap={0.5}
-              borderRadius="5px"
-            >
-              <Header />
-              <Text>login</Text>
-              <GridItem
-                rowSpan={1}
-                colSpan={{ base: 12 }}
-                bg={{ base: "white" }}
-                p={4}
-              >
-                <form onSubmit={handleSubmit}>
-                  <FormControl isRequired>
-                    <FormLabel mt={4} htmlFor="email">
-                      email
-                    </FormLabel>
-                    <Input
-                      id="email"
-                      type="text"
-                      name="email"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </FormControl>
-
-                  <FormControl isRequired>
-                    <FormLabel mt={4} htmlFor="password">
-                      password
-                    </FormLabel>
-                    <Input
-                      id="password"
-                      type="text"
-                      name="password"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </FormControl>
-
-                  <Button
-                    mt={4}
-                    colorScheme="linkedin"
-                    type="submit"
-                    isLoading={isLoading}
+      <AuthProvider>
+        <AuthConsumer>
+          {({ authTest, user }) => (
+            <LogInProvider>
+              <Container maxW="4xl" centerContent>
+                <Box padding="2" bg="gray.100" maxW="4xl" width="100%">
+                  <Grid
+                    templateRows="repeat(2, 1fr)"
+                    templateColumns="repeat(12, 1fr)"
+                    gap={0.5}
+                    borderRadius="5px"
                   >
-                    Login
-                  </Button>
-                </form>
-              </GridItem>
-            </Grid>
-          </Box>
-        </Container>
-      </LogInProvider>
+                    <Header />
+                    <Text>login</Text>
+                    <GridItem
+                      rowSpan={1}
+                      colSpan={{ base: 12 }}
+                      bg={{ base: "white" }}
+                      p={4}
+                    >
+                      {user ? (
+                        <Text>user is logged in as {user.firstName}</Text>
+                      ) : (
+                        <form onSubmit={handleSubmit}>
+                          <FormControl isRequired>
+                            <FormLabel mt={4} htmlFor="email">
+                              email
+                            </FormLabel>
+                            <Input
+                              id="email"
+                              type="text"
+                              name="email"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                          </FormControl>
+
+                          <FormControl isRequired>
+                            <FormLabel mt={4} htmlFor="password">
+                              password
+                            </FormLabel>
+                            <Input
+                              id="password"
+                              type="text"
+                              name="password"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                          </FormControl>
+
+                          <Button
+                            mt={4}
+                            colorScheme="linkedin"
+                            type="submit"
+                            isLoading={isLoading}
+                          >
+                            Login
+                          </Button>
+                        </form>
+                      )}
+                    </GridItem>
+                  </Grid>
+                </Box>
+              </Container>
+            </LogInProvider>
+          )}
+        </AuthConsumer>
+      </AuthProvider>
     </ChakraProvider>
   )
 }

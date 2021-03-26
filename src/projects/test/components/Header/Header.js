@@ -9,6 +9,7 @@ import {
   Heading,
   Button,
 } from "@chakra-ui/react"
+import { AuthConsumer } from "../../../../projects/test/contexts/AuthContext"
 
 const Header = () => {
   return (

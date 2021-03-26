@@ -21,6 +21,10 @@ import {
   SignUpProvider,
   SignUpConsumer,
 } from "../../../../projects/test/contexts/SignUpContext"
+import {
+  AuthProvider,
+  AuthConsumer,
+} from "../../../../projects/test/contexts/AuthContext"
 
 export default function SignUp() {
   console.log("signUp")
@@ -64,77 +68,87 @@ export default function SignUp() {
   const toast = useToast()
   return (
     <ChakraProvider>
-      <SignUpProvider>
-        <Container maxW="4xl" centerContent>
-          <Box padding="2" bg="gray.100" maxW="4xl" width="100%">
-            <Grid
-              templateRows="repeat(2, 1fr)"
-              templateColumns="repeat(12, 1fr)"
-              gap={0.5}
-              borderRadius="5px"
-            >
-              <Header />
-              <Text>signup</Text>
-              <GridItem
-                rowSpan={1}
-                colSpan={{ base: 12 }}
-                bg={{ base: "white" }}
-                p={4}
-              >
-                <form onSubmit={handleSubmit}>
-                  <FormControl isRequired>
-                    <FormLabel mt={4} htmlFor="firstName">
-                      First name
-                    </FormLabel>
-                    <Input
-                      id="firstName"
-                      type="text"
-                      name="firstName"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </FormControl>
-
-                  <FormControl isRequired>
-                    <FormLabel mt={4} htmlFor="email">
-                      Email
-                    </FormLabel>
-                    <Input
-                      id="email"
-                      type="text"
-                      name="email"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </FormControl>
-
-                  <FormControl isRequired>
-                    <FormLabel mt={4} htmlFor="yourMessage">
-                      Password
-                    </FormLabel>
-                    <Input
-                      id="password"
-                      type="text"
-                      name="password"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </FormControl>
-
-                  <Button
-                    mt={4}
-                    colorScheme="linkedin"
-                    type="submit"
-                    isLoading={isLoading}
+      <AuthProvider>
+        <AuthConsumer>
+          {({ authTest, user }) => (
+            <SignUpProvider>
+              <Container maxW="4xl" centerContent>
+                <Box padding="2" bg="gray.100" maxW="4xl" width="100%">
+                  <Grid
+                    templateRows="repeat(2, 1fr)"
+                    templateColumns="repeat(12, 1fr)"
+                    gap={0.5}
+                    borderRadius="5px"
                   >
-                    Add user
-                  </Button>
-                </form>
-              </GridItem>
-            </Grid>
-          </Box>
-        </Container>
-      </SignUpProvider>
+                    <Header />
+                    <Text>signup</Text>
+                    <GridItem
+                      rowSpan={1}
+                      colSpan={{ base: 12 }}
+                      bg={{ base: "white" }}
+                      p={4}
+                    >
+                      {user ? (
+                        <Text>user is logged in as {user.firstName}</Text>
+                      ) : (
+                        <form onSubmit={handleSubmit}>
+                          <FormControl isRequired>
+                            <FormLabel mt={4} htmlFor="firstName">
+                              First name
+                            </FormLabel>
+                            <Input
+                              id="firstName"
+                              type="text"
+                              name="firstName"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                          </FormControl>
+
+                          <FormControl isRequired>
+                            <FormLabel mt={4} htmlFor="email">
+                              Email
+                            </FormLabel>
+                            <Input
+                              id="email"
+                              type="text"
+                              name="email"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                          </FormControl>
+
+                          <FormControl isRequired>
+                            <FormLabel mt={4} htmlFor="yourMessage">
+                              Password
+                            </FormLabel>
+                            <Input
+                              id="password"
+                              type="text"
+                              name="password"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                          </FormControl>
+
+                          <Button
+                            mt={4}
+                            colorScheme="linkedin"
+                            type="submit"
+                            isLoading={isLoading}
+                          >
+                            Add user
+                          </Button>
+                        </form>
+                      )}
+                    </GridItem>
+                  </Grid>
+                </Box>
+              </Container>
+            </SignUpProvider>
+          )}
+        </AuthConsumer>
+      </AuthProvider>
     </ChakraProvider>
   )
 }
