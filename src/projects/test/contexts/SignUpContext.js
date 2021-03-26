@@ -31,7 +31,7 @@ class SignUpProvider extends Component {
     let baseURL =
       window.location.hostname === "localhost"
         ? "http://localhost:8081"
-        : "https://jasonschmitt-dev-api-9w29o.ondigitalocean.app/"
+        : "https://jasonschmitt-dev-api-9w29o.ondigitalocean.app"
 
     const dataObj = {
       firstName: "Jason",
