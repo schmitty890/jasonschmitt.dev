@@ -7,7 +7,7 @@ import {
   AnimalCrossingFishConsumer,
 } from "../../../projects/animalCrossing/contexts/animalCrossingFishContext"
 
-export default function AnimalCrossingProject() {
+export default function AnimalCrossing() {
   return (
     <ChakraProvider>
       <AnimalCrossingFishProvider>
