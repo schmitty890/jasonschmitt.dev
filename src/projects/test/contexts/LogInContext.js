@@ -1,14 +1,13 @@
 import React, { Component } from "react"
-import { test } from "../../../projects/test/api/signup"
+import { test } from "../../../projects/test/api/login"
 
 import axios from "axios"
 
 const { Provider, Consumer } = React.createContext()
 // Context.Consumer, Context.Provider
 
-class SignUpProvider extends Component {
+class LogInProvider extends Component {
   state = {
-    firstName: "",
     email: "",
     password: "",
     test: "ourTextExample",
@@ -30,7 +29,6 @@ class SignUpProvider extends Component {
     return (
       <Provider
         value={{
-          firstName: this.state.firstName,
           email: this.state.email,
           password: this.state.password,
           test: this.state.test,
@@ -42,4 +40,4 @@ class SignUpProvider extends Component {
   }
 }
 
-export { SignUpProvider, Consumer as SignUpConsumer }
+export { LogInProvider, Consumer as LogInConsumer }
