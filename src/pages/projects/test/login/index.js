@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { test, logIn } from "../../../../projects/test/api/login"
 import {
   ChakraProvider,
@@ -29,6 +29,7 @@ import {
 export default function LogIn() {
   console.log("logIn")
   const [isLoading, setIsLoading] = useState(false)
+
   const {
     handleSubmit,
     handleChange,
@@ -70,7 +71,7 @@ export default function LogIn() {
     <ChakraProvider>
       <AuthProvider>
         <AuthConsumer>
-          {({ authTest, user }) => (
+          {({ authTest, user, loading }) => (
             <LogInProvider>
               <Container maxW="4xl" centerContent>
                 <Box padding="2" bg="gray.100" maxW="4xl" width="100%">
@@ -82,53 +83,59 @@ export default function LogIn() {
                   >
                     <Header />
                     <Text>login</Text>
-                    <GridItem
-                      rowSpan={1}
-                      colSpan={{ base: 12 }}
-                      bg={{ base: "white" }}
-                      p={4}
-                    >
-                      {user ? (
-                        <Text>user is logged in as {user.firstName}</Text>
-                      ) : (
-                        <form onSubmit={handleSubmit}>
-                          <FormControl isRequired>
-                            <FormLabel mt={4} htmlFor="email">
-                              email
-                            </FormLabel>
-                            <Input
-                              id="email"
-                              type="text"
-                              name="email"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                          </FormControl>
+                    {!loading ? (
+                      <GridItem
+                        rowSpan={1}
+                        colSpan={{ base: 12 }}
+                        bg={{ base: "white" }}
+                        p={4}
+                        style={{ border: "5px solid red" }}
+                      >
+                        {user ? (
+                          <Text>
+                            user is logged in as {user.firstName}
+                            {loading ? "true" : "false"}
+                          </Text>
+                        ) : (
+                          <form onSubmit={handleSubmit}>
+                            <FormControl isRequired>
+                              <FormLabel mt={4} htmlFor="email">
+                                email
+                              </FormLabel>
+                              <Input
+                                id="email"
+                                type="text"
+                                name="email"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                            </FormControl>
 
-                          <FormControl isRequired>
-                            <FormLabel mt={4} htmlFor="password">
-                              password
-                            </FormLabel>
-                            <Input
-                              id="password"
-                              type="text"
-                              name="password"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                          </FormControl>
+                            <FormControl isRequired>
+                              <FormLabel mt={4} htmlFor="password">
+                                password
+                              </FormLabel>
+                              <Input
+                                id="password"
+                                type="text"
+                                name="password"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                            </FormControl>
 
-                          <Button
-                            mt={4}
-                            colorScheme="linkedin"
-                            type="submit"
-                            isLoading={isLoading}
-                          >
-                            Login
-                          </Button>
-                        </form>
-                      )}
-                    </GridItem>
+                            <Button
+                              mt={4}
+                              colorScheme="linkedin"
+                              type="submit"
+                              isLoading={isLoading}
+                            >
+                              Login
+                            </Button>
+                          </form>
+                        )}
+                      </GridItem>
+                    ) : null}
                   </Grid>
                 </Box>
               </Container>

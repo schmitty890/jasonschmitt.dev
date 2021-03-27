@@ -12,6 +12,7 @@ class AuthProvider extends Component {
     password: "",
     authTest: "ourTextExample",
     user: null,
+    loading: true,
     // displayPage: "none",
   }
 
@@ -31,7 +32,7 @@ class AuthProvider extends Component {
   isUserLoggedIn = async () => {
     const user = await checkLoggedInStatus()
     console.log(user)
-    this.setState({ user: user })
+    this.setState({ user: user, loading: false })
     console.log(this.state)
     // var checkURL = ["/projects/test/login/"]
 
@@ -55,6 +56,7 @@ class AuthProvider extends Component {
           password: this.state.password,
           authTest: this.state.authTest,
           user: this.state.user,
+          loading: this.state.loading,
           // displayPage: this.state.displayPage,
         }}
       >
