@@ -70,7 +70,7 @@ export default function SignUp() {
     <ChakraProvider>
       <AuthProvider>
         <AuthConsumer>
-          {({ authTest, user }) => (
+          {({ authTest, user, loading }) => (
             <SignUpProvider>
               <Container maxW="4xl" centerContent>
                 <Box padding="2" bg="gray.100" maxW="4xl" width="100%">
@@ -82,66 +82,68 @@ export default function SignUp() {
                   >
                     <Header />
                     <Text>signup</Text>
-                    <GridItem
-                      rowSpan={1}
-                      colSpan={{ base: 12 }}
-                      bg={{ base: "white" }}
-                      p={4}
-                    >
-                      {user ? (
-                        <Text>user is logged in as {user.firstName}</Text>
-                      ) : (
-                        <form onSubmit={handleSubmit}>
-                          <FormControl isRequired>
-                            <FormLabel mt={4} htmlFor="firstName">
-                              First name
-                            </FormLabel>
-                            <Input
-                              id="firstName"
-                              type="text"
-                              name="firstName"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                          </FormControl>
+                    {loading ? null : (
+                      <GridItem
+                        rowSpan={1}
+                        colSpan={{ base: 12 }}
+                        bg={{ base: "white" }}
+                        p={4}
+                      >
+                        {user ? (
+                          <Text>user is logged in as {user.firstName}</Text>
+                        ) : (
+                          <form onSubmit={handleSubmit}>
+                            <FormControl isRequired>
+                              <FormLabel mt={4} htmlFor="firstName">
+                                First name
+                              </FormLabel>
+                              <Input
+                                id="firstName"
+                                type="text"
+                                name="firstName"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                            </FormControl>
 
-                          <FormControl isRequired>
-                            <FormLabel mt={4} htmlFor="email">
-                              Email
-                            </FormLabel>
-                            <Input
-                              id="email"
-                              type="text"
-                              name="email"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                          </FormControl>
+                            <FormControl isRequired>
+                              <FormLabel mt={4} htmlFor="email">
+                                Email
+                              </FormLabel>
+                              <Input
+                                id="email"
+                                type="text"
+                                name="email"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                            </FormControl>
 
-                          <FormControl isRequired>
-                            <FormLabel mt={4} htmlFor="yourMessage">
-                              Password
-                            </FormLabel>
-                            <Input
-                              id="password"
-                              type="text"
-                              name="password"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                          </FormControl>
+                            <FormControl isRequired>
+                              <FormLabel mt={4} htmlFor="yourMessage">
+                                Password
+                              </FormLabel>
+                              <Input
+                                id="password"
+                                type="text"
+                                name="password"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                            </FormControl>
 
-                          <Button
-                            mt={4}
-                            colorScheme="linkedin"
-                            type="submit"
-                            isLoading={isLoading}
-                          >
-                            Add user
-                          </Button>
-                        </form>
-                      )}
-                    </GridItem>
+                            <Button
+                              mt={4}
+                              colorScheme="linkedin"
+                              type="submit"
+                              isLoading={isLoading}
+                            >
+                              Add user
+                            </Button>
+                          </form>
+                        )}
+                      </GridItem>
+                    )}
                   </Grid>
                 </Box>
               </Container>

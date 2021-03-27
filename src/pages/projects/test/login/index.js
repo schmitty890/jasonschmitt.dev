@@ -83,7 +83,7 @@ export default function LogIn() {
                   >
                     <Header />
                     <Text>login</Text>
-                    {!loading ? (
+                    {loading ? null : (
                       <GridItem
                         rowSpan={1}
                         colSpan={{ base: 12 }}
@@ -135,7 +135,7 @@ export default function LogIn() {
                           </form>
                         )}
                       </GridItem>
-                    ) : null}
+                    )}
                   </Grid>
                 </Box>
               </Container>

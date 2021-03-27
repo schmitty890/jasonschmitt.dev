@@ -34,18 +34,6 @@ class AuthProvider extends Component {
     console.log(user)
     this.setState({ user: user, loading: false })
     console.log(this.state)
-    // var checkURL = ["/projects/test/login/"]
-
-    // if (this.state.user) {
-    //   for (var i = 0; i < checkURL.length; i++) {
-    //     if (window.location.href.indexOf(checkURL[i]) > -1) {
-    //       console.log("your url contains the string " + checkURL[i])
-    //       window.location.href = "/projects/test"
-    //     }
-    //   }
-    // } else {
-    //   this.setState({ displayPage: "block" })
-    // }
   }
 
   render() {
