@@ -1,6 +1,17 @@
 import React from "react"
-import { GridItem, Flex, Grid } from "@chakra-ui/react"
+import {
+  GridItem,
+  Flex,
+  Grid,
+  Text,
+  Image,
+  Box,
+  Badge,
+  Link,
+  Progress,
+} from "@chakra-ui/react"
 import { SocialIcon } from "react-social-icons"
+import { SpotifyConsumer } from "../../contexts/SpotifyContext"
 
 const Social = () => {
   return (
