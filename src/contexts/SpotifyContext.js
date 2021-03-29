@@ -10,8 +10,6 @@ const { Provider, Consumer } = React.createContext()
 
 class SpotifyProvider extends Component {
   state = {
-    uiRepoLastUpdated: "a day ago",
-    apiRepoLastUpdated: "a day ago",
     test: "ourTextExample",
     currentSong: "",
     currentSongImage: "",
@@ -35,27 +33,29 @@ class SpotifyProvider extends Component {
     setInterval(async () => {
       const songData = await getCurrentPlaybackState()
       console.log(songData)
-      // console.log(songData.progress_ms)
-      // console.log(songData.item.duration_ms)
-      let progress = (songData.progress_ms / songData.item.duration_ms) * 100
-      // if (songData.is_playing) {
-      // progress = (songData.progress_ms / songData.item.duration_ms) * 100
-      // }
-      // console.log(progress)
-      console.log("set state here")
-      this.setState({
-        isLoading: false,
-        isPlaying: songData.is_playing,
-        currentSong: songData.item.name,
-        currentSongImage: songData.item.album.images[2].url,
-        currentAlbumName: songData.item.album.name,
-        currentPreviewURL: songData.item.preview_url,
-        currentSongProgress: progress,
-        currentSongReleaseDate: dayjs(
-          songData.item.album.release_date
-        ).fromNow(),
-      })
-    }, 5000)
+      if (songData !== null) {
+        // console.log(songData.progress_ms)
+        // console.log(songData.item.duration_ms)
+        let progress = (songData.progress_ms / songData.item.duration_ms) * 100
+        // if (songData.is_playing) {
+        // progress = (songData.progress_ms / songData.item.duration_ms) * 100
+        // }
+        // console.log(progress)
+        console.log("set state here")
+        this.setState({
+          isLoading: false,
+          isPlaying: songData.is_playing,
+          currentSong: songData.item.name,
+          currentSongImage: songData.item.album.images[2].url,
+          currentAlbumName: songData.item.album.name,
+          currentPreviewURL: songData.item.preview_url,
+          currentSongProgress: progress,
+          currentSongReleaseDate: dayjs(
+            songData.item.album.release_date
+          ).fromNow(),
+        })
+      }
+    }, 1000)
   }
 
   getData = async () => {
@@ -68,8 +68,6 @@ class SpotifyProvider extends Component {
     return (
       <Provider
         value={{
-          uiRepoLastUpdated: this.state.uiRepoLastUpdated,
-          apiRepoLastUpdated: this.state.apiRepoLastUpdated,
           test: this.state.test,
           isLoading: this.state.isLoading,
           isPlaying: this.state.isPlaying,

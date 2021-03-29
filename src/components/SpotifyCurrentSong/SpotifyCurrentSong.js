@@ -37,7 +37,7 @@ const SpotifyCurrentSong = () => {
         >
           <Flex ml={3}>
             {isLoading ? (
-              <Text>loading song</Text>
+              <Text>Awaiting Jason to play some music...</Text>
             ) : isPlaying ? (
               <Flex>
                 <Image
