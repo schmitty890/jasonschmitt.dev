@@ -20,6 +20,7 @@ class SpotifyProvider extends Component {
     currentSongProgress: "",
     currentSongReleaseDate: "",
     isPlaying: false,
+    isLoading: true,
   }
 
   componentDidMount() {
@@ -36,19 +37,23 @@ class SpotifyProvider extends Component {
       console.log(songData)
       // console.log(songData.progress_ms)
       // console.log(songData.item.duration_ms)
+      let progress = (songData.progress_ms / songData.item.duration_ms) * 100
+      // if (songData.is_playing) {
+      // progress = (songData.progress_ms / songData.item.duration_ms) * 100
+      // }
       console.log(
         (songData.progress_ms / songData.item.duration_ms) * 100 +
           "% of song complmete"
       )
       console.log("set state here")
       this.setState({
+        isLoading: false,
         isPlaying: songData.is_playing,
         currentSong: songData.item.name,
         currentSongImage: songData.item.album.images[2].url,
         currentAlbumName: songData.item.album.name,
         currentPreviewURL: songData.item.preview_url,
-        currentSongProgress:
-          (songData.progress_ms / songData.item.duration_ms) * 100,
+        currentSongProgress: progress,
         currentSongReleaseDate: dayjs(
           songData.item.album.release_date
         ).fromNow(),
@@ -69,6 +74,7 @@ class SpotifyProvider extends Component {
           uiRepoLastUpdated: this.state.uiRepoLastUpdated,
           apiRepoLastUpdated: this.state.apiRepoLastUpdated,
           test: this.state.test,
+          isLoading: this.state.isLoading,
           isPlaying: this.state.isPlaying,
           currentSong: this.state.currentSong,
           currentSongImage: this.state.currentSongImage,

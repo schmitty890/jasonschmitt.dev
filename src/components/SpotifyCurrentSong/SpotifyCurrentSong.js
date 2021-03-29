@@ -18,6 +18,7 @@ const SpotifyCurrentSong = () => {
   return (
     <SpotifyConsumer>
       {({
+        isLoading,
         isPlaying,
         currentSong,
         currentSongImage,
@@ -35,8 +36,9 @@ const SpotifyCurrentSong = () => {
           display={"inline-flex"}
         >
           <Flex ml={3}>
-            {/* <SocialIcon target="_blank" url="https://open.spotify.com/" /> */}
-            {isPlaying ? (
+            {isLoading ? (
+              <Text>loading song</Text>
+            ) : isPlaying ? (
               <Flex>
                 <Image
                   src={currentSongImage}
