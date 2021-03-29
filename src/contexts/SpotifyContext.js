@@ -41,10 +41,7 @@ class SpotifyProvider extends Component {
       // if (songData.is_playing) {
       // progress = (songData.progress_ms / songData.item.duration_ms) * 100
       // }
-      console.log(
-        (songData.progress_ms / songData.item.duration_ms) * 100 +
-          "% of song complmete"
-      )
+      // console.log(progress)
       console.log("set state here")
       this.setState({
         isLoading: false,
@@ -58,7 +55,7 @@ class SpotifyProvider extends Component {
           songData.item.album.release_date
         ).fromNow(),
       })
-    }, 1000)
+    }, 5000)
   }
 
   getData = async () => {
