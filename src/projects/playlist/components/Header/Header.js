@@ -55,9 +55,7 @@ export default function Header() {
                         name="boolean"
                         ref={register}
                         colorScheme="red"
-                        // onChange={e =>
-                        //   this.handleSubmit(onChange, toggleUserCanEdit)
-                        // }
+                        isChecked={userCanEdit}
                         onChange={toggleUserCanEdit}
                       />
                     </Heading>

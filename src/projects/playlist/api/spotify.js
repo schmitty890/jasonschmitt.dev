@@ -11,6 +11,41 @@ export const test = async () => {
   return dataObj
 }
 
+export const updateUserCanEditBoolean = async val => {
+  console.log(`from updateUserCanEditBoolean function post to db: ${val}`)
+  const dataObj = {
+    canEdit: val,
+  }
+  console.log(dataObj)
+  try {
+    let baseURL =
+      window.location.hostname === "localhost"
+        ? "http://localhost:8081"
+        : "https://jasonschmitt-dev-api-9w29o.ondigitalocean.app"
+    // post data to a url endpoint
+    const response = await axios.post(`${baseURL}/postCanUsersEdit`, dataObj)
+    console.log(response)
+  } catch (error) {
+    console.log(error) // catches both errors
+  }
+}
+
+export const getUserCanEditBoolean = async () => {
+  console.log("getUserCanEditBoolean")
+  try {
+    let baseURL =
+      window.location.hostname === "localhost"
+        ? "http://localhost:8081"
+        : "https://jasonschmitt-dev-api-9w29o.ondigitalocean.app"
+    // post data to a url endpoint
+    const response = await axios.get(`${baseURL}/getCanUsersEdit`)
+    console.log(response)
+    return response
+  } catch (error) {
+    console.log(error) // catches both errors
+  }
+}
+
 export const getCurrentPlaybackState = async () => {
   var spotifyApi = new SpotifyWebApi()
 
@@ -47,46 +82,4 @@ export const getCurrentPlaybackState = async () => {
     }
   )
   return response
-}
-
-export const getCurrentSong = async () => {
-  //fetch from database instead
-  try {
-    let URL =
-      window.location.hostname === "localhost"
-        ? "http://localhost:8081"
-        : "https://jasonschmitt-dev-api-9w29o.ondigitalocean.app"
-    console.log(URL)
-
-    // fetch data from a url endpoint
-    const response = await axios.get(`${URL}/getCurrentSong`)
-    console.log("responseo")
-    console.log(response.data)
-    // window.location.href = response.data
-    // window.location.href = "http://localhost:8000"
-    // const getSongData = await axios.get(response.data)
-    // console.log("get song data")
-    // console.log(getSongData)
-    // return response
-  } catch (error) {
-    console.log(error) // catches both errors
-  }
-}
-
-export const updateCurrentSong = async () => {
-  //fetch from database instead
-  try {
-    let URL =
-      window.location.hostname === "localhost"
-        ? "http://localhost:8081"
-        : "https://jasonschmitt-dev-api-9w29o.ondigitalocean.app"
-    console.log(URL)
-
-    // fetch data from a url endpoint
-    const response = await axios.get(`${URL}/getCurrentSongFromClient`)
-    console.log(response)
-    // return response
-  } catch (error) {
-    console.log(error) // catches both errors
-  }
 }
