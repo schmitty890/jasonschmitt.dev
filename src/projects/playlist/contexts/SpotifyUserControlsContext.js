@@ -1,5 +1,13 @@
 import React, { Component } from "react"
-import { updateUserCanEditBoolean, getUserCanEditBoolean } from "../api/spotify"
+import {
+  updateUserCanEditBoolean,
+  getUserCanEditBoolean,
+  createPlaylist,
+  play,
+  pause,
+  nextTrack,
+  prevTrack,
+} from "../api/spotify"
 import dayjs from "dayjs"
 var relativeTime = require("dayjs/plugin/relativeTime")
 dayjs.extend(relativeTime)
@@ -26,11 +34,31 @@ class SpotifyUserControlsProvider extends Component {
     }, 1000)
   }
 
+  createPlaylist = async () => {
+    createPlaylist()
+  }
+
   toggleUserCanEdit = value => {
     const isChecked = value.nativeEvent.target.checked
     console.log(isChecked)
     this.setState({ userCanEdit: isChecked })
     updateUserCanEditBoolean(isChecked)
+  }
+
+  play = async () => {
+    play()
+  }
+
+  pause = async () => {
+    pause()
+  }
+
+  nextTrack = async () => {
+    nextTrack()
+  }
+
+  prevTrack = async () => {
+    prevTrack()
   }
 
   render() {
@@ -39,6 +67,11 @@ class SpotifyUserControlsProvider extends Component {
         value={{
           toggleUserCanEdit: this.toggleUserCanEdit,
           userCanEdit: this.state.userCanEdit,
+          createPlaylist: this.createPlaylist,
+          play: this.play,
+          pause: this.pause,
+          nextTrack: this.nextTrack,
+          prevTrack: this.prevTrack,
         }}
       >
         {this.props.children}

@@ -29,11 +29,10 @@ const NowPlaying = () => {
       }) => (
         <GridItem
           rowSpan={1}
-          colSpan={{ base: 12 }}
+          colSpan={{ base: 12, md: 4 }}
           bg={{ base: "white" }}
           p={4}
           justifyContent={"center"}
-          display={"inline-flex"}
         >
           <Flex ml={3}>
             {isLoading ? (
@@ -47,14 +46,11 @@ const NowPlaying = () => {
                   ml={3}
                 ></Image>
                 <Box ml="3">
-                  <Text fontWeight="bold">
-                    {currentSong}
-
-                    <Badge ml="1" colorScheme="green">
-                      Currently Playing
-                    </Badge>
-                  </Text>
-                  <Text fontSize="sm">album: {currentAlbumName}</Text>
+                  <Badge ml="1" colorScheme="green">
+                    Now Playing
+                  </Badge>
+                  <Text fontWeight="bold">{currentSong}</Text>
+                  <Text fontSize="sm">{currentAlbumName}</Text>
                   <Link fontSize="sm" href={currentPreviewURL} isExternal>
                     preview song
                     <ExternalLinkIcon mx="2px" />
@@ -80,14 +76,11 @@ const NowPlaying = () => {
                   ml={3}
                 ></Image>
                 <Box ml="3">
-                  <Text fontWeight="bold">
-                    {currentSong}
-
-                    <Badge ml="1" colorScheme="red">
-                      Paused
-                    </Badge>
-                  </Text>
-                  <Text fontSize="sm">album: {currentAlbumName}</Text>
+                  <Badge ml="1" colorScheme="red">
+                    Paused
+                  </Badge>
+                  <Text fontWeight="bold">{currentSong}</Text>
+                  <Text fontSize="sm">{currentAlbumName}</Text>
                   <Link fontSize="sm" href={currentPreviewURL} isExternal>
                     preview song
                     <ExternalLinkIcon mx="2px" />

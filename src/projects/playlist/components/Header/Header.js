@@ -7,6 +7,8 @@ import {
   GridItem,
   Heading,
   Switch,
+  Button,
+  Input,
 } from "@chakra-ui/react"
 import { AuthConsumer } from "../../../../projects/test/contexts/AuthContext"
 import {
@@ -35,14 +37,20 @@ export default function Header() {
       {({ user }) => (
         <SpotifyUserControlsProvider>
           <SpotifyUserControlsConsumer>
-            {({ userCanEdit, toggleUserCanEdit }) => (
+            {({
+              userCanEdit,
+              toggleUserCanEdit,
+              createPlaylist,
+              play,
+              pause,
+              nextTrack,
+              prevTrack,
+            }) => (
               <GridItem
                 p={4}
-                rowSpan={6}
-                colSpan={{ base: 12 }}
+                colSpan={{ base: 12, md: 8 }}
                 bg={{ base: "white" }}
                 justifyContent={"space-between"}
-                display={"inline-flex"}
               >
                 <Box>
                   <Heading mb={4}>Playlist</Heading>
@@ -58,6 +66,12 @@ export default function Header() {
                         isChecked={userCanEdit}
                         onChange={toggleUserCanEdit}
                       />
+                      {/* <Input placeholder="add new playlist title" /> */}
+                      <Button onClick={createPlaylist}>create playlist</Button>
+                      <Button onClick={play}>play</Button>
+                      <Button onClick={pause}>pause</Button>
+                      <Button onClick={nextTrack}>next track</Button>
+                      <Button onClick={prevTrack}>prev track</Button>
                     </Heading>
                   ) : (
                     // <FormControl display="flex" alignItems="center">
