@@ -37,7 +37,7 @@ const NowPlaying = () => {
         >
           <Flex ml={3}>
             {isLoading ? (
-              <Text>Awaiting Jason to play some music...</Text>
+              <Text>Loading or waiting for music...</Text>
             ) : isPlaying ? (
               <Flex>
                 <Image
