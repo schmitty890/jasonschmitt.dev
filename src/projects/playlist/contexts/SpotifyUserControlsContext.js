@@ -7,6 +7,8 @@ import {
   pause,
   nextTrack,
   prevTrack,
+  recentlyPlayed,
+  removeSongFromPlaylist,
 } from "../api/spotify"
 import dayjs from "dayjs"
 var relativeTime = require("dayjs/plugin/relativeTime")
@@ -61,6 +63,22 @@ class SpotifyUserControlsProvider extends Component {
     prevTrack()
   }
 
+  removeTrackAfterPlayed = async () => {
+    // TODO: havent figured this out yet
+    //get the last played track by id from recentlyPlayed()
+    // const lastPlayedTrackId = await recentlyPlayed()
+    // console.log(lastPlayedTrackId)
+    // // var tracks = [{ uri : "spotify:track:4iV5W9uYEdYUVa79Axb7Rh" }];
+    // var tracks = [{ uri: lastPlayedTrackId[0].track.uri }]
+    // // var playlistId = '5ieJqeLJjjI8iJWaxeBLuK';
+    // var playlistId = lastPlayedTrackId[0].context.uri
+    // // var options = { snapshot_id : "0wD+DKCUxiSR/WY8lF3fiCTb7Z8X4ifTUtqn8rO82O4Mvi5wsX8BsLj7IbIpLVM9" };
+    // { uri : "spotify:track:491rM2JN8KvmV6p0oDDuJT", positions : [0, 15] }
+    // var options = {uri: lastPlayedTrackId[0].track.uri, positions: []}
+    // // remove all instances of song from playlist by id
+    // removeSongFromPlaylist(tracks, playlistId)
+  }
+
   render() {
     return (
       <Provider
@@ -72,6 +90,7 @@ class SpotifyUserControlsProvider extends Component {
           pause: this.pause,
           nextTrack: this.nextTrack,
           prevTrack: this.prevTrack,
+          removeTrackAfterPlayed: this.removeTrackAfterPlayed,
         }}
       >
         {this.props.children}

@@ -9,13 +9,14 @@ import {
   Switch,
   Button,
   Input,
+  SimpleGrid,
 } from "@chakra-ui/react"
 import { AuthConsumer } from "../../../../projects/test/contexts/AuthContext"
-import {
-  SpotifyUserControlsProvider,
-  SpotifyUserControlsConsumer,
-} from "../../contexts/SpotifyUserControlsContext"
+import { SpotifyUserControlsConsumer } from "../../contexts/SpotifyUserControlsContext"
 import { useForm } from "react-hook-form"
+import { FaPlay, FaPause, FaUserEdit } from "react-icons/fa"
+import { BsSkipEndFill, BsFillSkipStartFill } from "react-icons/bs"
+import { RiPlayListFill } from "react-icons/ri"
 
 export default function Header() {
   const defaultValues = {
@@ -35,58 +36,190 @@ export default function Header() {
   return (
     <AuthConsumer>
       {({ user }) => (
-        <SpotifyUserControlsProvider>
-          <SpotifyUserControlsConsumer>
-            {({
-              userCanEdit,
-              toggleUserCanEdit,
-              createPlaylist,
-              play,
-              pause,
-              nextTrack,
-              prevTrack,
-            }) => (
-              <GridItem
-                p={4}
-                colSpan={{ base: 12, md: 8 }}
-                bg={{ base: "white" }}
-                justifyContent={"space-between"}
-              >
-                <Box>
-                  <Heading mb={4}>Playlist</Heading>
-                  {user ? (
-                    <Heading mb={4}>
-                      <Text>
-                        users can edit {userCanEdit ? "true" : "false"}
-                      </Text>
+        <SpotifyUserControlsConsumer>
+          {({
+            userCanEdit,
+            toggleUserCanEdit,
+            createPlaylist,
+            play,
+            pause,
+            nextTrack,
+            prevTrack,
+            removeTrackAfterPlayed,
+          }) => (
+            <GridItem
+              p={4}
+              colSpan={{ base: 12, md: 8 }}
+              bg={{ base: "white" }}
+              justifyContent={"space-between"}
+            >
+              <Box>
+                {user ? (
+                  <SimpleGrid
+                    columns={2}
+                    border="1px"
+                    borderColor="gray.200"
+                    borderRadius="md"
+                    p={4}
+                  >
+                    <Box
+                      m={1}
+                      p={2}
+                      border="1px"
+                      borderColor="gray.200"
+                      borderRadius="md"
+                      align="center"
+                    >
+                      <FaUserEdit display="inline" />
                       <Switch
                         name="boolean"
                         ref={register}
-                        colorScheme="red"
+                        colorScheme="cyan"
                         isChecked={userCanEdit}
                         onChange={toggleUserCanEdit}
                       />
-                      {/* <Input placeholder="add new playlist title" /> */}
-                      <Button onClick={createPlaylist}>create playlist</Button>
-                      <Button onClick={play}>play</Button>
-                      <Button onClick={pause}>pause</Button>
-                      <Button onClick={nextTrack}>next track</Button>
-                      <Button onClick={prevTrack}>prev track</Button>
-                    </Heading>
-                  ) : (
-                    // <FormControl display="flex" alignItems="center">
-                    //   <FormLabel htmlFor="email-alerts" mb="0">
-                    //     Playlist - logged in as {user.firstName}
-                    //   </FormLabel>
-                    //   <Switch id="email-alerts" onChange={handleChange} />
-                    // </FormControl>
-                    <Text fontSize="xl">Playlist - no user is logged in</Text>
-                  )}
-                </Box>
-              </GridItem>
-            )}
-          </SpotifyUserControlsConsumer>
-        </SpotifyUserControlsProvider>
+                    </Box>
+                    <Box
+                      m={1}
+                      p={2}
+                      border="1px"
+                      borderColor="gray.200"
+                      borderRadius="md"
+                      align="center"
+                    >
+                      <Button onClick={createPlaylist} width="100%">
+                        <RiPlayListFill color="green" size={20} />
+                      </Button>
+                    </Box>
+                    <Box
+                      m={1}
+                      p={2}
+                      border="1px"
+                      borderColor="gray.200"
+                      borderRadius="md"
+                      align="center"
+                    >
+                      <Button onClick={play} width="100%">
+                        <FaPlay color="green" size={20} />
+                      </Button>
+                    </Box>
+                    <Box
+                      m={1}
+                      p={2}
+                      border="1px"
+                      borderColor="gray.200"
+                      borderRadius="md"
+                      align="center"
+                    >
+                      <Button onClick={pause} width="100%">
+                        <FaPause color="darkOrange" size={20} />
+                      </Button>
+                    </Box>
+
+                    <Box
+                      m={1}
+                      p={2}
+                      border="1px"
+                      borderColor="gray.200"
+                      borderRadius="md"
+                      align="center"
+                    >
+                      <Button onClick={prevTrack} width="100%">
+                        <BsFillSkipStartFill color="red" size={30} />
+                      </Button>
+                    </Box>
+                    <Box
+                      m={1}
+                      p={2}
+                      border="1px"
+                      borderColor="gray.200"
+                      borderRadius="md"
+                      align="center"
+                    >
+                      <Button onClick={nextTrack} width="100%">
+                        <BsSkipEndFill color="red" size={30} />
+                      </Button>
+                    </Box>
+                  </SimpleGrid>
+                ) : (
+                  <SimpleGrid
+                    columns={2}
+                    border="1px"
+                    borderColor="gray.200"
+                    borderRadius="md"
+                    p={4}
+                  >
+                    <Box
+                      m={1}
+                      p={2}
+                      border="1px"
+                      borderColor="gray.200"
+                      borderRadius="md"
+                      align="center"
+                    >
+                      <Button
+                        onClick={play}
+                        isDisabled={userCanEdit ? false : true}
+                        width="100%"
+                      >
+                        <FaPlay color="green" size={20} />
+                      </Button>
+                    </Box>
+                    <Box
+                      m={1}
+                      p={2}
+                      border="1px"
+                      borderColor="gray.200"
+                      borderRadius="md"
+                      align="center"
+                    >
+                      <Button
+                        onClick={pause}
+                        isDisabled={userCanEdit ? false : true}
+                        width="100%"
+                      >
+                        <FaPause color="darkOrange" size={20} />
+                      </Button>
+                    </Box>
+
+                    <Box
+                      m={1}
+                      p={2}
+                      border="1px"
+                      borderColor="gray.200"
+                      borderRadius="md"
+                      align="center"
+                    >
+                      <Button
+                        onClick={prevTrack}
+                        isDisabled={userCanEdit ? false : true}
+                        width="100%"
+                      >
+                        <BsFillSkipStartFill color="red" size={30} />
+                      </Button>
+                    </Box>
+                    <Box
+                      m={1}
+                      p={2}
+                      border="1px"
+                      borderColor="gray.200"
+                      borderRadius="md"
+                      align="center"
+                    >
+                      <Button
+                        onClick={nextTrack}
+                        isDisabled={userCanEdit ? false : true}
+                        width="100%"
+                      >
+                        <BsSkipEndFill color="red" size={30} />
+                      </Button>
+                    </Box>
+                  </SimpleGrid>
+                )}
+              </Box>
+            </GridItem>
+          )}
+        </SpotifyUserControlsConsumer>
       )}
     </AuthConsumer>
   )

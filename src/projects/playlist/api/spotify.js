@@ -257,3 +257,21 @@ export const recentlyPlayed = async () => {
 
   return response
 }
+
+export const removeSongFromPlaylist = async (playlistId, tracks) => {
+  await getAndSetTokenToMakeCallsToSpotifyAPI()
+  // Get Current User's Recently Played Tracks
+
+  const response = await spotifyApi
+    .removeTracksFromPlaylist(playlistId, tracks)
+    .then(
+      function (data) {
+        console.log("Tracks removed from playlist!")
+      },
+      function (err) {
+        console.log("Something went wrong!", err)
+      }
+    )
+
+  return response
+}

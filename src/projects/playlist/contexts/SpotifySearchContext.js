@@ -13,14 +13,16 @@ class SpotifySearchProvider extends Component {
   }
 
   getSearchResults = async value => {
-    console.log("get search")
-    console.log(value.nativeEvent.target.value)
+    // console.log("get search")
+    // console.log(value.nativeEvent.target.value)
     const searchValue = value.nativeEvent.target.value
     // make axios call to get results
     const searchResults = await searchTracks(searchValue)
-    console.log(searchResults.tracks)
-
-    if (searchResults.tracks.items.length == 0) {
+    // console.log(searchResults.tracks)
+    if (
+      searchResults.tracks == undefined ||
+      searchResults.tracks.items.length == 0
+    ) {
       this.setState({ searchResults: "" })
     } else {
       this.setState({ searchResults: searchResults.tracks.items })
@@ -30,6 +32,7 @@ class SpotifySearchProvider extends Component {
   addTrackToPlaylist = async value => {
     const latestPlaylist = await getPlaylists()
     // console.log(latestPlaylist.items[0].id)
+    console.log(latestPlaylist)
 
     // console.log(
     //   "add track to playlist " +
