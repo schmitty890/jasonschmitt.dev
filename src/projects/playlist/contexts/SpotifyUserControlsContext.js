@@ -19,7 +19,11 @@ const { Provider, Consumer } = React.createContext()
 
 class SpotifyUserControlsProvider extends Component {
   state = {
-    userCanEdit: Boolean,
+    canEdit: Boolean,
+    canEditPlay: Boolean,
+    canEditPause: Boolean,
+    canEditSkip: Boolean,
+    canEditSearch: Boolean,
   }
 
   componentDidMount() {
@@ -30,9 +34,20 @@ class SpotifyUserControlsProvider extends Component {
     // get value if user can edit from db and set it to the state
     setInterval(async () => {
       const usersCanEdit = await getUserCanEditBoolean()
-      console.log(usersCanEdit.data[0].canEdit)
 
-      this.setState({ userCanEdit: usersCanEdit.data[0].canEdit })
+      const userData = usersCanEdit.data[0]
+
+      this.setState({
+        canEdit: userData.canEdit,
+        canEditPlay: userData.canEditPlay,
+        canEditPause: userData.canEditPause,
+        canEditSkip: userData.canEditSkip,
+        canEditSearch: userData.canEditSearch,
+      })
+    }, 1000)
+    setInterval(async () => {
+      console.log("CURRENT STATE")
+      console.log(this.state)
     }, 1000)
   }
 
@@ -41,10 +56,31 @@ class SpotifyUserControlsProvider extends Component {
   }
 
   toggleUserCanEdit = value => {
+    // console.log(value)
+    // console.log(value.nativeEvent.target.name)
+    const stateName = value.nativeEvent.target.name
     const isChecked = value.nativeEvent.target.checked
-    console.log(isChecked)
-    this.setState({ userCanEdit: isChecked })
-    updateUserCanEditBoolean(isChecked)
+    console.log(stateName + " " + isChecked)
+
+    console.log("setting state")
+    // this.setState({ [stateName]: isChecked })
+    // this.setState({ canEdit: false })
+    this.setState({ ...this.state[stateName], [stateName]: isChecked }, () => {
+      updateUserCanEditBoolean(this.state)
+    })
+
+    // const updateState = { ...this.state, [stateName]: isChecked }
+    // this.setState(() => updateState)
+
+    // console.log("new state")
+    // console.log(this.state)
+
+    // const userEditObj = {
+    //   canEdit: true,
+    //   canEditPlay: true,
+    // }
+
+    // updateUserCanEditBoolean(this.state)
   }
 
   play = async () => {
@@ -84,7 +120,11 @@ class SpotifyUserControlsProvider extends Component {
       <Provider
         value={{
           toggleUserCanEdit: this.toggleUserCanEdit,
-          userCanEdit: this.state.userCanEdit,
+          userCanEdit: this.state.canEdit,
+          userCanPlay: this.state.canEditPlay,
+          userCanPause: this.state.canEditPause,
+          userCanSkip: this.state.canEditSkip,
+          userCanSearch: this.state.canEditSearch,
           createPlaylist: this.createPlaylist,
           play: this.play,
           pause: this.pause,

@@ -32,10 +32,13 @@ export const test = async () => {
 
 export const updateUserCanEditBoolean = async val => {
   // console.log(`from updateUserCanEditBoolean function post to db: ${val}`)
-  const dataObj = {
-    canEdit: val,
-  }
-  // console.log(dataObj)
+  // const dataObj = {
+  //   canEdit: val,
+  //   canEditPlay: val,
+  // }
+  const dataObj = val
+  console.log(dataObj)
+  console.log("VERIFY DATAOBJ OBJECT IS WRONG HERE")
   try {
     let baseURL =
       window.location.hostname === "localhost"

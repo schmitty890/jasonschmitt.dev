@@ -10,11 +10,14 @@ import {
   Button,
   Input,
   SimpleGrid,
+  Wrap,
+  WrapItem,
+  Center,
 } from "@chakra-ui/react"
 import { AuthConsumer } from "../../../../projects/test/contexts/AuthContext"
 import { SpotifyUserControlsConsumer } from "../../contexts/SpotifyUserControlsContext"
 import { useForm } from "react-hook-form"
-import { FaPlay, FaPause, FaUserEdit } from "react-icons/fa"
+import { FaPlay, FaPause, FaUserEdit, FaSearch } from "react-icons/fa"
 import { BsSkipEndFill, BsFillSkipStartFill } from "react-icons/bs"
 import { RiPlayListFill } from "react-icons/ri"
 
@@ -39,6 +42,10 @@ export default function Header() {
         <SpotifyUserControlsConsumer>
           {({
             userCanEdit,
+            userCanPlay,
+            userCanPause,
+            userCanSkip,
+            userCanSearch,
             toggleUserCanEdit,
             createPlaylist,
             play,
@@ -70,14 +77,95 @@ export default function Header() {
                       borderRadius="md"
                       align="center"
                     >
-                      <FaUserEdit display="inline" />
-                      <Switch
-                        name="boolean"
-                        ref={register}
-                        colorScheme="cyan"
-                        isChecked={userCanEdit}
-                        onChange={toggleUserCanEdit}
-                      />
+                      <Wrap>
+                        <WrapItem>
+                          <Center
+                            border="1px"
+                            borderColor="gray.200"
+                            borderRadius="md"
+                            p={1}
+                          >
+                            <FaUserEdit color="gray" size={20} />
+                            <Switch
+                              ref={register}
+                              colorScheme="cyan"
+                              name="canEdit"
+                              isChecked={userCanEdit}
+                              onChange={toggleUserCanEdit}
+                            />
+                          </Center>
+                        </WrapItem>
+                        <WrapItem>
+                          <Center
+                            border="1px"
+                            borderColor="gray.200"
+                            borderRadius="md"
+                            p={1}
+                          >
+                            <FaPlay color="green" size={20} />
+                            <Switch
+                              ref={register}
+                              colorScheme="cyan"
+                              name="canEditPlay"
+                              isChecked={userCanPlay}
+                              onChange={toggleUserCanEdit}
+                            />
+                          </Center>
+                        </WrapItem>
+                        <WrapItem>
+                          <Center
+                            border="1px"
+                            borderColor="gray.200"
+                            borderRadius="md"
+                            p={1}
+                          >
+                            <FaPause color="darkOrange" size={20} />
+                            <Switch
+                              name="canEditPause"
+                              ref={register}
+                              colorScheme="cyan"
+                              isChecked={userCanPause}
+                              onChange={toggleUserCanEdit}
+                            />
+                          </Center>
+                        </WrapItem>
+                        <WrapItem>
+                          <Center
+                            border="1px"
+                            borderColor="gray.200"
+                            borderRadius="md"
+                            p={1}
+                          >
+                            <BsFillSkipStartFill color="red" size={30} />
+                            <BsSkipEndFill color="red" size={30} />
+                            <Switch
+                              name="canEditSkip"
+                              ref={register}
+                              colorScheme="cyan"
+                              isChecked={userCanSkip}
+                              onChange={toggleUserCanEdit}
+                            />
+                          </Center>
+                        </WrapItem>
+                        <WrapItem>
+                          <Center
+                            border="1px"
+                            borderColor="gray.200"
+                            borderRadius="md"
+                            p={1}
+                          >
+                            <FaSearch color="gray" size={30} />
+
+                            <Switch
+                              name="canEditSearch"
+                              ref={register}
+                              colorScheme="cyan"
+                              isChecked={userCanSearch}
+                              onChange={toggleUserCanEdit}
+                            />
+                          </Center>
+                        </WrapItem>
+                      </Wrap>
                     </Box>
                     <Box
                       m={1}
@@ -99,7 +187,13 @@ export default function Header() {
                       borderRadius="md"
                       align="center"
                     >
-                      <Button onClick={play} width="100%">
+                      <Button
+                        onClick={play}
+                        width="100%"
+                        isDisabled={
+                          userCanEdit ? false : userCanPlay ? false : true
+                        }
+                      >
                         <FaPlay color="green" size={20} />
                       </Button>
                     </Box>
@@ -111,7 +205,13 @@ export default function Header() {
                       borderRadius="md"
                       align="center"
                     >
-                      <Button onClick={pause} width="100%">
+                      <Button
+                        onClick={pause}
+                        width="100%"
+                        isDisabled={
+                          userCanEdit ? false : userCanPause ? false : true
+                        }
+                      >
                         <FaPause color="darkOrange" size={20} />
                       </Button>
                     </Box>
@@ -124,7 +224,13 @@ export default function Header() {
                       borderRadius="md"
                       align="center"
                     >
-                      <Button onClick={prevTrack} width="100%">
+                      <Button
+                        onClick={prevTrack}
+                        width="100%"
+                        isDisabled={
+                          userCanEdit ? false : userCanSkip ? false : true
+                        }
+                      >
                         <BsFillSkipStartFill color="red" size={30} />
                       </Button>
                     </Box>
@@ -136,7 +242,13 @@ export default function Header() {
                       borderRadius="md"
                       align="center"
                     >
-                      <Button onClick={nextTrack} width="100%">
+                      <Button
+                        onClick={nextTrack}
+                        width="100%"
+                        isDisabled={
+                          userCanEdit ? false : userCanSkip ? false : true
+                        }
+                      >
                         <BsSkipEndFill color="red" size={30} />
                       </Button>
                     </Box>
@@ -159,7 +271,9 @@ export default function Header() {
                     >
                       <Button
                         onClick={play}
-                        isDisabled={userCanEdit ? false : true}
+                        isDisabled={
+                          userCanEdit ? false : userCanPlay ? false : true
+                        }
                         width="100%"
                       >
                         <FaPlay color="green" size={20} />
@@ -175,7 +289,9 @@ export default function Header() {
                     >
                       <Button
                         onClick={pause}
-                        isDisabled={userCanEdit ? false : true}
+                        isDisabled={
+                          userCanEdit ? false : userCanPause ? false : true
+                        }
                         width="100%"
                       >
                         <FaPause color="darkOrange" size={20} />
@@ -192,7 +308,9 @@ export default function Header() {
                     >
                       <Button
                         onClick={prevTrack}
-                        isDisabled={userCanEdit ? false : true}
+                        isDisabled={
+                          userCanEdit ? false : userCanSkip ? false : true
+                        }
                         width="100%"
                       >
                         <BsFillSkipStartFill color="red" size={30} />
@@ -208,7 +326,9 @@ export default function Header() {
                     >
                       <Button
                         onClick={nextTrack}
-                        isDisabled={userCanEdit ? false : true}
+                        isDisabled={
+                          userCanEdit ? false : userCanSkip ? false : true
+                        }
                         width="100%"
                       >
                         <BsSkipEndFill color="red" size={30} />

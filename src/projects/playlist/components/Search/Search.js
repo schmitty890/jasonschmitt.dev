@@ -13,7 +13,7 @@ const Search = () => {
       <SpotifySearchConsumer>
         {({ searchResults, getSearchResults, test }) => (
           <SpotifyUserControlsConsumer>
-            {({ userCanEdit }) => (
+            {({ userCanEdit, userCanSearch }) => (
               <GridItem
                 rowSpan={1}
                 colSpan={{ base: 12, md: 8 }}
@@ -23,7 +23,9 @@ const Search = () => {
               >
                 <Input
                   placeholder="Search for a song to add to the playlist"
-                  isDisabled={userCanEdit ? false : true}
+                  isDisabled={
+                    userCanEdit ? false : userCanSearch ? false : true
+                  }
                   onChange={getSearchResults}
                 />
                 <SearchResults />
