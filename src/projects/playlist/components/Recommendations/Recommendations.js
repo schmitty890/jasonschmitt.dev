@@ -59,7 +59,7 @@ const Recommendations = () => {
   return (
     <SpotifyRecommendationsProvider>
       <SpotifyRecommendationsConsumer>
-        {({ test, recommendedTracks, addTrackToPlaylist }) => (
+        {({ test, recommendedTracks, addTrackToPlaylist, getNewTracks }) => (
           <GridItem
             rowSpan={1}
             colSpan={{ base: 12 }}
@@ -67,6 +67,17 @@ const Recommendations = () => {
             p={4}
             pb={10}
           >
+            <Text>
+              Recommendations
+              <Button
+                colorScheme="teal"
+                variant="outline"
+                onClick={getNewTracks}
+                ml={4}
+              >
+                Refresh recommendations
+              </Button>
+            </Text>
             <Slider {...settings}>
               {recommendedTracks.map((item, index) => (
                 <GridItem

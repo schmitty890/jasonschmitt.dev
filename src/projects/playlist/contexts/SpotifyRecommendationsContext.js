@@ -71,17 +71,19 @@ class SpotifyRecommendationsProvider extends Component {
     console.log(arrayOfSongIds)
     const getRecommendationTracks = await getRecommendations(arrayOfSongIds)
     console.log(getRecommendationTracks)
+    if (getRecommendationTracks != undefined) {
+      this.setState({
+        recommendedTracks: getRecommendationTracks,
+      })
+    }
 
-    this.setState({
-      recommendedTracks: getRecommendationTracks,
-    })
     // }, 300000) // 5 minutes in ms
   }
 
   getNewTracks = async => {
-    setInterval(async () => {
-      this.getTracks()
-    }, 300000) // 5 minutes in ms
+    // setInterval(async () => {
+    this.getTracks()
+    // }, 300000) // 5 minutes in ms
   }
 
   addTrackToPlaylist = async value => {
@@ -119,6 +121,7 @@ class SpotifyRecommendationsProvider extends Component {
           test: this.state.test,
           recommendedTracks: this.state.recommendedTracks,
           addTrackToPlaylist: this.addTrackToPlaylist,
+          getNewTracks: this.getNewTracks,
         }}
       >
         {this.props.children}
