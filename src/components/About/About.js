@@ -1,5 +1,6 @@
 import React from "react"
-import { GridItem, Text } from "@chakra-ui/react"
+import { GridItem, Text, Button, Link } from "@chakra-ui/react"
+import { ExternalLinkIcon } from "@chakra-ui/icons"
 import { GithubConsumer } from "../../contexts/GithubContext"
 
 const About = () => {
@@ -30,6 +31,23 @@ const About = () => {
             node modules with this playground site, that also acts as a
             portfolio site.
           </Text>
+          <Text fontSize="md" mt={4}>
+            Feel free to put a 30 minute meeting on my calendar or use the
+            contact form below to get in touch!
+          </Text>
+
+          <Link
+            href="https://calendly.com/jasonschmitt/30min"
+            _hover={{
+              textDecoration: "none",
+            }}
+            isExternal
+          >
+            <Button colorScheme="linkedin" mt={4} w="100%">
+              Schedule 30 minute meeting with me
+              <ExternalLinkIcon mx="2px" />
+            </Button>
+          </Link>
         </GridItem>
       )}
     </GithubConsumer>
