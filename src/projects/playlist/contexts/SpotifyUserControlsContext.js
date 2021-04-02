@@ -84,19 +84,27 @@ class SpotifyUserControlsProvider extends Component {
   }
 
   play = async () => {
-    play()
+    const result = await play()
+    console.log(result)
+    return result
   }
 
   pause = async () => {
-    pause()
+    const result = await pause()
+    console.log(result)
+    return result
   }
 
   nextTrack = async () => {
-    nextTrack()
+    const result = await nextTrack()
+    console.log(result)
+    return result
   }
 
   prevTrack = async () => {
-    prevTrack()
+    const result = await prevTrack()
+    console.log(result)
+    return result
   }
 
   removeTrackAfterPlayed = async () => {

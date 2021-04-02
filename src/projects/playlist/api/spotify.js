@@ -193,10 +193,12 @@ export const play = async () => {
   const response = await spotifyApi.play().then(
     function () {
       console.log("Playback started")
+      return { msg: "playing", status: "success" }
     },
     function (err) {
       //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
       console.log("Something went wrong!", err)
+      return { msg: "tell Jason to open spotify", error: err, status: "error" }
     }
   )
 
@@ -210,10 +212,12 @@ export const pause = async () => {
   const response = await spotifyApi.pause().then(
     function () {
       console.log("Playback paused")
+      return { msg: "paused", status: "success" }
     },
     function (err) {
       //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
       console.log("Something went wrong!", err)
+      return { msg: "tell Jason to open spotify", error: err, status: "error" }
     }
   )
 
@@ -227,10 +231,12 @@ export const nextTrack = async () => {
   const response = await spotifyApi.skipToNext().then(
     function () {
       console.log("Skip to next")
+      return { msg: "next track", status: "success" }
     },
     function (err) {
       //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
       console.log("Something went wrong!", err)
+      return { msg: "tell Jason to open spotify", error: err, status: "error" }
     }
   )
 
@@ -244,10 +250,12 @@ export const prevTrack = async () => {
   const response = await spotifyApi.skipToPrevious().then(
     function () {
       console.log("Skip to previous")
+      return { msg: "previous track", status: "success" }
     },
     function (err) {
       //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
       console.log("Something went wrong!", err)
+      return { msg: "tell Jason to open spotify", error: err, status: "error" }
     }
   )
 

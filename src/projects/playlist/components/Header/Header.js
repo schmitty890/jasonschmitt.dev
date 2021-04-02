@@ -13,6 +13,7 @@ import {
   Wrap,
   WrapItem,
   Center,
+  useToast,
 } from "@chakra-ui/react"
 import { AuthConsumer } from "../../../../projects/test/contexts/AuthContext"
 import { SpotifyUserControlsConsumer } from "../../contexts/SpotifyUserControlsContext"
@@ -35,6 +36,7 @@ export default function Header() {
     console.log(values.boolean)
     // }, 1000)
   }
+  const toast = useToast()
 
   return (
     <AuthConsumer>
@@ -188,7 +190,26 @@ export default function Header() {
                       align="center"
                     >
                       <Button
-                        onClick={play}
+                        onClick={e =>
+                          play().then(res => {
+                            console.log(res)
+                            if (res.status == "error") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            } else if (res.status == "success") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            }
+                          })
+                        }
                         width="100%"
                         isDisabled={
                           userCanEdit ? false : userCanPlay ? false : true
@@ -206,7 +227,26 @@ export default function Header() {
                       align="center"
                     >
                       <Button
-                        onClick={pause}
+                        onClick={e =>
+                          pause().then(res => {
+                            console.log(res)
+                            if (res.status == "error") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            } else if (res.status == "success") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            }
+                          })
+                        }
                         width="100%"
                         isDisabled={
                           userCanEdit ? false : userCanPause ? false : true
@@ -225,7 +265,26 @@ export default function Header() {
                       align="center"
                     >
                       <Button
-                        onClick={prevTrack}
+                        onClick={e =>
+                          prevTrack().then(res => {
+                            console.log(res)
+                            if (res.status == "error") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            } else if (res.status == "success") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            }
+                          })
+                        }
                         width="100%"
                         isDisabled={
                           userCanEdit ? false : userCanSkip ? false : true
@@ -243,7 +302,26 @@ export default function Header() {
                       align="center"
                     >
                       <Button
-                        onClick={nextTrack}
+                        onClick={e =>
+                          nextTrack().then(res => {
+                            console.log(res)
+                            if (res.status == "error") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            } else if (res.status == "success") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            }
+                          })
+                        }
                         width="100%"
                         isDisabled={
                           userCanEdit ? false : userCanSkip ? false : true
@@ -270,7 +348,26 @@ export default function Header() {
                       align="center"
                     >
                       <Button
-                        onClick={play}
+                        onClick={e =>
+                          play().then(res => {
+                            console.log(res)
+                            if (res.status == "error") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            } else if (res.status == "success") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            }
+                          })
+                        }
                         isDisabled={
                           userCanEdit ? false : userCanPlay ? false : true
                         }
@@ -288,7 +385,26 @@ export default function Header() {
                       align="center"
                     >
                       <Button
-                        onClick={pause}
+                        onClick={e =>
+                          pause().then(res => {
+                            console.log(res)
+                            if (res.status == "error") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            } else if (res.status == "success") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            }
+                          })
+                        }
                         isDisabled={
                           userCanEdit ? false : userCanPause ? false : true
                         }
@@ -307,7 +423,26 @@ export default function Header() {
                       align="center"
                     >
                       <Button
-                        onClick={prevTrack}
+                        onClick={e =>
+                          prevTrack().then(res => {
+                            console.log(res)
+                            if (res.status == "error") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            } else if (res.status == "success") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            }
+                          })
+                        }
                         isDisabled={
                           userCanEdit ? false : userCanSkip ? false : true
                         }
@@ -325,7 +460,26 @@ export default function Header() {
                       align="center"
                     >
                       <Button
-                        onClick={nextTrack}
+                        onClick={e =>
+                          nextTrack().then(res => {
+                            console.log(res)
+                            if (res.status == "error") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            } else if (res.status == "success") {
+                              toast({
+                                title: `${res.msg}`,
+                                status: res.status,
+                                isClosable: true,
+                                duration: 3000,
+                              })
+                            }
+                          })
+                        }
                         isDisabled={
                           userCanEdit ? false : userCanSkip ? false : true
                         }
