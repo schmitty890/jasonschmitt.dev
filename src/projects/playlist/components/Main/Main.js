@@ -22,6 +22,7 @@ import NowPlaying from "../NowPlaying/NowPlaying"
 import Header from "../Header/Header"
 import Search from "../Search/Search"
 import RecentlyPlayed from "../RecentlyPlayed/RecentlyPlayed"
+import CurrentPlaylist from "../CurrentPlaylist/CurrentPlaylist"
 import { useForm } from "react-hook-form"
 
 export default function Main() {
@@ -51,8 +52,9 @@ export default function Main() {
           <NowPlaying />
           <Header />
 
-          <RecentlyPlayed />
+          <CurrentPlaylist />
           <Search />
+          <RecentlyPlayed />
         </Grid>
       </Box>
     </Container>

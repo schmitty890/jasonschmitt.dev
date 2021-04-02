@@ -145,6 +145,26 @@ export const getPlaylists = async () => {
 
   return response
 }
+export const getPlaylistTracks = async playlist => {
+  await getAndSetTokenToMakeCallsToSpotifyAPI()
+  console.log(playlist)
+  // Get a playlist
+  const response = await spotifyApi.getPlaylist(playlist).then(
+    function (data) {
+      console.log("Some information about this playlist", data.body)
+      data.body.tracks.items.forEach(item => {
+        item.added_at = dayjs(item.added_at).fromNow()
+      })
+      return data
+    },
+    function (err) {
+      console.log("Something went wrong!", err)
+      return err
+    }
+  )
+
+  return response
+}
 
 export const addToPlaylist = async (playlistId, track) => {
   await getAndSetTokenToMakeCallsToSpotifyAPI()

@@ -23,7 +23,7 @@ class SpotifySearchProvider extends Component {
       // make axios call to get results
       searchResults = await searchTracks(searchValue)
     } else {
-      searchValue = ""
+      this.setState({ searchResults: "" })
     }
     if (
       searchResults.tracks == undefined ||
@@ -48,7 +48,7 @@ class SpotifySearchProvider extends Component {
       latestPlaylist.items[0].id,
       value.nativeEvent.target.getAttribute("spotifyURI")
     )
-    console.log("addingSong!!!!!!!!!!!!!!")
+    console.log("addingSong")
     console.log(addingSong)
     if (addingSong.statusCode === 201) {
       return { msg: "Song added", status: "success" }

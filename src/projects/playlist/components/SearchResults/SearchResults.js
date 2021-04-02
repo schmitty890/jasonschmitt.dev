@@ -32,7 +32,7 @@ const SearchResults = () => {
       {({ searchResults, getSearchResults, addTrackToPlaylist }) => (
         <GridItem
           rowSpan={1}
-          colSpan={{ base: 12, md: 8 }}
+          colSpan={{ base: 12, md: 4 }}
           bg={{ base: "white" }}
           p={4}
           justifyContent={"center"}
@@ -42,7 +42,7 @@ const SearchResults = () => {
             <Table variant="simple">
               <Thead>
                 <Tr>
-                  <Th display={{ base: "none", md: "block" }}>Image</Th>
+                  {/* <Th display={{ base: "none", md: "block" }}>Image</Th> */}
                   <Th>Song</Th>
                   <Th>Add</Th>
                 </Tr>
@@ -50,13 +50,13 @@ const SearchResults = () => {
               <Tbody>
                 {searchResults.map((item, index) => (
                   <Tr>
-                    <Td display={{ base: "none", md: "table-cell" }}>
+                    {/* <Td display={{ base: "none", md: "table-cell" }}>
                       <Image
                         src={item.album.images[2].url}
                         alt="song"
                         style={{ border: "1px solid black", height: "30px" }}
                       ></Image>
-                    </Td>
+                    </Td> */}
 
                     <Td>{item.name}</Td>
                     <Td>

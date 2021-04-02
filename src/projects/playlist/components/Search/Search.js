@@ -24,7 +24,7 @@ const Search = () => {
             {({ userCanEdit, userCanSearch }) => (
               <GridItem
                 rowSpan={1}
-                colSpan={{ base: 12, md: 8 }}
+                colSpan={{ base: 12, md: 4 }}
                 bg={{ base: "white" }}
                 p={4}
                 justifyContent={"center"}
@@ -32,7 +32,7 @@ const Search = () => {
                 <InputGroup>
                   <Input
                     id="search"
-                    placeholder="Search for a song to add to the playlist"
+                    placeholder="Search songs"
                     isDisabled={
                       userCanEdit ? false : userCanSearch ? false : true
                     }
