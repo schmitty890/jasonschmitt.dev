@@ -16,6 +16,7 @@ import {
   Td,
   TableCaption,
   Image,
+  useToast,
 } from "@chakra-ui/react"
 
 import { SpotifySearchConsumer } from "../../contexts/SpotifySearchContext"
@@ -25,6 +26,7 @@ const SearchResults = () => {
     console.log("add song")
     console.log(e.target.value)
   }
+  const toast = useToast()
   return (
     <SpotifySearchConsumer>
       {({ searchResults, getSearchResults, addTrackToPlaylist }) => (
@@ -62,7 +64,17 @@ const SearchResults = () => {
                         colorScheme="teal"
                         variant="outline"
                         spotifyURI={item.uri}
-                        onClick={e => addTrackToPlaylist(e)}
+                        onClick={e =>
+                          addTrackToPlaylist(e).then(res => {
+                            console.log(res)
+                            toast({
+                              title: `${res.msg}`,
+                              status: res.status,
+                              isClosable: true,
+                              duration: 3000,
+                            })
+                          })
+                        }
                       >
                         Add
                       </Button>

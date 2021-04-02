@@ -1,6 +1,14 @@
 import React from "react"
 import SearchResults from "../SearchResults/SearchResults"
-import { GridItem, Text, Input, Box } from "@chakra-ui/react"
+import {
+  GridItem,
+  Text,
+  Input,
+  Box,
+  InputRightElement,
+  Button,
+  InputGroup,
+} from "@chakra-ui/react"
 import {
   SpotifySearchProvider,
   SpotifySearchConsumer,
@@ -11,7 +19,7 @@ const Search = () => {
   return (
     <SpotifySearchProvider>
       <SpotifySearchConsumer>
-        {({ searchResults, getSearchResults, test }) => (
+        {({ searchResults, getSearchResults, clearForm }) => (
           <SpotifyUserControlsConsumer>
             {({ userCanEdit, userCanSearch }) => (
               <GridItem
@@ -21,13 +29,21 @@ const Search = () => {
                 p={4}
                 justifyContent={"center"}
               >
-                <Input
-                  placeholder="Search for a song to add to the playlist"
-                  isDisabled={
-                    userCanEdit ? false : userCanSearch ? false : true
-                  }
-                  onChange={getSearchResults}
-                />
+                <InputGroup>
+                  <Input
+                    id="search"
+                    placeholder="Search for a song to add to the playlist"
+                    isDisabled={
+                      userCanEdit ? false : userCanSearch ? false : true
+                    }
+                    onChange={getSearchResults}
+                  />
+                  <InputRightElement width="4.5rem">
+                    <Button h="1.75rem" size="sm" onClick={clearForm}>
+                      Clear
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
                 <SearchResults />
               </GridItem>
             )}

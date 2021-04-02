@@ -14,11 +14,17 @@ class SpotifySearchProvider extends Component {
 
   getSearchResults = async value => {
     // console.log("get search")
+    // console.log(value)
     // console.log(value.nativeEvent.target.value)
-    const searchValue = value.nativeEvent.target.value
-    // make axios call to get results
-    const searchResults = await searchTracks(searchValue)
-    // console.log(searchResults.tracks)
+    let searchValue = ""
+    let searchResults = ""
+    if (value != undefined) {
+      searchValue = value.nativeEvent.target.value
+      // make axios call to get results
+      searchResults = await searchTracks(searchValue)
+    } else {
+      searchValue = ""
+    }
     if (
       searchResults.tracks == undefined ||
       searchResults.tracks.items.length == 0
@@ -38,10 +44,23 @@ class SpotifySearchProvider extends Component {
     //   "add track to playlist " +
     //     value.nativeEvent.target.getAttribute("spotifyURI")
     // )
-    addToPlaylist(
+    const addingSong = await addToPlaylist(
       latestPlaylist.items[0].id,
       value.nativeEvent.target.getAttribute("spotifyURI")
     )
+    console.log("addingSong!!!!!!!!!!!!!!")
+    console.log(addingSong)
+    if (addingSong.statusCode === 201) {
+      return { msg: "Song added", status: "success" }
+    } else {
+      return { msg: "Something went wrong", status: "error" }
+    }
+  }
+
+  clearForm = async () => {
+    console.log("clearform")
+    document.getElementById("search").value = ""
+    this.getSearchResults()
   }
 
   render() {
@@ -51,6 +70,7 @@ class SpotifySearchProvider extends Component {
           searchResults: this.state.searchResults,
           getSearchResults: this.getSearchResults,
           addTrackToPlaylist: this.addTrackToPlaylist,
+          clearForm: this.clearForm,
           test: "testing",
         }}
       >
