@@ -23,6 +23,7 @@ import Header from "../Header/Header"
 import Search from "../Search/Search"
 import RecentlyPlayed from "../RecentlyPlayed/RecentlyPlayed"
 import CurrentPlaylist from "../CurrentPlaylist/CurrentPlaylist"
+import Recommendations from "../Recommendations/Recommendations"
 import { useForm } from "react-hook-form"
 
 export default function Main() {
@@ -55,6 +56,7 @@ export default function Main() {
           <CurrentPlaylist />
           <Search />
           <RecentlyPlayed />
+          <Recommendations />
         </Grid>
       </Box>
     </Container>

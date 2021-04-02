@@ -145,6 +145,48 @@ export const getPlaylists = async () => {
 
   return response
 }
+
+export const getRecommendations = async arrayOfSeeds => {
+  await getAndSetTokenToMakeCallsToSpotifyAPI()
+  // Get Recommendations Based on Seeds
+  console.log(arrayOfSeeds)
+
+  const response = await spotifyApi
+    .getRecommendations({
+      min_energy: 0.4,
+      // seed_artists: ["7dGJo4pcD2V6oG8kP0tJRR"],
+      seed_artists: arrayOfSeeds,
+      min_popularity: 50,
+    })
+    .then(
+      function (data) {
+        let recommendations = data.body
+        console.log("recommendations: " + recommendations)
+        // for (var key in Object.keys(recommendations)) {
+        //   var t = Object.keys(recommendations)[key]
+        //   console.log(t + " value =: " + recommendations[t])
+        // }
+        for (let r in recommendations) {
+          //for in loop iterates all properties in an object
+          console.log(r) //print all properties in sequence
+          console.log(recommendations[r]) //print all properties values
+          for (let i = 0; i < recommendations[r].length; i++) {
+            recommendations[r][i].album.release_date = dayjs(
+              recommendations[r][i].album.release_date
+            ).fromNow()
+          }
+
+          return recommendations[r]
+        }
+      },
+      function (err) {
+        console.log("Something went wrong!", err)
+      }
+    )
+
+  return response
+}
+
 export const getPlaylistTracks = async playlist => {
   await getAndSetTokenToMakeCallsToSpotifyAPI()
   console.log(playlist)
