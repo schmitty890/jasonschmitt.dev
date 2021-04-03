@@ -304,6 +304,32 @@ export const prevTrack = async () => {
   return response
 }
 
+export const shuffle = async isChecked => {
+  await getAndSetTokenToMakeCallsToSpotifyAPI()
+  // Toggle Shuffle For User’s Playback
+
+  console.log("ABOUT TO TOGGLE SHUFFLE")
+
+  const response = await spotifyApi.setShuffle(isChecked).then(
+    function () {
+      let msg = ""
+      if (isChecked == true) {
+        msg = "Shuffle is on"
+      } else {
+        msg = "Shuffle is off"
+      }
+      return { msg: msg, status: "success" }
+    },
+    function (err) {
+      //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
+      console.log("Something went wrong!", err)
+      return { msg: "tell Jason to open spotify", error: err, status: "error" }
+    }
+  )
+
+  return response
+}
+
 export const recentlyPlayed = async () => {
   await getAndSetTokenToMakeCallsToSpotifyAPI()
   // Get Current User's Recently Played Tracks

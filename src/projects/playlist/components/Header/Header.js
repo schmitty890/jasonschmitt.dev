@@ -20,7 +20,7 @@ import { SpotifyUserControlsConsumer } from "../../contexts/SpotifyUserControlsC
 import { useForm } from "react-hook-form"
 import { FaPlay, FaPause, FaUserEdit, FaSearch } from "react-icons/fa"
 import { BsSkipEndFill, BsFillSkipStartFill } from "react-icons/bs"
-import { RiPlayListFill } from "react-icons/ri"
+import { RiPlayListFill, RiShuffleFill } from "react-icons/ri"
 
 export default function Header() {
   const defaultValues = {
@@ -54,6 +54,7 @@ export default function Header() {
             pause,
             nextTrack,
             prevTrack,
+            shuffle,
             removeTrackAfterPlayed,
           }) => (
             <GridItem
@@ -149,6 +150,7 @@ export default function Header() {
                             />
                           </Center>
                         </WrapItem>
+
                         <WrapItem>
                           <Center
                             border="1px"
@@ -164,6 +166,42 @@ export default function Header() {
                               colorScheme="cyan"
                               isChecked={userCanSearch}
                               onChange={toggleUserCanEdit}
+                            />
+                          </Center>
+                        </WrapItem>
+                        <WrapItem>
+                          <Center
+                            border="1px"
+                            borderColor="gray.200"
+                            borderRadius="md"
+                            p={1}
+                          >
+                            <RiShuffleFill color="orange" size={20} />
+                            <Switch
+                              ref={register}
+                              colorScheme="cyan"
+                              name="shuffle"
+                              // onChange={shuffle}
+                              onChange={e =>
+                                shuffle(e).then(res => {
+                                  console.log(res)
+                                  if (res.status == "error") {
+                                    toast({
+                                      title: `${res.msg}`,
+                                      status: res.status,
+                                      isClosable: true,
+                                      duration: 3000,
+                                    })
+                                  } else if (res.status == "success") {
+                                    toast({
+                                      title: `${res.msg}`,
+                                      status: res.status,
+                                      isClosable: true,
+                                      duration: 3000,
+                                    })
+                                  }
+                                })
+                              }
                             />
                           </Center>
                         </WrapItem>

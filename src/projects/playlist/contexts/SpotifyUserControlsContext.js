@@ -7,6 +7,7 @@ import {
   pause,
   nextTrack,
   prevTrack,
+  shuffle,
   recentlyPlayed,
   removeSongFromPlaylist,
 } from "../api/spotify"
@@ -24,6 +25,7 @@ class SpotifyUserControlsProvider extends Component {
     canEditPause: Boolean,
     canEditSkip: Boolean,
     canEditSearch: Boolean,
+    canEditShuffle: Boolean,
   }
 
   componentDidMount() {
@@ -107,6 +109,14 @@ class SpotifyUserControlsProvider extends Component {
     return result
   }
 
+  shuffle = async value => {
+    console.log("toggle shuffle")
+    const isChecked = value.nativeEvent.target.checked
+    const result = await shuffle(isChecked)
+    console.log(result)
+    return result
+  }
+
   removeTrackAfterPlayed = async () => {
     // TODO: havent figured this out yet
     //get the last played track by id from recentlyPlayed()
@@ -138,6 +148,7 @@ class SpotifyUserControlsProvider extends Component {
           pause: this.pause,
           nextTrack: this.nextTrack,
           prevTrack: this.prevTrack,
+          shuffle: this.shuffle,
           removeTrackAfterPlayed: this.removeTrackAfterPlayed,
         }}
       >
