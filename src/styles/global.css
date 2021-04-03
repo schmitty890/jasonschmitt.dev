@@ -50,3 +50,17 @@
   height: var(--chakra-sizes-16);
   font-size: calc(4rem / 2.5);
 }
+@media only screen and (max-width: 400px) {
+  .search-results--mobile {
+    text-align: none;
+    -webkit-padding-start: 0 !important;
+    padding-inline-start: 0 !important;
+    -webkit-padding-end: 0 !important;
+    padding-inline-end: 0 !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    line-height: none !important;
+    border-bottom: var(--chakra-borders-1px);
+    border-color: var(--chakra-colors-gray-100);
+  }
+}

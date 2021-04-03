@@ -43,6 +43,7 @@ const SearchResults = () => {
               <Thead>
                 <Tr>
                   {/* <Th display={{ base: "none", md: "block" }}>Image</Th> */}
+                  <Th>Artist name</Th>
                   <Th>Song</Th>
                   <Th>Add</Th>
                 </Tr>
@@ -57,9 +58,11 @@ const SearchResults = () => {
                         style={{ border: "1px solid black", height: "30px" }}
                       ></Image>
                     </Td> */}
-
-                    <Td>{item.name}</Td>
-                    <Td>
+                    <Td className="search-results--mobile">
+                      {item.artists[0].name}
+                    </Td>
+                    <Td className="search-results--mobile">{item.name}</Td>
+                    <Td className="search-results--mobile">
                       <Button
                         colorScheme="teal"
                         variant="outline"

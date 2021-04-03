@@ -24,7 +24,7 @@ const Search = () => {
             {({ userCanEdit, userCanSearch }) => (
               <GridItem
                 rowSpan={1}
-                colSpan={{ base: 12, md: 4 }}
+                colSpan={{ base: 12, md: 8 }}
                 bg={{ base: "white" }}
                 p={4}
                 justifyContent={"center"}
