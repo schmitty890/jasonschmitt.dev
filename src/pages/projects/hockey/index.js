@@ -31,7 +31,6 @@ export default function Test() {
                       <Text>user is {user.firstName}</Text>
                     ) : (
                       // redirectToHome()
-                      // redirectToHome()
                       // <Text>user is {user.firstName}</Text>
                       <Text>user is not logged in</Text>
                     )}
