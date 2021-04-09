@@ -1,16 +1,5 @@
 import React from "react"
-import {
-  Box,
-  GridItem,
-  Flex,
-  Avatar,
-  Text,
-  Badge,
-  Heading,
-  Button,
-  Grid,
-  SimpleGrid,
-} from "@chakra-ui/react"
+import { Box, Text, Grid, Badge } from "@chakra-ui/react"
 import {
   ScheduleProvider,
   ScheduleConsumer,
@@ -21,10 +10,6 @@ const Schedule = () => {
     <ScheduleProvider>
       <ScheduleConsumer>
         {({ schedule, loading }) => (
-          // <Grid
-          //   templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
-          //   gap={6}
-          // >
           <Box>
             {loading ? (
               <Grid
@@ -54,12 +39,47 @@ const Schedule = () => {
                     align="center"
                     key={game.gamePk}
                   >
+                    {game.status.detailedState == "Final" ? (
+                      <Box>
+                        <Badge colorScheme="red">
+                          {game.status.detailedState}
+                        </Badge>
+                      </Box>
+                    ) : game.status.detailedState == "Postponed" ??
+                      game.status.detailedState == "Scheduled" ? (
+                      <Box>
+                        <Badge colorScheme="yellow">
+                          {game.status.detailedState}
+                        </Badge>
+                      </Box>
+                    ) : game.status.detailedState == "In progress" ? (
+                      <Box>
+                        <Badge colorScheme="green">
+                          {game.status.detailedState}
+                        </Badge>
+                      </Box>
+                    ) : (
+                      <Box>
+                        <Badge colorScheme="green">status not found yet</Badge>
+                      </Box>
+                    )}
+
+                    <Box>Start time: {game.gameDate}</Box>
+
                     <Box
                       w={{ base: "100%", md: "50%" }}
                       display={{ base: "block", md: "inline-block" }}
                       border="1px"
                     >
                       <Box>{game.teams.away.team.name}</Box>
+                      <Box>
+                        <Text fontSize="xs">
+                          {game.teams.away.leagueRecord.wins}-
+                          {game.teams.away.leagueRecord.losses}-
+                          {game.teams.away.leagueRecord.ot}
+                        </Text>
+                      </Box>
+                      <Box>{game.teams.away.score}</Box>
                     </Box>
                     <Box
                       w={{ base: "100%", md: "50%" }}
@@ -67,6 +87,14 @@ const Schedule = () => {
                       border="1px"
                     >
                       <Box>{game.teams.home.team.name}</Box>
+                      <Box>
+                        <Text fontSize="xs">
+                          {game.teams.home.leagueRecord.wins}-
+                          {game.teams.home.leagueRecord.losses}-
+                          {game.teams.home.leagueRecord.ot}
+                        </Text>
+                      </Box>
+                      <Box>{game.teams.home.score}</Box>
                     </Box>
                   </Box>
                 ))}

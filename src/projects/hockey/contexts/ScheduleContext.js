@@ -21,6 +21,9 @@ class ScheduleProvider extends Component {
   getData = async () => {
     const schedule = await getSchedule()
     console.log(schedule.data)
+    // schedule.data.dates[0].games.forEach(arrayItem => {
+    //   console.log(arrayItem)
+    // })
     this.setState({ schedule: schedule.data })
     this.setState({ loading: false })
     setTimeout(() => {
