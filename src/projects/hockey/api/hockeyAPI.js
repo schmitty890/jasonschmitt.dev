@@ -1,5 +1,6 @@
 import axios from "axios"
 import dayjs from "dayjs"
+import hockeyLogos from "../data/teamIconData.json"
 var relativeTime = require("dayjs/plugin/relativeTime")
 dayjs.extend(relativeTime)
 
@@ -12,6 +13,21 @@ export const getSchedule = async () => {
 
     response.data.dates[0].games.forEach(game => {
       game.gameDate = dayjs(game.gameDate).fromNow()
+      // console.log(game.teams)
+      // console.log(game.teams.away.team.id)
+      // console.log(game.teams.home.team.id)
+      // console.log(hockeyLogos)
+      hockeyLogos.forEach(team => {
+        // console.log(team)
+        if (team.id === game.teams.away.team.id) {
+          game.teams.away.team.logo = team.src
+          game.teams.away.team.logoAlt = team.srcAlt
+        }
+        if (team.id === game.teams.home.team.id) {
+          game.teams.home.team.logo = team.src
+          game.teams.home.team.logoAlt = team.srcAlt
+        }
+      })
     })
 
     return response

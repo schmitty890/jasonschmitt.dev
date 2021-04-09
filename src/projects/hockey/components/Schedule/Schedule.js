@@ -1,5 +1,14 @@
 import React from "react"
-import { Box, Text, Grid, Badge } from "@chakra-ui/react"
+import {
+  Box,
+  Text,
+  Grid,
+  Badge,
+  Avatar,
+  Skeleton,
+  SkeletonCircle,
+  Image,
+} from "@chakra-ui/react"
 import {
   ScheduleProvider,
   ScheduleConsumer,
@@ -77,6 +86,17 @@ const Schedule = () => {
                       display={{ base: "block", md: "inline-block" }}
                       border="1px"
                     >
+                      {/* <Avatar
+                        src={game.teams.away.team.logo}
+                        alt={game.teams.away.team.logoAlt}
+                        loading="eager"
+                        icon={<SkeletonCircle size="12" />}
+                      /> */}
+                      <Image
+                        src={game.teams.away.team.logo}
+                        alt={game.teams.away.team.logoAlt}
+                        h="50px"
+                      />
                       <Box>{game.teams.away.team.name}</Box>
                       <Box>
                         <Text fontSize="xs">
@@ -92,6 +112,17 @@ const Schedule = () => {
                       display={{ base: "block", md: "inline-block" }}
                       border="1px"
                     >
+                      {/* <Avatar
+                        src={game.teams.home.team.logo}
+                        alt={game.teams.home.team.logoAlt}
+                        loading="eager"
+                        icon={<SkeletonCircle size="12" />}
+                      /> */}
+                      <Image
+                        src={game.teams.home.team.logo}
+                        alt={game.teams.home.team.logoAlt}
+                        h="50px"
+                      />
                       <Box>{game.teams.home.team.name}</Box>
                       <Box>
                         <Text fontSize="xs">
