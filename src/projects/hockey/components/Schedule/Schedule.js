@@ -58,9 +58,15 @@ const Schedule = () => {
                           {game.status.detailedState}
                         </Badge>
                       </Box>
+                    ) : game.status.detailedState == "Scheduled" ? (
+                      <Box>
+                        <Badge colorScheme="green">
+                          {game.status.detailedState}
+                        </Badge>
+                      </Box>
                     ) : (
                       <Box>
-                        <Badge colorScheme="green">status not found yet</Badge>
+                        <Badge colorScheme="red">Status unknown</Badge>
                       </Box>
                     )}
 
