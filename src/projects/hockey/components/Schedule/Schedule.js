@@ -128,41 +128,57 @@ const Schedule = () => {
                           {game.teams.away.leagueRecord.ot}
                         </Text>
                       </Box>
-                      <Box>Goals &nbsp; {game.teams.away.score}</Box>
+
                       <Box>
-                        Shots &nbsp;
-                        {
-                          game.liveData.liveData.boxscore.teams.away.teamStats
-                            .teamSkaterStats.shots
-                        }
+                        <Text display="inline-block">Goals &nbsp; </Text>
+                        <Text display="inline-block" fontWeight="extrabold">
+                          {game.teams.away.score}
+                        </Text>
                       </Box>
                       <Box>
-                        Faceoff % &nbsp;
-                        {
-                          game.liveData.liveData.boxscore.teams.away.teamStats
-                            .teamSkaterStats.faceOffWinPercentage
-                        }
+                        <Text display="inline-block">Shots &nbsp;</Text>
+                        <Text display="inline-block" fontWeight="extrabold">
+                          {
+                            game.liveData.liveData.boxscore.teams.away.teamStats
+                              .teamSkaterStats.shots
+                          }
+                        </Text>
                       </Box>
                       <Box>
-                        Hits &nbsp;
-                        {
-                          game.liveData.liveData.boxscore.teams.away.teamStats
-                            .teamSkaterStats.hits
-                        }
+                        <Text display="inline-block">Faceoff % &nbsp;</Text>
+                        <Text display="inline-block" fontWeight="extrabold">
+                          {
+                            game.liveData.liveData.boxscore.teams.away.teamStats
+                              .teamSkaterStats.faceOffWinPercentage
+                          }
+                        </Text>
                       </Box>
                       <Box>
-                        PIM &nbsp;
-                        {
-                          game.liveData.liveData.boxscore.teams.away.teamStats
-                            .teamSkaterStats.pim
-                        }
+                        <Text display="inline-block">Hits &nbsp;</Text>
+                        <Text display="inline-block" fontWeight="extrabold">
+                          {
+                            game.liveData.liveData.boxscore.teams.away.teamStats
+                              .teamSkaterStats.hits
+                          }
+                        </Text>
                       </Box>
                       <Box>
-                        PP% &nbsp;
-                        {
-                          game.liveData.liveData.boxscore.teams.away.teamStats
-                            .teamSkaterStats.powerPlayPercentage
-                        }
+                        <Text display="inline-block">PIM &nbsp;</Text>
+                        <Text display="inline-block" fontWeight="extrabold">
+                          {
+                            game.liveData.liveData.boxscore.teams.away.teamStats
+                              .teamSkaterStats.pim
+                          }
+                        </Text>
+                      </Box>
+                      <Box>
+                        <Text display="inline-block">PP% &nbsp;</Text>
+                        <Text display="inline-block" fontWeight="extrabold">
+                          {
+                            game.liveData.liveData.boxscore.teams.away.teamStats
+                              .teamSkaterStats.powerPlayPercentage
+                          }
+                        </Text>
                       </Box>
                     </Box>
                     <Box
@@ -193,41 +209,56 @@ const Schedule = () => {
                           {game.teams.home.leagueRecord.ot}
                         </Text>
                       </Box>
-                      <Box>Goals &nbsp; {game.teams.home.score}</Box>
                       <Box>
-                        Shots &nbsp;
-                        {
-                          game.liveData.liveData.boxscore.teams.home.teamStats
-                            .teamSkaterStats.shots
-                        }
+                        <Text display="inline-block">Goals &nbsp;</Text>
+                        <Text display="inline-block" fontWeight="extrabold">
+                          {game.teams.home.score}
+                        </Text>
+                      </Box>
+                      <Box>
+                        <Text display="inline-block">Shots &nbsp;</Text>
+                        <Text display="inline-block" fontWeight="extrabold">
+                          {
+                            game.liveData.liveData.boxscore.teams.home.teamStats
+                              .teamSkaterStats.shots
+                          }
+                        </Text>
                       </Box>
                       <Box>
                         Faceoff % &nbsp;
-                        {
-                          game.liveData.liveData.boxscore.teams.home.teamStats
-                            .teamSkaterStats.faceOffWinPercentage
-                        }
+                        <Text display="inline-block" fontWeight="extrabold">
+                          {
+                            game.liveData.liveData.boxscore.teams.home.teamStats
+                              .teamSkaterStats.faceOffWinPercentage
+                          }
+                        </Text>
                       </Box>
                       <Box>
                         Hits &nbsp;
-                        {
-                          game.liveData.liveData.boxscore.teams.home.teamStats
-                            .teamSkaterStats.hits
-                        }
+                        <Text display="inline-block" fontWeight="extrabold">
+                          {
+                            game.liveData.liveData.boxscore.teams.home.teamStats
+                              .teamSkaterStats.hits
+                          }
+                        </Text>
                       </Box>
                       <Box>
                         PIM &nbsp;
-                        {
-                          game.liveData.liveData.boxscore.teams.home.teamStats
-                            .teamSkaterStats.pim
-                        }
+                        <Text display="inline-block" fontWeight="extrabold">
+                          {
+                            game.liveData.liveData.boxscore.teams.home.teamStats
+                              .teamSkaterStats.pim
+                          }
+                        </Text>
                       </Box>
                       <Box>
                         PP% &nbsp;
-                        {
-                          game.liveData.liveData.boxscore.teams.home.teamStats
-                            .teamSkaterStats.powerPlayPercentage
-                        }
+                        <Text display="inline-block" fontWeight="extrabold">
+                          {
+                            game.liveData.liveData.boxscore.teams.home.teamStats
+                              .teamSkaterStats.powerPlayPercentage
+                          }
+                        </Text>
                       </Box>
                     </Box>
                   </Box>
