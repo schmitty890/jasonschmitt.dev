@@ -22,10 +22,12 @@ export const getSchedule = async () => {
         if (team.id === game.teams.away.team.id) {
           game.teams.away.team.logo = team.src
           game.teams.away.team.logoAlt = team.srcAlt
+          game.teams.away.team.logoBgColor = team.logoBgColor
         }
         if (team.id === game.teams.home.team.id) {
           game.teams.home.team.logo = team.src
           game.teams.home.team.logoAlt = team.srcAlt
+          game.teams.home.team.logoBgColor = team.logoBgColor
         }
       })
     })

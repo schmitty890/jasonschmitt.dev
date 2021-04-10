@@ -108,7 +108,11 @@ const Schedule = () => {
                       <Image
                         src={game.teams.away.team.logo}
                         alt={game.teams.away.team.logoAlt}
+                        loading="eager"
                         h="50px"
+                        w="100%"
+                        bg={game.teams.away.team.logoBgColor}
+                        p="2"
                       />
                       <Box>{game.teams.away.team.name}</Box>
                       <Box>
@@ -134,7 +138,11 @@ const Schedule = () => {
                       <Image
                         src={game.teams.home.team.logo}
                         alt={game.teams.home.team.logoAlt}
+                        loading="eager"
                         h="50px"
+                        w="100%"
+                        bg={game.teams.home.team.logoBgColor}
+                        p="2"
                       />
                       <Box>{game.teams.home.team.name}</Box>
                       <Box>

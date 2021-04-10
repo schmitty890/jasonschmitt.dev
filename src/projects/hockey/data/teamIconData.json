@@ -2,156 +2,187 @@
   {
     "id": 1,
     "src": "/images/projects/hockey/devils.svg",
-    "srcAlt": "devils"
+    "srcAlt": "devils",
+    "logoBgColor": "#CC0000"
   },
   {
     "id": 2,
     "src": "/images/projects/hockey/islanders.svg",
-    "srcAlt": "islanders"
+    "srcAlt": "islanders",
+    "logoBgColor": "#003087"
   },
   {
     "id": 3,
     "src": "/images/projects/hockey/rangers.svg",
-    "srcAlt": "rangers"
+    "srcAlt": "rangers",
+    "logoBgColor": "#0033A0"
   },
   {
     "id": 4,
     "src": "/images/projects/hockey/flyers.svg",
-    "srcAlt": "flyers"
+    "srcAlt": "flyers",
+    "logoBgColor": "#000000"
   },
   {
     "id": 5,
     "src": "/images/projects/hockey/penguins.svg",
-    "srcAlt": "penguins"
+    "srcAlt": "penguins",
+    "logoBgColor": "#111111"
   },
   {
     "id": 6,
     "src": "/images/projects/hockey/bruins.svg",
-    "srcAlt": "bruins"
+    "srcAlt": "bruins",
+    "logoBgColor": "#111111"
   },
   {
     "id": 7,
     "src": "/images/projects/hockey/sabres.svg",
-    "srcAlt": "sabres"
+    "srcAlt": "sabres",
+    "logoBgColor": "#003087"
   },
   {
     "id": 8,
     "src": "/images/projects/hockey/canadians.svg",
-    "srcAlt": "canadians"
+    "srcAlt": "canadians",
+    "logoBgColor": "#001E62"
   },
   {
     "id": 9,
     "src": "/images/projects/hockey/senators.svg",
-    "srcAlt": "senators"
+    "srcAlt": "senators",
+    "logoBgColor": "#1C1A1A"
   },
   {
     "id": 10,
     "src": "/images/projects/hockey/leafs.svg",
-    "srcAlt": "leafs"
+    "srcAlt": "leafs",
+    "logoBgColor": "#00488E"
   },
   {
     "id": 11,
     "src": "/images/projects/hockey/jets.svg",
-    "srcAlt": "jets"
+    "srcAlt": "jets",
+    "logoBgColor": "#002D52"
   },
   {
     "id": 12,
     "src": "/images/projects/hockey/hurricanes.svg",
-    "srcAlt": "hurricanes"
+    "srcAlt": "hurricanes",
+    "logoBgColor": "#fff"
   },
   {
     "id": 13,
     "src": "/images/projects/hockey/panthers.svg",
-    "srcAlt": "panthers"
+    "srcAlt": "panthers",
+    "logoBgColor": "#C20719"
   },
   {
     "id": 14,
     "src": "/images/projects/hockey/lightning.svg",
-    "srcAlt": "lightning"
+    "srcAlt": "lightning",
+    "logoBgColor": "#00205B"
   },
   {
     "id": 15,
     "src": "/images/projects/hockey/capitals.svg",
-    "srcAlt": "capitals"
+    "srcAlt": "capitals",
+    "logoBgColor": "#041E42"
   },
   {
     "id": 16,
     "src": "/images/projects/hockey/blackhawks.svg",
-    "srcAlt": "blackhawks"
+    "srcAlt": "blackhawks",
+    "logoBgColor": "#CE1026"
   },
   {
     "id": 17,
     "src": "/images/projects/hockey/redwings.svg",
-    "srcAlt": "redwings"
+    "srcAlt": "redwings",
+    "logoBgColor": "#C8112E"
   },
   {
     "id": 18,
     "src": "/images/projects/hockey/predators.svg",
-    "srcAlt": "predators"
+    "srcAlt": "predators",
+    "logoBgColor": "#FFB81C"
   },
   {
     "id": 19,
     "src": "/images/projects/hockey/blues.svg",
-    "srcAlt": "blues"
+    "srcAlt": "blues",
+    "logoBgColor": "#002F87"
   },
   {
     "id": 20,
     "src": "/images/projects/hockey/flames.svg",
-    "srcAlt": "flames"
+    "srcAlt": "flames",
+    "logoBgColor": "#C8122E"
   },
   {
     "id": 21,
     "src": "/images/projects/hockey/avalanche.svg",
-    "srcAlt": "avalanche"
+    "srcAlt": "avalanche",
+    "logoBgColor": "#98012E"
   },
   {
     "id": 22,
     "src": "/images/projects/hockey/oilers.svg",
-    "srcAlt": "oilers"
+    "srcAlt": "oilers",
+    "logoBgColor": "#041E41"
   },
   {
     "id": 23,
     "src": "/images/projects/hockey/canuks.svg",
-    "srcAlt": "canuks"
+    "srcAlt": "canuks",
+    "logoBgColor": "#002D55"
   },
   {
     "id": 24,
     "src": "/images/projects/hockey/ducks.svg",
-    "srcAlt": "ducks"
+    "srcAlt": "ducks",
+    "logoBgColor": "#111111"
   },
   {
     "id": 25,
     "src": "/images/projects/hockey/stars.svg",
-    "srcAlt": "stars"
+    "srcAlt": "stars",
+    "logoBgColor": "#000"
   },
   {
     "id": 26,
     "src": "/images/projects/hockey/kings.svg",
-    "srcAlt": "kings"
+    "srcAlt": "kings",
+    "logoBgColor": "#000000"
   },
   {
     "id": 53,
     "src": "/images/projects/hockey/coyotes.svg",
-    "srcAlt": "coyotes"
+    "srcAlt": "coyotes",
+    "logoBgColor": "#0D0D0D"
   },
   {
     "id": 28,
     "src": "/images/projects/hockey/sharks.svg",
-    "srcAlt": "sharks"
+    "srcAlt": "sharks",
+    "logoBgColor": "#00788A"
   },
   {
     "id": 29,
     "src": "/images/projects/hockey/bluejackets.svg",
-    "srcAlt": "bluejackets"
+    "srcAlt": "bluejackets",
+    "logoBgColor": "#003366"
   },
   {
     "id": 30,
     "src": "/images/projects/hockey/wild.svg",
-    "srcAlt": "wild"
+    "srcAlt": "wild",
+    "logoBgColor": "#154734"
   },
   {
     "id": 54,
     "src": "/images/projects/hockey/goldenknights.svg",
-    "srcAlt": "goldenknights"
+    "srcAlt": "goldenknights",
+    "logoBgColor": "#000000"
   }
 ]
