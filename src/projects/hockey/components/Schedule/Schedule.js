@@ -49,50 +49,52 @@ const Schedule = () => {
                     key={game.gamePk}
                   >
                     {game.status.detailedState == "Final" ? (
-                      <Box>
+                      <Box display="inline-block" float="left" p="2">
                         <Badge colorScheme="red">
                           {game.status.detailedState}
                         </Badge>
                       </Box>
                     ) : game.status.detailedState == "Postponed" ??
                       game.status.detailedState == "Scheduled" ? (
-                      <Box>
+                      <Box display="inline-block" float="left" p="2">
                         <Badge colorScheme="yellow">
                           {game.status.detailedState}
                         </Badge>
                       </Box>
                     ) : game.status.detailedState == "In Progress" ? (
-                      <Box>
+                      <Box display="inline-block" float="left" p="2">
                         <Badge colorScheme="green">
                           {game.status.detailedState}
                         </Badge>
                       </Box>
                     ) : game.status.detailedState == "Pre-Game" ? (
-                      <Box>
+                      <Box display="inline-block" float="left" p="2">
                         <Badge colorScheme="yellow">
                           {game.status.detailedState}
                         </Badge>
                       </Box>
                     ) : game.status.detailedState ==
                       "In Progress - Critical" ? (
-                      <Box>
+                      <Box display="inline-block" float="left" p="2">
                         <Badge colorScheme="red">
                           {game.status.detailedState}
                         </Badge>
                       </Box>
                     ) : game.status.detailedState == "Scheduled" ? (
-                      <Box>
+                      <Box display="inline-block" float="left" p="2">
                         <Badge colorScheme="green">
                           {game.status.detailedState}
                         </Badge>
                       </Box>
                     ) : (
-                      <Box>
+                      <Box display="inline-block" float="left" p="2">
                         <Badge colorScheme="red">Status unknown</Badge>
                       </Box>
                     )}
 
-                    <Box>Start time: {game.gameDate}</Box>
+                    <Box display="inline-block" float="right" p="2">
+                      Start time: {game.gameDate}
+                    </Box>
 
                     <Box
                       w={{ base: "100%", md: "50%" }}
@@ -111,6 +113,7 @@ const Schedule = () => {
                         loading="eager"
                         h="50px"
                         w="100%"
+                        fallbackSrc={<SkeletonCircle size="12" />}
                         bg={game.teams.away.team.logoBgColor}
                         p="2"
                       />
