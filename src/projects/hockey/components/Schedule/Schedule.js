@@ -8,6 +8,7 @@ import {
   Skeleton,
   SkeletonCircle,
   Image,
+  Stack,
 } from "@chakra-ui/react"
 import {
   ScheduleProvider,
@@ -52,53 +53,83 @@ const Schedule = () => {
                     align="center"
                     key={game.gamePk}
                   >
-                    {game.status.detailedState == "Final" ? (
-                      <Box display="inline-block" float="left" p="2">
-                        <Badge colorScheme="red">
-                          {game.status.detailedState}
-                        </Badge>
-                      </Box>
-                    ) : game.status.detailedState == "Postponed" ??
-                      game.status.detailedState == "Scheduled" ? (
-                      <Box display="inline-block" float="left" p="2">
-                        <Badge colorScheme="yellow">
-                          {game.status.detailedState}
-                        </Badge>
-                      </Box>
-                    ) : game.status.detailedState == "In Progress" ? (
-                      <Box display="inline-block" float="left" p="2">
-                        <Badge colorScheme="green">
-                          {game.status.detailedState}
-                        </Badge>
-                      </Box>
-                    ) : game.status.detailedState == "Pre-Game" ? (
-                      <Box display="inline-block" float="left" p="2">
-                        <Badge colorScheme="yellow">
-                          {game.status.detailedState}
-                        </Badge>
-                      </Box>
-                    ) : game.status.detailedState ==
-                      "In Progress - Critical" ? (
-                      <Box display="inline-block" float="left" p="2">
-                        <Badge colorScheme="red">
-                          {game.status.detailedState}
-                        </Badge>
-                      </Box>
-                    ) : game.status.detailedState == "Scheduled" ? (
-                      <Box display="inline-block" float="left" p="2">
-                        <Badge colorScheme="green">
-                          {game.status.detailedState}
-                        </Badge>
-                      </Box>
-                    ) : (
-                      <Box display="inline-block" float="left" p="2">
-                        <Badge colorScheme="red">Status unknown</Badge>
-                      </Box>
-                    )}
+                    <Grid templateColumns="repeat(2, 1fr)">
+                      {game.liveData.liveData.linescore.currentPeriodOrdinal ? (
+                        <Box align="left">
+                          {
+                            game.liveData.liveData.linescore
+                              .currentPeriodOrdinal
+                          }
+                          &nbsp;
+                          {
+                            game.liveData.liveData.linescore
+                              .currentPeriodTimeRemaining
+                          }
+                        </Box>
+                      ) : null}
+                      {game.liveData.liveData.linescore.intermissionInfo
+                        .inIntermission ? (
+                        <Box align="right">
+                          <Badge colorScheme="yellow">Intermission</Badge>
+                        </Box>
+                      ) : null}
+                    </Grid>
 
-                    <Box display="inline-block" float="right" p="2">
-                      Start time: {game.gameDate}
-                    </Box>
+                    {/* {game.liveData.liveData.linescore.intermissionInfo
+                      .inIntermission ? (
+                      <Box>in intermission</Box>
+                    ) : (
+                      <Box>in intermission</Box>
+                    )} */}
+
+                    <Grid templateColumns="repeat(2, 1fr)" mb="2">
+                      {game.status.detailedState == "Final" ? (
+                        <Box align="left">
+                          <Badge colorScheme="red">
+                            {game.status.detailedState}
+                          </Badge>
+                        </Box>
+                      ) : game.status.detailedState == "Postponed" ??
+                        game.status.detailedState == "Scheduled" ? (
+                        <Box align="left">
+                          <Badge colorScheme="yellow">
+                            {game.status.detailedState}
+                          </Badge>
+                        </Box>
+                      ) : game.status.detailedState == "In Progress" ? (
+                        <Box align="left">
+                          <Badge colorScheme="green">
+                            {game.status.detailedState}
+                          </Badge>
+                        </Box>
+                      ) : game.status.detailedState == "Pre-Game" ? (
+                        <Box align="left">
+                          <Badge colorScheme="yellow">
+                            {game.status.detailedState}
+                          </Badge>
+                        </Box>
+                      ) : game.status.detailedState ==
+                        "In Progress - Critical" ? (
+                        <Box align="left">
+                          <Badge colorScheme="red">
+                            {game.status.detailedState}
+                          </Badge>
+                        </Box>
+                      ) : game.status.detailedState == "Scheduled" ? (
+                        <Box align="left">
+                          <Badge colorScheme="green">
+                            {game.status.detailedState}
+                          </Badge>
+                        </Box>
+                      ) : (
+                        <Box align="left">
+                          <Badge colorScheme="red">Status unknown</Badge>
+                        </Box>
+                      )}
+
+                      <Box align="right">Start time: {game.gameDate}</Box>
+                    </Grid>
+
                     <Box
                       w={{ base: "100%", md: "50%" }}
                       display={{ base: "block", md: "inline-block" }}
