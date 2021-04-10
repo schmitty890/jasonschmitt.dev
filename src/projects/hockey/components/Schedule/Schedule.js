@@ -61,9 +61,22 @@ const Schedule = () => {
                           {game.status.detailedState}
                         </Badge>
                       </Box>
-                    ) : game.status.detailedState == "In progress" ? (
+                    ) : game.status.detailedState == "In Progress" ? (
                       <Box>
                         <Badge colorScheme="green">
+                          {game.status.detailedState}
+                        </Badge>
+                      </Box>
+                    ) : game.status.detailedState == "Pre-Game" ? (
+                      <Box>
+                        <Badge colorScheme="yellow">
+                          {game.status.detailedState}
+                        </Badge>
+                      </Box>
+                    ) : game.status.detailedState ==
+                      "In Progress - Critical" ? (
+                      <Box>
+                        <Badge colorScheme="red">
                           {game.status.detailedState}
                         </Badge>
                       </Box>
