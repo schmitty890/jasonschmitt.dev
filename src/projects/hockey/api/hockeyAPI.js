@@ -11,8 +11,10 @@ export const getSchedule = async () => {
     const response = await axios.get(`${URL}`)
     console.log(response)
 
-    response.data.dates[0].games.forEach(game => {
+    response.data.dates[0].games.forEach(async game => {
       game.gameDate = dayjs(game.gameDate).fromNow()
+      console.log(game)
+      console.log(game.link)
       // console.log(game.teams)
       // console.log(game.teams.away.team.id)
       // console.log(game.teams.home.team.id)
@@ -30,6 +32,11 @@ export const getSchedule = async () => {
           game.teams.home.team.logoBgColor = team.logoBgColor
         }
       })
+
+      let liveDataURL = `https://statsapi.web.nhl.com${game.link}`
+      const liveData = await axios.get(liveDataURL)
+      console.log(liveData)
+      game.liveData = liveData.data
     })
 
     return response

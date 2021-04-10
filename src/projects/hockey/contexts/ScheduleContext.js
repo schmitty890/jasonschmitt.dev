@@ -25,10 +25,11 @@ class ScheduleProvider extends Component {
     //   console.log(arrayItem)
     // })
     this.setState({ schedule: schedule.data })
-    this.setState({ loading: false })
+
     setTimeout(() => {
+      this.setState({ loading: false })
       console.log(this.state)
-    }, 3000)
+    }, 1000)
   }
 
   render() {

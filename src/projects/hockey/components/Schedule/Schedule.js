@@ -95,7 +95,6 @@ const Schedule = () => {
                     <Box display="inline-block" float="right" p="2">
                       Start time: {game.gameDate}
                     </Box>
-
                     <Box
                       w={{ base: "100%", md: "50%" }}
                       display={{ base: "block", md: "inline-block" }}
@@ -125,7 +124,14 @@ const Schedule = () => {
                           {game.teams.away.leagueRecord.ot}
                         </Text>
                       </Box>
-                      <Box>{game.teams.away.score}</Box>
+                      <Box>Goals &nbsp; {game.teams.away.score}</Box>
+                      <Box>
+                        Shots &nbsp;
+                        {
+                          game.liveData.liveData.boxscore.teams.away.teamStats
+                            .teamSkaterStats.shots
+                        }
+                      </Box>
                     </Box>
                     <Box
                       w={{ base: "100%", md: "50%" }}
@@ -155,7 +161,14 @@ const Schedule = () => {
                           {game.teams.home.leagueRecord.ot}
                         </Text>
                       </Box>
-                      <Box>{game.teams.home.score}</Box>
+                      <Box>Goals &nbsp; {game.teams.home.score}</Box>
+                      <Box>
+                        Shots &nbsp;
+                        {
+                          game.liveData.liveData.boxscore.teams.home.teamStats
+                            .teamSkaterStats.shots
+                        }
+                      </Box>
                     </Box>
                   </Box>
                 ))}
