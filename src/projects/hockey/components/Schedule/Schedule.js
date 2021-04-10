@@ -43,8 +43,12 @@ const Schedule = () => {
                 {schedule.dates[0].games.map(game => (
                   <Box
                     w="100%"
-                    bg="blue.500"
-                    border="1px"
+                    bg="gray.300"
+                    // border="1px"
+
+                    borderRadius="5"
+                    mt="2"
+                    p="2"
                     align="center"
                     key={game.gamePk}
                   >
@@ -98,7 +102,7 @@ const Schedule = () => {
                     <Box
                       w={{ base: "100%", md: "50%" }}
                       display={{ base: "block", md: "inline-block" }}
-                      border="1px"
+                      // border="1px"
                     >
                       {/* <Avatar
                         src={game.teams.away.team.logo}
@@ -132,11 +136,39 @@ const Schedule = () => {
                             .teamSkaterStats.shots
                         }
                       </Box>
+                      <Box>
+                        Faceoff % &nbsp;
+                        {
+                          game.liveData.liveData.boxscore.teams.away.teamStats
+                            .teamSkaterStats.faceOffWinPercentage
+                        }
+                      </Box>
+                      <Box>
+                        Hits &nbsp;
+                        {
+                          game.liveData.liveData.boxscore.teams.away.teamStats
+                            .teamSkaterStats.hits
+                        }
+                      </Box>
+                      <Box>
+                        PIM &nbsp;
+                        {
+                          game.liveData.liveData.boxscore.teams.away.teamStats
+                            .teamSkaterStats.pim
+                        }
+                      </Box>
+                      <Box>
+                        PP% &nbsp;
+                        {
+                          game.liveData.liveData.boxscore.teams.away.teamStats
+                            .teamSkaterStats.powerPlayPercentage
+                        }
+                      </Box>
                     </Box>
                     <Box
                       w={{ base: "100%", md: "50%" }}
                       display={{ base: "block", md: "inline-block" }}
-                      border="1px"
+                      // border="1px"
                     >
                       {/* <Avatar
                         src={game.teams.home.team.logo}
@@ -167,6 +199,34 @@ const Schedule = () => {
                         {
                           game.liveData.liveData.boxscore.teams.home.teamStats
                             .teamSkaterStats.shots
+                        }
+                      </Box>
+                      <Box>
+                        Faceoff % &nbsp;
+                        {
+                          game.liveData.liveData.boxscore.teams.home.teamStats
+                            .teamSkaterStats.faceOffWinPercentage
+                        }
+                      </Box>
+                      <Box>
+                        Hits &nbsp;
+                        {
+                          game.liveData.liveData.boxscore.teams.home.teamStats
+                            .teamSkaterStats.hits
+                        }
+                      </Box>
+                      <Box>
+                        PIM &nbsp;
+                        {
+                          game.liveData.liveData.boxscore.teams.home.teamStats
+                            .teamSkaterStats.pim
+                        }
+                      </Box>
+                      <Box>
+                        PP% &nbsp;
+                        {
+                          game.liveData.liveData.boxscore.teams.home.teamStats
+                            .teamSkaterStats.powerPlayPercentage
                         }
                       </Box>
                     </Box>
