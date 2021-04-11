@@ -9,6 +9,8 @@ import {
   SkeletonCircle,
   Image,
   Stack,
+  Spinner,
+  Switch,
 } from "@chakra-ui/react"
 import {
   ScheduleProvider,
@@ -19,18 +21,30 @@ const Schedule = () => {
   return (
     <ScheduleProvider>
       <ScheduleConsumer>
-        {({ schedule, loading }) => (
+        {({ schedule, loading, toggleMoreData, viewMoreData }) => (
           <Box>
+            <Grid>
+              <Box align="right" p="4">
+                <Text>
+                  View more data &nbsp;
+                  <Switch
+                    size="lg"
+                    colorScheme="red"
+                    name="canEdit"
+                    onChange={toggleMoreData}
+                  />
+                </Text>
+              </Box>
+            </Grid>
             {loading ? (
               <Grid
                 templateColumns={{
                   base: "repeat(1, 1fr)",
-                  md: "repeat(2, 1fr)",
                 }}
                 gap={6}
               >
-                <Box w="100%" h="10" bg="blue.500">
-                  Loading
+                <Box w="100%" align="center" p="4">
+                  <Spinner size="xl" color="red.500" />
                 </Box>
               </Grid>
             ) : (
@@ -74,13 +88,6 @@ const Schedule = () => {
                         </Box>
                       ) : null}
                     </Grid>
-
-                    {/* {game.liveData.liveData.linescore.intermissionInfo
-                      .inIntermission ? (
-                      <Box>in intermission</Box>
-                    ) : (
-                      <Box>in intermission</Box>
-                    )} */}
 
                     <Grid templateColumns="repeat(2, 1fr)" mb="2">
                       {game.status.detailedState == "Final" ? (
@@ -133,14 +140,11 @@ const Schedule = () => {
                     <Box
                       w={{ base: "100%", md: "50%" }}
                       display={{ base: "block", md: "inline-block" }}
-                      // border="1px"
+                      border="1px"
+                      borderRadius="5px"
+                      // m="2"
+                      p="2"
                     >
-                      {/* <Avatar
-                        src={game.teams.away.team.logo}
-                        alt={game.teams.away.team.logoAlt}
-                        loading="eager"
-                        icon={<SkeletonCircle size="12" />}
-                      /> */}
                       <Image
                         src={game.teams.away.team.logo}
                         alt={game.teams.away.team.logoAlt}
@@ -161,68 +165,79 @@ const Schedule = () => {
                       </Box>
 
                       <Box>
+                        <Text fontSize="xs">
+                          {game.liveData.liveData.linescore.teams.away
+                            .powerPlay ? (
+                            <Badge colorScheme="red">On Power Play</Badge>
+                          ) : null}
+                        </Text>
+                      </Box>
+
+                      <Box>
                         <Text display="inline-block">Goals &nbsp; </Text>
                         <Text display="inline-block" fontWeight="extrabold">
                           {game.teams.away.score}
                         </Text>
                       </Box>
-                      <Box>
-                        <Text display="inline-block">Shots &nbsp;</Text>
-                        <Text display="inline-block" fontWeight="extrabold">
-                          {
-                            game.liveData.liveData.boxscore.teams.away.teamStats
-                              .teamSkaterStats.shots
-                          }
-                        </Text>
-                      </Box>
-                      <Box>
-                        <Text display="inline-block">Faceoff % &nbsp;</Text>
-                        <Text display="inline-block" fontWeight="extrabold">
-                          {
-                            game.liveData.liveData.boxscore.teams.away.teamStats
-                              .teamSkaterStats.faceOffWinPercentage
-                          }
-                        </Text>
-                      </Box>
-                      <Box>
-                        <Text display="inline-block">Hits &nbsp;</Text>
-                        <Text display="inline-block" fontWeight="extrabold">
-                          {
-                            game.liveData.liveData.boxscore.teams.away.teamStats
-                              .teamSkaterStats.hits
-                          }
-                        </Text>
-                      </Box>
-                      <Box>
-                        <Text display="inline-block">PIM &nbsp;</Text>
-                        <Text display="inline-block" fontWeight="extrabold">
-                          {
-                            game.liveData.liveData.boxscore.teams.away.teamStats
-                              .teamSkaterStats.pim
-                          }
-                        </Text>
-                      </Box>
-                      <Box>
-                        <Text display="inline-block">PP% &nbsp;</Text>
-                        <Text display="inline-block" fontWeight="extrabold">
-                          {
-                            game.liveData.liveData.boxscore.teams.away.teamStats
-                              .teamSkaterStats.powerPlayPercentage
-                          }
-                        </Text>
-                      </Box>
+                      {viewMoreData ? (
+                        <Box>
+                          <Box>
+                            <Text display="inline-block">Shots &nbsp;</Text>
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.away
+                                  .teamStats.teamSkaterStats.shots
+                              }
+                            </Text>
+                          </Box>
+                          <Box>
+                            <Text display="inline-block">Faceoff % &nbsp;</Text>
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.away
+                                  .teamStats.teamSkaterStats
+                                  .faceOffWinPercentage
+                              }
+                            </Text>
+                          </Box>
+                          <Box>
+                            <Text display="inline-block">Hits &nbsp;</Text>
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.away
+                                  .teamStats.teamSkaterStats.hits
+                              }
+                            </Text>
+                          </Box>
+                          <Box>
+                            <Text display="inline-block">PIM &nbsp;</Text>
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.away
+                                  .teamStats.teamSkaterStats.pim
+                              }
+                            </Text>
+                          </Box>
+                          <Box>
+                            <Text display="inline-block">PP% &nbsp;</Text>
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.away
+                                  .teamStats.teamSkaterStats.powerPlayPercentage
+                              }
+                            </Text>
+                          </Box>
+                        </Box>
+                      ) : null}
                     </Box>
                     <Box
                       w={{ base: "100%", md: "50%" }}
                       display={{ base: "block", md: "inline-block" }}
-                      // border="1px"
+                      border="1px"
+                      borderRadius="5px"
+                      // m="2"
+                      p="2"
                     >
-                      {/* <Avatar
-                        src={game.teams.home.team.logo}
-                        alt={game.teams.home.team.logoAlt}
-                        loading="eager"
-                        icon={<SkeletonCircle size="12" />}
-                      /> */}
                       <Image
                         src={game.teams.home.team.logo}
                         alt={game.teams.home.team.logoAlt}
@@ -240,58 +255,80 @@ const Schedule = () => {
                           {game.teams.home.leagueRecord.ot}
                         </Text>
                       </Box>
+
+                      <Box>
+                        <Text fontSize="xs">
+                          {game.liveData.liveData.linescore.teams.home
+                            .powerPlay ? (
+                            <Badge colorScheme="red">On Power Play</Badge>
+                          ) : null}
+                        </Text>
+                      </Box>
                       <Box>
                         <Text display="inline-block">Goals &nbsp;</Text>
                         <Text display="inline-block" fontWeight="extrabold">
                           {game.teams.home.score}
                         </Text>
                       </Box>
-                      <Box>
-                        <Text display="inline-block">Shots &nbsp;</Text>
-                        <Text display="inline-block" fontWeight="extrabold">
-                          {
-                            game.liveData.liveData.boxscore.teams.home.teamStats
-                              .teamSkaterStats.shots
-                          }
-                        </Text>
-                      </Box>
-                      <Box>
-                        Faceoff % &nbsp;
-                        <Text display="inline-block" fontWeight="extrabold">
-                          {
-                            game.liveData.liveData.boxscore.teams.home.teamStats
-                              .teamSkaterStats.faceOffWinPercentage
-                          }
-                        </Text>
-                      </Box>
-                      <Box>
-                        Hits &nbsp;
-                        <Text display="inline-block" fontWeight="extrabold">
-                          {
-                            game.liveData.liveData.boxscore.teams.home.teamStats
-                              .teamSkaterStats.hits
-                          }
-                        </Text>
-                      </Box>
-                      <Box>
-                        PIM &nbsp;
-                        <Text display="inline-block" fontWeight="extrabold">
-                          {
-                            game.liveData.liveData.boxscore.teams.home.teamStats
-                              .teamSkaterStats.pim
-                          }
-                        </Text>
-                      </Box>
-                      <Box>
-                        PP% &nbsp;
-                        <Text display="inline-block" fontWeight="extrabold">
-                          {
-                            game.liveData.liveData.boxscore.teams.home.teamStats
-                              .teamSkaterStats.powerPlayPercentage
-                          }
-                        </Text>
-                      </Box>
+                      {viewMoreData ? (
+                        <Box>
+                          <Box>
+                            <Text display="inline-block">Shots &nbsp;</Text>
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.home
+                                  .teamStats.teamSkaterStats.shots
+                              }
+                            </Text>
+                          </Box>
+                          <Box>
+                            Faceoff % &nbsp;
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.home
+                                  .teamStats.teamSkaterStats
+                                  .faceOffWinPercentage
+                              }
+                            </Text>
+                          </Box>
+                          <Box>
+                            Hits &nbsp;
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.home
+                                  .teamStats.teamSkaterStats.hits
+                              }
+                            </Text>
+                          </Box>
+                          <Box>
+                            PIM &nbsp;
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.home
+                                  .teamStats.teamSkaterStats.pim
+                              }
+                            </Text>
+                          </Box>
+                          <Box>
+                            PP% &nbsp;
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.home
+                                  .teamStats.teamSkaterStats.powerPlayPercentage
+                              }
+                            </Text>
+                          </Box>
+                        </Box>
+                      ) : null}
                     </Box>
+                    {viewMoreData ? (
+                      <Box>
+                        {
+                          game.liveData.liveData.plays.currentPlay.result
+                            .description
+                        }
+                      </Box>
+                    ) : null}
                   </Box>
                 ))}
               </Grid>
