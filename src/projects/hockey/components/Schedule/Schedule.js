@@ -105,8 +105,19 @@ const Schedule = () => {
                             {game.status.detailedState}
                           </Badge>
                         </Box>
-                      ) : game.status.detailedState == "Postponed" ??
-                        game.status.detailedState == "Scheduled" ? (
+                      ) : game.status.detailedState == "Game Over" ? (
+                        <Box align="left">
+                          <Badge colorScheme="red">
+                            {game.status.detailedState}
+                          </Badge>
+                        </Box>
+                      ) : game.status.detailedState == "Scheduled" ? (
+                        <Box align="left">
+                          <Badge colorScheme="yellow">
+                            {game.status.detailedState}
+                          </Badge>
+                        </Box>
+                      ) : game.status.detailedState == "Postponed" ? (
                         <Box align="left">
                           <Badge colorScheme="yellow">
                             {game.status.detailedState}
