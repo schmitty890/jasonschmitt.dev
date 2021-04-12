@@ -10,6 +10,7 @@ class ScheduleProvider extends Component {
   state = {
     schedule: null,
     viewMoreData: false,
+    liveDataLoading: true,
     loading: true,
   }
 
@@ -30,6 +31,8 @@ class ScheduleProvider extends Component {
 
     setTimeout(() => {
       this.setState({ loading: false })
+      this.setState({ liveDataLoading: false })
+
       console.log(this.state)
     }, 500)
   }
@@ -37,7 +40,7 @@ class ScheduleProvider extends Component {
   getDataAgain = async () => {
     setInterval(() => {
       console.log("get new data")
-      this.setState({ loading: true })
+      this.setState({ liveDataLoading: true })
       this.getData()
     }, 60000)
   }
@@ -54,6 +57,7 @@ class ScheduleProvider extends Component {
         value={{
           schedule: this.state.schedule,
           viewMoreData: this.state.viewMoreData,
+          liveDataLoading: this.state.liveDataLoading,
           loading: this.state.loading,
           toggleMoreData: this.toggleMoreData,
         }}

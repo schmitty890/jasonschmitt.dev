@@ -38,7 +38,6 @@ export const getSchedule = async () => {
       console.log(liveData)
       game.liveData = liveData.data
     })
-
     return response
   } catch (error) {
     console.log(error) // catches both errors
