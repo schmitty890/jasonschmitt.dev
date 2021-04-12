@@ -488,12 +488,16 @@ const Schedule = () => {
                             top="3px"
                           />
                         ) : (
-                          <Text>
-                            {
-                              game.liveData.liveData.plays.currentPlay.result
-                                .description
-                            }
-                          </Text>
+                          <Box>
+                            {game.liveData.liveData.plays.currentPlay ? (
+                              <Text>
+                                {
+                                  game.liveData.liveData.plays.currentPlay
+                                    .result.description
+                                }
+                              </Text>
+                            ) : null}
+                          </Box>
                         )}
                       </Box>
                     ) : null}
