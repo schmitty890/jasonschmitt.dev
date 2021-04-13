@@ -20,6 +20,8 @@ import {
   Td,
   Progress,
 } from "@chakra-ui/react"
+import Header from "./Header"
+import Loading from "./Loading"
 import {
   ScheduleProvider,
   ScheduleConsumer,
@@ -37,31 +39,16 @@ const Schedule = () => {
           viewMoreData,
         }) => (
           <Box>
-            <Grid>
-              <Box align="right" p="4">
-                <Text>
-                  View more data &nbsp;
-                  <Switch
-                    size="lg"
-                    colorScheme="red"
-                    name="canEdit"
-                    onChange={toggleMoreData}
-                  />
-                </Text>
-              </Box>
-            </Grid>
+            {/* START TOP SECTION */}
+            <Header />
+            {/* END TOP SECTION */}
+
             {loading ? (
-              <Grid
-                templateColumns={{
-                  base: "repeat(1, 1fr)",
-                }}
-                gap={6}
-              >
-                <Box w="100%" align="center" p="4">
-                  <Spinner size="xl" color="red.500" />
-                </Box>
-              </Grid>
+              /* START LOADING SCREEN  */
+              <Loading />
             ) : (
+              /* END LOADING SCREEN  */
+              /* START MAIN GRID  */
               <Grid
                 templateColumns={{
                   base: "repeat(1, 1fr)",
@@ -80,6 +67,7 @@ const Schedule = () => {
                     align="center"
                     key={game.gamePk}
                   >
+                    {/* START INDIVIDUAL GAME TOP SECTION */}
                     {liveDataLoading ? null : (
                       <Grid templateColumns="repeat(2, 1fr)">
                         {game.liveData.liveData.linescore
@@ -104,7 +92,9 @@ const Schedule = () => {
                         ) : null}
                       </Grid>
                     )}
+                    {/* END INDIVIDUAL GAME TOP SECTION */}
 
+                    {/* START INDIVIDUAL GAME 2ND TOP SECTION */}
                     <Grid templateColumns="repeat(2, 1fr)" mb="2">
                       {game.status.detailedState == "Final" ? (
                         <Box align="left">
@@ -163,7 +153,9 @@ const Schedule = () => {
 
                       <Box align="right">Start time: {game.gameDate}</Box>
                     </Grid>
+                    {/* END INDIVIDUAL GAME 2ND TOP SECTION */}
 
+                    {/* START GAME SECTION */}
                     <Box
                       w={{ base: "100%", md: "50%" }}
                       display={{ base: "block", md: "inline-block" }}
@@ -346,13 +338,6 @@ const Schedule = () => {
                           </Box>
                           {game.status.detailedState == "Final" ? null : (
                             <Box>
-                              <Grid
-                                templateColumns={{
-                                  base: "repeat(1, 1fr)",
-                                }}
-                              >
-                                <Box>On Ice</Box>
-                              </Grid>
                               <Grid>
                                 {/* <Box>
                               {game.teams.away.team.players ? (
@@ -471,127 +456,147 @@ const Schedule = () => {
                                 <Box>no players here</Box>
                               )}
                             </Box> */}
-
-                                <Box>
-                                  {game.teams.away.team.onIcePlayers ? (
-                                    <Table size="sm">
-                                      <Thead>
-                                        <Tr>
-                                          <Th>#</Th>
-                                          <Th>Name</Th>
-                                          <Th
-                                            display={{
-                                              base: "none",
-                                              lg: "table-cell",
-                                            }}
-                                          >
-                                            POS
-                                          </Th>
-                                          <Th>Stamina</Th>
-                                          <Th>Shift length</Th>
-                                        </Tr>
-                                      </Thead>
-                                      <Tbody>
-                                        {game.teams.away.team.onIcePlayers.map(
-                                          (player, index) => (
-                                            <Tr key={index}>
-                                              <Td>
-                                                {
-                                                  player.data.people[0]
-                                                    .primaryNumber
-                                                }
-                                              </Td>
-                                              <Td>
-                                                {player.data.people[0].fullName}
-                                                {player.data.people[0]
-                                                  .alternateCaptain ? (
-                                                  <Badge colorScheme="green">
-                                                    A
-                                                  </Badge>
-                                                ) : null}
-                                                {player.data.people[0]
-                                                  .captain ? (
-                                                  <Badge colorScheme="green">
-                                                    C
-                                                  </Badge>
-                                                ) : null}
-                                                {player.data.people[0]
-                                                  .rookie ? (
-                                                  <Badge colorScheme="blue">
-                                                    Rookie
-                                                  </Badge>
-                                                ) : null}
-                                              </Td>
-                                              <Td
-                                                display={{
-                                                  base: "none",
-                                                  lg: "table-cell",
-                                                }}
-                                              >
-                                                {
-                                                  player.data.people[0]
-                                                    .primaryPosition
-                                                    .abbreviation
-                                                }
-                                              </Td>
-                                              <Td>
-                                                {player.stamina > 70 ? (
-                                                  <Progress
-                                                    value={player.stamina}
-                                                    size="xs"
-                                                    colorScheme="green"
-                                                  />
-                                                ) : player.stamina > 40 ? (
-                                                  <Progress
-                                                    value={player.stamina}
-                                                    size="xs"
-                                                    colorScheme="yellow"
-                                                  />
-                                                ) : (
-                                                  <Progress
-                                                    value={player.stamina}
-                                                    size="xs"
-                                                    colorScheme="red"
-                                                  />
-                                                )}
-                                              </Td>
-                                              <Td>
-                                                {player.shiftDuration <= 50 ? (
-                                                  <Progress
-                                                    value={player.shiftDuration}
-                                                    size="xs"
-                                                    colorScheme="green"
-                                                  />
-                                                ) : player.shiftDuration <=
-                                                  80 ? (
-                                                  <Progress
-                                                    value={player.shiftDuration}
-                                                    size="xs"
-                                                    colorScheme="yellow"
-                                                  />
-                                                ) : (
-                                                  <Progress
-                                                    value={player.shiftDuration}
-                                                    size="xs"
-                                                    colorScheme="red"
-                                                  />
-                                                )}
-                                              </Td>
-                                            </Tr>
-                                          )
-                                        )}
-                                      </Tbody>
-                                    </Table>
-                                  ) : (
-                                    <Box>Refreshing players</Box>
-                                  )}
-                                </Box>
+                                {game.teams.away.team.onIcePlayers >= 1 ? (
+                                  <Box>
+                                    <Grid
+                                      templateColumns={{
+                                        base: "repeat(1, 1fr)",
+                                      }}
+                                    >
+                                      <Box>On Ice</Box>
+                                    </Grid>
+                                    {game.teams.away.team.onIcePlayers ? (
+                                      <Table size="sm">
+                                        <Thead>
+                                          <Tr>
+                                            <Th>#</Th>
+                                            <Th>Name</Th>
+                                            <Th
+                                              display={{
+                                                base: "none",
+                                                lg: "table-cell",
+                                              }}
+                                            >
+                                              POS
+                                            </Th>
+                                            <Th>Stamina</Th>
+                                            <Th>Shift length</Th>
+                                          </Tr>
+                                        </Thead>
+                                        <Tbody>
+                                          {game.teams.away.team.onIcePlayers.map(
+                                            (player, index) => (
+                                              <Tr key={index}>
+                                                <Td>
+                                                  {
+                                                    player.data.people[0]
+                                                      .primaryNumber
+                                                  }
+                                                </Td>
+                                                <Td>
+                                                  {
+                                                    player.data.people[0]
+                                                      .fullName
+                                                  }
+                                                  {player.data.people[0]
+                                                    .alternateCaptain ? (
+                                                    <Badge colorScheme="green">
+                                                      A
+                                                    </Badge>
+                                                  ) : null}
+                                                  {player.data.people[0]
+                                                    .captain ? (
+                                                    <Badge colorScheme="green">
+                                                      C
+                                                    </Badge>
+                                                  ) : null}
+                                                  {player.data.people[0]
+                                                    .rookie ? (
+                                                    <Badge colorScheme="blue">
+                                                      Rookie
+                                                    </Badge>
+                                                  ) : null}
+                                                </Td>
+                                                <Td
+                                                  display={{
+                                                    base: "none",
+                                                    lg: "table-cell",
+                                                  }}
+                                                >
+                                                  {
+                                                    player.data.people[0]
+                                                      .primaryPosition
+                                                      .abbreviation
+                                                  }
+                                                </Td>
+                                                <Td>
+                                                  {player.stamina > 70 ? (
+                                                    <Progress
+                                                      value={player.stamina}
+                                                      size="xs"
+                                                      colorScheme="green"
+                                                    />
+                                                  ) : player.stamina > 40 ? (
+                                                    <Progress
+                                                      value={player.stamina}
+                                                      size="xs"
+                                                      colorScheme="yellow"
+                                                    />
+                                                  ) : (
+                                                    <Progress
+                                                      value={player.stamina}
+                                                      size="xs"
+                                                      colorScheme="red"
+                                                    />
+                                                  )}
+                                                </Td>
+                                                <Td>
+                                                  {player.shiftDuration <=
+                                                  50 ? (
+                                                    <Progress
+                                                      value={
+                                                        player.shiftDuration
+                                                      }
+                                                      size="xs"
+                                                      colorScheme="green"
+                                                    />
+                                                  ) : player.shiftDuration <=
+                                                    80 ? (
+                                                    <Progress
+                                                      value={
+                                                        player.shiftDuration
+                                                      }
+                                                      size="xs"
+                                                      colorScheme="yellow"
+                                                    />
+                                                  ) : (
+                                                    <Progress
+                                                      value={
+                                                        player.shiftDuration
+                                                      }
+                                                      size="xs"
+                                                      colorScheme="red"
+                                                    />
+                                                  )}
+                                                </Td>
+                                              </Tr>
+                                            )
+                                          )}
+                                        </Tbody>
+                                      </Table>
+                                    ) : (
+                                      <Box>Refreshing players</Box>
+                                    )}
+                                  </Box>
+                                ) : null}
                               </Grid>
                             </Box>
                           )}
                         </Box>
                       ) : null}
                     </Box>
+                    {/* END GAME SECTION */}
+                    {/* START GAME SECTION */}
                     <Box
                       w={{ base: "100%", md: "50%" }}
                       display={{ base: "block", md: "inline-block" }}
@@ -773,13 +778,6 @@ const Schedule = () => {
                           </Box>
                           {game.status.detailedState == "Final" ? null : (
                             <Box>
-                              <Grid
-                                templateColumns={{
-                                  base: "repeat(1, 1fr)",
-                                }}
-                              >
-                                <Box>On Ice</Box>
-                              </Grid>
                               <Grid>
                                 {/* <Box>
                                 {game.teams.home.team.players ? (
@@ -898,127 +896,149 @@ const Schedule = () => {
                                   <Box>no players here</Box>
                                 )}
                               </Box> */}
-                                <Box>
-                                  {game.teams.home.team.onIcePlayers ? (
-                                    <Table size="sm">
-                                      <Thead>
-                                        <Tr>
-                                          <Th>#</Th>
-                                          <Th>Name</Th>
-                                          <Th
-                                            display={{
-                                              base: "none",
-                                              lg: "table-cell",
-                                            }}
-                                          >
-                                            POS
-                                          </Th>
-                                          <Th>Stamina</Th>
-                                          <Th>Shift length</Th>
-                                        </Tr>
-                                      </Thead>
-                                      <Tbody>
-                                        {game.teams.home.team.onIcePlayers.map(
-                                          (player, index) => (
-                                            <Tr key={index}>
-                                              <Td>
-                                                {
-                                                  player.data.people[0]
-                                                    .primaryNumber
-                                                }
-                                              </Td>
-                                              <Td>
-                                                {player.data.people[0].fullName}
-                                                {player.data.people[0]
-                                                  .alternateCaptain ? (
-                                                  <Badge colorScheme="green">
-                                                    A
-                                                  </Badge>
-                                                ) : null}
-                                                {player.data.people[0]
-                                                  .captain ? (
-                                                  <Badge colorScheme="green">
-                                                    C
-                                                  </Badge>
-                                                ) : null}
-                                                {player.data.people[0]
-                                                  .rookie ? (
-                                                  <Badge colorScheme="blue">
-                                                    Rookie
-                                                  </Badge>
-                                                ) : null}
-                                              </Td>
-                                              <Td
-                                                display={{
-                                                  base: "none",
-                                                  lg: "table-cell",
-                                                }}
-                                              >
-                                                {
-                                                  player.data.people[0]
-                                                    .primaryPosition
-                                                    .abbreviation
-                                                }
-                                              </Td>
-                                              <Td>
-                                                {player.stamina > 70 ? (
-                                                  <Progress
-                                                    value={player.stamina}
-                                                    size="xs"
-                                                    colorScheme="green"
-                                                  />
-                                                ) : player.stamina > 40 ? (
-                                                  <Progress
-                                                    value={player.stamina}
-                                                    size="xs"
-                                                    colorScheme="yellow"
-                                                  />
-                                                ) : (
-                                                  <Progress
-                                                    value={player.stamina}
-                                                    size="xs"
-                                                    colorScheme="red"
-                                                  />
-                                                )}
-                                              </Td>
+                                {game.teams.home.team.onIcePlayers >= 1 ? (
+                                  <Box>
+                                    <Grid
+                                      templateColumns={{
+                                        base: "repeat(1, 1fr)",
+                                      }}
+                                    >
+                                      <Box>On Ice</Box>
+                                    </Grid>
+                                    {game.teams.home.team.onIcePlayers ? (
+                                      <Table size="sm">
+                                        <Thead>
+                                          <Tr>
+                                            <Th>#</Th>
+                                            <Th>Name</Th>
+                                            <Th
+                                              display={{
+                                                base: "none",
+                                                lg: "table-cell",
+                                              }}
+                                            >
+                                              POS
+                                            </Th>
+                                            <Th>Stamina</Th>
+                                            <Th>Shift length</Th>
+                                          </Tr>
+                                        </Thead>
+                                        <Tbody>
+                                          {game.teams.home.team.onIcePlayers.map(
+                                            (player, index) => (
+                                              <Tr key={index}>
+                                                <Td>
+                                                  {
+                                                    player.data.people[0]
+                                                      .primaryNumber
+                                                  }
+                                                </Td>
+                                                <Td>
+                                                  {
+                                                    player.data.people[0]
+                                                      .fullName
+                                                  }
+                                                  {player.data.people[0]
+                                                    .alternateCaptain ? (
+                                                    <Badge colorScheme="green">
+                                                      A
+                                                    </Badge>
+                                                  ) : null}
+                                                  {player.data.people[0]
+                                                    .captain ? (
+                                                    <Badge colorScheme="green">
+                                                      C
+                                                    </Badge>
+                                                  ) : null}
+                                                  {player.data.people[0]
+                                                    .rookie ? (
+                                                    <Badge colorScheme="blue">
+                                                      Rookie
+                                                    </Badge>
+                                                  ) : null}
+                                                </Td>
+                                                <Td
+                                                  display={{
+                                                    base: "none",
+                                                    lg: "table-cell",
+                                                  }}
+                                                >
+                                                  {
+                                                    player.data.people[0]
+                                                      .primaryPosition
+                                                      .abbreviation
+                                                  }
+                                                </Td>
+                                                <Td>
+                                                  {player.stamina > 70 ? (
+                                                    <Progress
+                                                      value={player.stamina}
+                                                      size="xs"
+                                                      colorScheme="green"
+                                                    />
+                                                  ) : player.stamina > 40 ? (
+                                                    <Progress
+                                                      value={player.stamina}
+                                                      size="xs"
+                                                      colorScheme="yellow"
+                                                    />
+                                                  ) : (
+                                                    <Progress
+                                                      value={player.stamina}
+                                                      size="xs"
+                                                      colorScheme="red"
+                                                    />
+                                                  )}
+                                                </Td>
 
-                                              <Td>
-                                                {player.shiftDuration <= 50 ? (
-                                                  <Progress
-                                                    value={player.shiftDuration}
-                                                    size="xs"
-                                                    colorScheme="green"
-                                                  />
-                                                ) : player.shiftDuration <=
-                                                  80 ? (
-                                                  <Progress
-                                                    value={player.shiftDuration}
-                                                    size="xs"
-                                                    colorScheme="yellow"
-                                                  />
-                                                ) : (
-                                                  <Progress
-                                                    value={player.shiftDuration}
-                                                    size="xs"
-                                                    colorScheme="red"
-                                                  />
-                                                )}
-                                              </Td>
-                                            </Tr>
-                                          )
-                                        )}
-                                      </Tbody>
-                                    </Table>
-                                  ) : (
-                                    <Box>Refreshing players</Box>
-                                  )}
-                                </Box>
+                                                <Td>
+                                                  {player.shiftDuration <=
+                                                  50 ? (
+                                                    <Progress
+                                                      value={
+                                                        player.shiftDuration
+                                                      }
+                                                      size="xs"
+                                                      colorScheme="green"
+                                                    />
+                                                  ) : player.shiftDuration <=
+                                                    80 ? (
+                                                    <Progress
+                                                      value={
+                                                        player.shiftDuration
+                                                      }
+                                                      size="xs"
+                                                      colorScheme="yellow"
+                                                    />
+                                                  ) : (
+                                                    <Progress
+                                                      value={
+                                                        player.shiftDuration
+                                                      }
+                                                      size="xs"
+                                                      colorScheme="red"
+                                                    />
+                                                  )}
+                                                </Td>
+                                              </Tr>
+                                            )
+                                          )}
+                                        </Tbody>
+                                      </Table>
+                                    ) : (
+                                      <Box>Refreshing players</Box>
+                                    )}
+                                  </Box>
+                                ) : null}
                               </Grid>
                             </Box>
                           )}
                         </Box>
                       ) : null}
                     </Box>
+                    {/* START GAME SECTION */}
+
+                    {/* START LIVE DATA SECTION */}
                     {viewMoreData ? (
                       <Box>
                         {liveDataLoading ? (
@@ -1043,9 +1063,11 @@ const Schedule = () => {
                         )}
                       </Box>
                     ) : null}
+                    {/* END LIVE DATA SECTION */}
                   </Box>
                 ))}
               </Grid>
+              /* END MAIN GRID  */
             )}
           </Box>
         )}
