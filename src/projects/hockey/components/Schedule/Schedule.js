@@ -456,7 +456,7 @@ const Schedule = () => {
                                 <Box>no players here</Box>
                               )}
                             </Box> */}
-                                {game.teams.away.team.onIcePlayers >= 1 ? (
+                                {game.teams.away.team.onIcePlayers ? (
                                   <Box>
                                     <Grid
                                       templateColumns={{
@@ -896,7 +896,7 @@ const Schedule = () => {
                                   <Box>no players here</Box>
                                 )}
                               </Box> */}
-                                {game.teams.home.team.onIcePlayers >= 1 ? (
+                                {game.teams.home.team.onIcePlayers ? (
                                   <Box>
                                     <Grid
                                       templateColumns={{
