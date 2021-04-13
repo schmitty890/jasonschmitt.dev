@@ -11,6 +11,14 @@ import {
   Stack,
   Spinner,
   Switch,
+  Table,
+  Th,
+  Tr,
+  Tbody,
+  Tfoot,
+  Thead,
+  Td,
+  Progress,
 } from "@chakra-ui/react"
 import {
   ScheduleProvider,
@@ -57,7 +65,6 @@ const Schedule = () => {
               <Grid
                 templateColumns={{
                   base: "repeat(1, 1fr)",
-                  md: "repeat(2, 1fr)",
                 }}
                 gap={6}
               >
@@ -176,13 +183,33 @@ const Schedule = () => {
                         p="2"
                       />
                       <Box>{game.teams.away.team.name}</Box>
-                      <Box>
-                        <Text fontSize="xs">
-                          {game.teams.away.leagueRecord.wins}-
-                          {game.teams.away.leagueRecord.losses}-
-                          {game.teams.away.leagueRecord.ot}
-                        </Text>
-                      </Box>
+                      {viewMoreData ? (
+                        <Box>
+                          {liveDataLoading ? null : (
+                            <Box>
+                              {game.liveData.liveData.linescore.teams.away
+                                .powerPlay ? null : (
+                                <Text fontSize="xs">
+                                  Coach&nbsp;
+                                  {
+                                    game.liveData.liveData.boxscore.teams.away
+                                      .coaches[0].person.fullName
+                                  }
+                                </Text>
+                              )}
+                            </Box>
+                          )}
+                        </Box>
+                      ) : null}
+                      {viewMoreData ? (
+                        <Box>
+                          <Text fontSize="xs">
+                            {game.teams.away.leagueRecord.wins}-
+                            {game.teams.away.leagueRecord.losses}-
+                            {game.teams.away.leagueRecord.ot}
+                          </Text>
+                        </Box>
+                      ) : null}
 
                       <Box>
                         {liveDataLoading ? null : (
@@ -196,7 +223,9 @@ const Schedule = () => {
                       </Box>
 
                       <Box>
-                        <Text display="inline-block">Goals &nbsp; </Text>
+                        {viewMoreData ? (
+                          <Text display="inline-block">Goals &nbsp;</Text>
+                        ) : null}
                         <Text display="inline-block" fontWeight="extrabold">
                           {game.teams.away.score}
                         </Text>
@@ -315,6 +344,251 @@ const Schedule = () => {
                               </Text>
                             )}
                           </Box>
+                          {game.status.detailedState == "Final" ? null : (
+                            <Box>
+                              <Grid
+                                templateColumns={{
+                                  base: "repeat(1, 1fr)",
+                                }}
+                              >
+                                <Box>On Ice</Box>
+                              </Grid>
+                              <Grid>
+                                {/* <Box>
+                              {game.teams.away.team.players ? (
+                                <Table size="sm">
+                                  <Thead>
+                                    <Tr>
+                                      <Th>#</Th>
+                                      <Th>Name</Th>
+                                      <Th>POS</Th>
+                                      <Th>Age</Th>
+                                    </Tr>
+                                  </Thead>
+                                  <Tbody>
+                                    {game.teams.away.team.players.map(
+                                      (player, index) => (
+                                        <Tr key={index}>
+                                          <Td>
+                                            {
+                                              player.data.people[0]
+                                                .primaryNumber
+                                            }
+                                          </Td>
+                                          <Td>
+                                            {player.data.people[0].fullName}
+                                            {player.data.people[0]
+                                              .alternateCaptain ? (
+                                              <Badge colorScheme="green">
+                                                A
+                                              </Badge>
+                                            ) : null}
+                                            {player.data.people[0].captain ? (
+                                              <Badge colorScheme="green">
+                                                C
+                                              </Badge>
+                                            ) : null}
+                                            {player.data.people[0].rookie ? (
+                                              <Badge colorScheme="blue">
+                                                Rookie
+                                              </Badge>
+                                            ) : null}
+                                          </Td>
+                                          <Td>
+                                            {
+                                              player.data.people[0]
+                                                .primaryPosition.abbreviation
+                                            }
+                                          </Td>
+                                          <Td>
+                                            {player.data.people[0].currentAge}
+                                          </Td>
+                                        </Tr>
+                                      )
+                                    )}
+                                  </Tbody>
+                                </Table>
+                              ) : (
+                                <Box>no players here</Box>
+                              )}
+                            </Box> */}
+
+                                {/* <Box>
+                              {game.teams.away.team.goalies ? (
+                                <Table size="sm">
+                                  <Thead>
+                                    <Tr>
+                                      <Th>#</Th>
+                                      <Th>GOALIE Name</Th>
+                                      <Th>POS</Th>
+                                      <Th>Age</Th>
+                                    </Tr>
+                                  </Thead>
+                                  <Tbody>
+                                    {game.teams.away.team.goalies.map(
+                                      (goalie, index) => (
+                                        <Tr key={index}>
+                                          <Td>
+                                            {
+                                              goalie.data.people[0]
+                                                .primaryNumber
+                                            }
+                                          </Td>
+                                          <Td>
+                                            {goalie.data.people[0].fullName}
+                                            {goalie.data.people[0]
+                                              .alternateCaptain ? (
+                                              <Badge colorScheme="green">
+                                                A
+                                              </Badge>
+                                            ) : null}
+                                            {goalie.data.people[0].captain ? (
+                                              <Badge colorScheme="green">
+                                                C
+                                              </Badge>
+                                            ) : null}
+                                            {goalie.data.people[0].rookie ? (
+                                              <Badge colorScheme="blue">
+                                                Rookie
+                                              </Badge>
+                                            ) : null}
+                                          </Td>
+                                          <Td>
+                                            {
+                                              goalie.data.people[0]
+                                                .primaryPosition.abbreviation
+                                            }
+                                          </Td>
+                                          <Td>
+                                            {goalie.data.people[0].currentAge}
+                                          </Td>
+                                        </Tr>
+                                      )
+                                    )}
+                                  </Tbody>
+                                </Table>
+                              ) : (
+                                <Box>no players here</Box>
+                              )}
+                            </Box> */}
+
+                                <Box>
+                                  {game.teams.away.team.onIcePlayers ? (
+                                    <Table size="sm">
+                                      <Thead>
+                                        <Tr>
+                                          <Th>#</Th>
+                                          <Th>Name</Th>
+                                          <Th
+                                            display={{
+                                              base: "none",
+                                              lg: "table-cell",
+                                            }}
+                                          >
+                                            POS
+                                          </Th>
+                                          <Th>Stamina</Th>
+                                          <Th>Shift length</Th>
+                                        </Tr>
+                                      </Thead>
+                                      <Tbody>
+                                        {game.teams.away.team.onIcePlayers.map(
+                                          (player, index) => (
+                                            <Tr key={index}>
+                                              <Td>
+                                                {
+                                                  player.data.people[0]
+                                                    .primaryNumber
+                                                }
+                                              </Td>
+                                              <Td>
+                                                {player.data.people[0].fullName}
+                                                {player.data.people[0]
+                                                  .alternateCaptain ? (
+                                                  <Badge colorScheme="green">
+                                                    A
+                                                  </Badge>
+                                                ) : null}
+                                                {player.data.people[0]
+                                                  .captain ? (
+                                                  <Badge colorScheme="green">
+                                                    C
+                                                  </Badge>
+                                                ) : null}
+                                                {player.data.people[0]
+                                                  .rookie ? (
+                                                  <Badge colorScheme="blue">
+                                                    Rookie
+                                                  </Badge>
+                                                ) : null}
+                                              </Td>
+                                              <Td
+                                                display={{
+                                                  base: "none",
+                                                  lg: "table-cell",
+                                                }}
+                                              >
+                                                {
+                                                  player.data.people[0]
+                                                    .primaryPosition
+                                                    .abbreviation
+                                                }
+                                              </Td>
+                                              <Td>
+                                                {player.stamina > 70 ? (
+                                                  <Progress
+                                                    value={player.stamina}
+                                                    size="xs"
+                                                    colorScheme="green"
+                                                  />
+                                                ) : player.stamina > 40 ? (
+                                                  <Progress
+                                                    value={player.stamina}
+                                                    size="xs"
+                                                    colorScheme="yellow"
+                                                  />
+                                                ) : (
+                                                  <Progress
+                                                    value={player.stamina}
+                                                    size="xs"
+                                                    colorScheme="red"
+                                                  />
+                                                )}
+                                              </Td>
+                                              <Td>
+                                                {player.shiftDuration <= 50 ? (
+                                                  <Progress
+                                                    value={player.shiftDuration}
+                                                    size="xs"
+                                                    colorScheme="green"
+                                                  />
+                                                ) : player.shiftDuration <=
+                                                  80 ? (
+                                                  <Progress
+                                                    value={player.shiftDuration}
+                                                    size="xs"
+                                                    colorScheme="yellow"
+                                                  />
+                                                ) : (
+                                                  <Progress
+                                                    value={player.shiftDuration}
+                                                    size="xs"
+                                                    colorScheme="red"
+                                                  />
+                                                )}
+                                              </Td>
+                                            </Tr>
+                                          )
+                                        )}
+                                      </Tbody>
+                                    </Table>
+                                  ) : (
+                                    <Box>Refreshing players</Box>
+                                  )}
+                                </Box>
+                              </Grid>
+                            </Box>
+                          )}
                         </Box>
                       ) : null}
                     </Box>
@@ -336,13 +610,33 @@ const Schedule = () => {
                         p="2"
                       />
                       <Box>{game.teams.home.team.name}</Box>
-                      <Box>
-                        <Text fontSize="xs">
-                          {game.teams.home.leagueRecord.wins}-
-                          {game.teams.home.leagueRecord.losses}-
-                          {game.teams.home.leagueRecord.ot}
-                        </Text>
-                      </Box>
+                      {viewMoreData ? (
+                        <Box>
+                          {liveDataLoading ? null : (
+                            <Box>
+                              {game.liveData.liveData.linescore.teams.home
+                                .powerPlay ? null : (
+                                <Text fontSize="xs">
+                                  Coach&nbsp;
+                                  {
+                                    game.liveData.liveData.boxscore.teams.home
+                                      .coaches[0].person.fullName
+                                  }
+                                </Text>
+                              )}
+                            </Box>
+                          )}
+                        </Box>
+                      ) : null}
+                      {viewMoreData ? (
+                        <Box>
+                          <Text fontSize="xs">
+                            {game.teams.home.leagueRecord.wins}-
+                            {game.teams.home.leagueRecord.losses}-
+                            {game.teams.home.leagueRecord.ot}
+                          </Text>
+                        </Box>
+                      ) : null}
 
                       <Box>
                         {liveDataLoading ? null : (
@@ -355,7 +649,10 @@ const Schedule = () => {
                         )}
                       </Box>
                       <Box>
-                        <Text display="inline-block">Goals &nbsp;</Text>
+                        {viewMoreData ? (
+                          <Text display="inline-block">Goals &nbsp;</Text>
+                        ) : null}
+
                         <Text display="inline-block" fontWeight="extrabold">
                           {game.teams.home.score}
                         </Text>
@@ -474,6 +771,251 @@ const Schedule = () => {
                               </Text>
                             )}
                           </Box>
+                          {game.status.detailedState == "Final" ? null : (
+                            <Box>
+                              <Grid
+                                templateColumns={{
+                                  base: "repeat(1, 1fr)",
+                                }}
+                              >
+                                <Box>On Ice</Box>
+                              </Grid>
+                              <Grid>
+                                {/* <Box>
+                                {game.teams.home.team.players ? (
+                                  <Table size="sm">
+                                    <Thead>
+                                      <Tr>
+                                        <Th>#</Th>
+                                        <Th>Name</Th>
+                                        <Th>POS</Th>
+                                        <Th>Age</Th>
+                                      </Tr>
+                                    </Thead>
+                                    <Tbody>
+                                      {game.teams.home.team.players.map(
+                                        (player, index) => (
+                                          <Tr key={index}>
+                                            <Td>
+                                              {
+                                                player.data.people[0]
+                                                  .primaryNumber
+                                              }
+                                            </Td>
+                                            <Td>
+                                              {player.data.people[0].fullName}
+                                              {player.data.people[0]
+                                                .alternateCaptain ? (
+                                                <Badge colorScheme="green">
+                                                  A
+                                                </Badge>
+                                              ) : null}
+                                              {player.data.people[0].captain ? (
+                                                <Badge colorScheme="green">
+                                                  C
+                                                </Badge>
+                                              ) : null}
+                                              {player.data.people[0].rookie ? (
+                                                <Badge colorScheme="blue">
+                                                  Rookie
+                                                </Badge>
+                                              ) : null}
+                                            </Td>
+                                            <Td>
+                                              {
+                                                player.data.people[0]
+                                                  .primaryPosition.abbreviation
+                                              }
+                                            </Td>
+                                            <Td>
+                                              {player.data.people[0].currentAge}
+                                            </Td>
+                                          </Tr>
+                                        )
+                                      )}
+                                    </Tbody>
+                                  </Table>
+                                ) : (
+                                  <Box>no players here</Box>
+                                )}
+                              </Box> */}
+
+                                {/* <Box>
+                                {game.teams.home.team.goalies ? (
+                                  <Table size="sm">
+                                    <Thead>
+                                      <Tr>
+                                        <Th>#</Th>
+                                        <Th>GOALIE Name</Th>
+                                        <Th>POS</Th>
+                                        <Th>Age</Th>
+                                      </Tr>
+                                    </Thead>
+                                    <Tbody>
+                                      {game.teams.home.team.goalies.map(
+                                        (goalie, index) => (
+                                          <Tr key={index}>
+                                            <Td>
+                                              {
+                                                goalie.data.people[0]
+                                                  .primaryNumber
+                                              }
+                                            </Td>
+                                            <Td>
+                                              {goalie.data.people[0].fullName}
+                                              {goalie.data.people[0]
+                                                .alternateCaptain ? (
+                                                <Badge colorScheme="green">
+                                                  A
+                                                </Badge>
+                                              ) : null}
+                                              {goalie.data.people[0].captain ? (
+                                                <Badge colorScheme="green">
+                                                  C
+                                                </Badge>
+                                              ) : null}
+                                              {goalie.data.people[0].rookie ? (
+                                                <Badge colorScheme="blue">
+                                                  Rookie
+                                                </Badge>
+                                              ) : null}
+                                            </Td>
+                                            <Td>
+                                              {
+                                                goalie.data.people[0]
+                                                  .primaryPosition.abbreviation
+                                              }
+                                            </Td>
+                                            <Td>
+                                              {goalie.data.people[0].currentAge}
+                                            </Td>
+                                          </Tr>
+                                        )
+                                      )}
+                                    </Tbody>
+                                  </Table>
+                                ) : (
+                                  <Box>no players here</Box>
+                                )}
+                              </Box> */}
+                                <Box>
+                                  {game.teams.home.team.onIcePlayers ? (
+                                    <Table size="sm">
+                                      <Thead>
+                                        <Tr>
+                                          <Th>#</Th>
+                                          <Th>Name</Th>
+                                          <Th
+                                            display={{
+                                              base: "none",
+                                              lg: "table-cell",
+                                            }}
+                                          >
+                                            POS
+                                          </Th>
+                                          <Th>Stamina</Th>
+                                          <Th>Shift length</Th>
+                                        </Tr>
+                                      </Thead>
+                                      <Tbody>
+                                        {game.teams.home.team.onIcePlayers.map(
+                                          (player, index) => (
+                                            <Tr key={index}>
+                                              <Td>
+                                                {
+                                                  player.data.people[0]
+                                                    .primaryNumber
+                                                }
+                                              </Td>
+                                              <Td>
+                                                {player.data.people[0].fullName}
+                                                {player.data.people[0]
+                                                  .alternateCaptain ? (
+                                                  <Badge colorScheme="green">
+                                                    A
+                                                  </Badge>
+                                                ) : null}
+                                                {player.data.people[0]
+                                                  .captain ? (
+                                                  <Badge colorScheme="green">
+                                                    C
+                                                  </Badge>
+                                                ) : null}
+                                                {player.data.people[0]
+                                                  .rookie ? (
+                                                  <Badge colorScheme="blue">
+                                                    Rookie
+                                                  </Badge>
+                                                ) : null}
+                                              </Td>
+                                              <Td
+                                                display={{
+                                                  base: "none",
+                                                  lg: "table-cell",
+                                                }}
+                                              >
+                                                {
+                                                  player.data.people[0]
+                                                    .primaryPosition
+                                                    .abbreviation
+                                                }
+                                              </Td>
+                                              <Td>
+                                                {player.stamina > 70 ? (
+                                                  <Progress
+                                                    value={player.stamina}
+                                                    size="xs"
+                                                    colorScheme="green"
+                                                  />
+                                                ) : player.stamina > 40 ? (
+                                                  <Progress
+                                                    value={player.stamina}
+                                                    size="xs"
+                                                    colorScheme="yellow"
+                                                  />
+                                                ) : (
+                                                  <Progress
+                                                    value={player.stamina}
+                                                    size="xs"
+                                                    colorScheme="red"
+                                                  />
+                                                )}
+                                              </Td>
+
+                                              <Td>
+                                                {player.shiftDuration <= 50 ? (
+                                                  <Progress
+                                                    value={player.shiftDuration}
+                                                    size="xs"
+                                                    colorScheme="green"
+                                                  />
+                                                ) : player.shiftDuration <=
+                                                  80 ? (
+                                                  <Progress
+                                                    value={player.shiftDuration}
+                                                    size="xs"
+                                                    colorScheme="yellow"
+                                                  />
+                                                ) : (
+                                                  <Progress
+                                                    value={player.shiftDuration}
+                                                    size="xs"
+                                                    colorScheme="red"
+                                                  />
+                                                )}
+                                              </Td>
+                                            </Tr>
+                                          )
+                                        )}
+                                      </Tbody>
+                                    </Table>
+                                  ) : (
+                                    <Box>Refreshing players</Box>
+                                  )}
+                                </Box>
+                              </Grid>
+                            </Box>
+                          )}
                         </Box>
                       ) : null}
                     </Box>

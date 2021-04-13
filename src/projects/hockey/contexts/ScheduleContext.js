@@ -9,6 +9,7 @@ const { Provider, Consumer } = React.createContext()
 class ScheduleProvider extends Component {
   state = {
     schedule: null,
+    roster: null,
     viewMoreData: false,
     liveDataLoading: true,
     loading: true,
@@ -33,8 +34,10 @@ class ScheduleProvider extends Component {
       this.setState({ loading: false })
       this.setState({ liveDataLoading: false })
 
+      console.log("LOGGING STATE")
       console.log(this.state)
-    }, 500)
+      console.log("LOGGING STATE")
+    }, 2000)
   }
 
   getDataAgain = async () => {
