@@ -36,7 +36,7 @@ const GameCenter = props => {
                     .map((item, index) => (
                       <Box key={index}>
                         <Text p="2" bg="gray.100" mb="1px">
-                          {item.title} {item.date}
+                          {item.title}
                         </Text>
                       </Box>
                     ))}

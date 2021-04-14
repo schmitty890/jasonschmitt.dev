@@ -54,19 +54,6 @@ export const getSchedule = async () => {
         }
       }
 
-      // console.log(contentData.data.highlights)
-      if (contentData.data.highlights.gameCenter.items.length > 0) {
-        for (
-          var i = 0;
-          i < contentData.data.highlights.gameCenter.items.length;
-          i++
-        ) {
-          contentData.data.highlights.gameCenter.items[i].date = dayjs(
-            contentData.data.highlights.gameCenter.items[i].date
-          ).fromNow()
-        }
-      }
-
       // console.log(liveData)
       console.log(contentData)
       game.liveData = liveData.data
