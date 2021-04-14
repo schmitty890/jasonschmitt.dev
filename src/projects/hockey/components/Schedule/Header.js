@@ -30,6 +30,16 @@ const Header = () => {
     <ScheduleConsumer>
       {({ toggleMoreData }) => (
         <Grid>
+          <Box>
+            <Box align="center">
+              <Image
+                src="../../../images/projects/hockey/nhl.svg"
+                alt="nhl"
+                h="50"
+                loading="eager"
+              />
+            </Box>
+          </Box>
           <Box align="right" p="4">
             <Text>
               View more data &nbsp;

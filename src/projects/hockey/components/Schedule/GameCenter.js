@@ -29,22 +29,19 @@ const GameCenter = props => {
         <Grid>
           {viewMoreData ? (
             <Box>
-              <Box>
-                {props.game.contentData.highlights.gameCenter.items ? (
-                  <Box>
-                    <Text>GameCenter</Text>
-                    {props.game.contentData.highlights.gameCenter.items
-                      .reverse()
-                      .map((item, index) => (
-                        <Box key={index}>
-                          <Text>
-                            {item.title}: {item.date}
-                          </Text>
-                        </Box>
-                      ))}
-                  </Box>
-                ) : null}
-              </Box>
+              {props.game.contentData.highlights.gameCenter.items ? (
+                <Grid templateColumns="repeat(1, 1fr)">
+                  {props.game.contentData.highlights.gameCenter.items
+                    .reverse()
+                    .map((item, index) => (
+                      <Box key={index}>
+                        <Text p="2" bg="gray.100" mb="1px">
+                          {item.title} {item.date}
+                        </Text>
+                      </Box>
+                    ))}
+                </Grid>
+              ) : null}
             </Box>
           ) : null}
         </Grid>

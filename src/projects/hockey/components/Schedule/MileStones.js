@@ -30,25 +30,27 @@ const MileStones = props => {
         <Grid>
           {viewMoreData ? (
             <Box>
-              <Box>
-                {props.game.contentData.media.milestones.items ? (
-                  <Box>
-                    <Text>Milestones</Text>
-                    {props.game.contentData.media.milestones.items
-                      .reverse()
-                      .map((milestone, index) => (
-                        <Box key={index}>
+              {props.game.contentData.media.milestones.items ? (
+                <Box>
+                  <Text>Milestones</Text>
+                  {props.game.contentData.media.milestones.items
+                    .reverse()
+                    .map((milestone, index) => (
+                      <Grid templateColumns="repeat(2, 1fr)" mb="2" key={index}>
+                        <Box border="1px solid blue" align="left">
                           <Text>
                             {milestone.description}: {milestone.timeAbsolute}
                           </Text>
                           {milestone.highlight.image ? (
-                            <Image
-                              w="50%"
-                              src={
-                                milestone.highlight.image.cuts["568x320"].src
-                              }
-                              alt={milestone.highlight.description}
-                            />
+                            <Box align="right">
+                              <Image
+                                w="50%"
+                                src={
+                                  milestone.highlight.image.cuts["568x320"].src
+                                }
+                                alt={milestone.highlight.description}
+                              />
+                            </Box>
                           ) : null}
 
                           {/* {milestone.highlight.playbacks ? (
@@ -59,10 +61,10 @@ const MileStones = props => {
                             <Text>no playback</Text>
                           )} */}
                         </Box>
-                      ))}
-                  </Box>
-                ) : null}
-              </Box>
+                      </Grid>
+                    ))}
+                </Box>
+              ) : null}
             </Box>
           ) : null}
         </Grid>
