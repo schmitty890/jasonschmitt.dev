@@ -28,7 +28,9 @@ class ScheduleProvider extends Component {
     // schedule.data.dates[0].games.forEach(arrayItem => {
     //   console.log(arrayItem)
     // })
-    this.setState({ schedule: schedule.data })
+    setTimeout(() => {
+      this.setState({ schedule: schedule.data })
+    }, 3000)
 
     setTimeout(() => {
       this.setState({ loading: false })
@@ -37,13 +39,13 @@ class ScheduleProvider extends Component {
       console.log("LOGGING STATE")
       console.log(this.state)
       console.log("LOGGING STATE")
-    }, 2000)
+    }, 3000)
   }
 
   getDataAgain = async () => {
     setInterval(() => {
       console.log("get new data")
-      this.setState({ liveDataLoading: true })
+      // this.setState({ liveDataLoading: true })
       this.getData()
     }, 60000)
   }
