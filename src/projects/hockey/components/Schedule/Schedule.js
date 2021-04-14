@@ -31,13 +31,7 @@ const Schedule = () => {
   return (
     <ScheduleProvider>
       <ScheduleConsumer>
-        {({
-          schedule,
-          loading,
-          liveDataLoading,
-          toggleMoreData,
-          viewMoreData,
-        }) => (
+        {({ schedule, loading, toggleMoreData, viewMoreData }) => (
           <Box>
             {/* START TOP SECTION */}
             <Header />
@@ -68,30 +62,27 @@ const Schedule = () => {
                     key={game.gamePk}
                   >
                     {/* START INDIVIDUAL GAME TOP SECTION */}
-                    {liveDataLoading ? null : (
-                      <Grid templateColumns="repeat(2, 1fr)">
-                        {game.liveData.liveData.linescore
-                          .currentPeriodOrdinal ? (
-                          <Box align="left">
-                            {
-                              game.liveData.liveData.linescore
-                                .currentPeriodOrdinal
-                            }
-                            &nbsp;
-                            {
-                              game.liveData.liveData.linescore
-                                .currentPeriodTimeRemaining
-                            }
-                          </Box>
-                        ) : null}
-                        {game.liveData.liveData.linescore.intermissionInfo
-                          .inIntermission ? (
-                          <Box align="right">
-                            <Badge colorScheme="yellow">Intermission</Badge>
-                          </Box>
-                        ) : null}
-                      </Grid>
-                    )}
+                    <Grid templateColumns="repeat(2, 1fr)">
+                      {game.liveData.liveData.linescore.currentPeriodOrdinal ? (
+                        <Box align="left">
+                          {
+                            game.liveData.liveData.linescore
+                              .currentPeriodOrdinal
+                          }
+                          &nbsp;
+                          {
+                            game.liveData.liveData.linescore
+                              .currentPeriodTimeRemaining
+                          }
+                        </Box>
+                      ) : null}
+                      {game.liveData.liveData.linescore.intermissionInfo
+                        .inIntermission ? (
+                        <Box align="right">
+                          <Badge colorScheme="yellow">Intermission</Badge>
+                        </Box>
+                      ) : null}
+                    </Grid>
                     {/* END INDIVIDUAL GAME TOP SECTION */}
 
                     {/* START INDIVIDUAL GAME 2ND TOP SECTION */}
@@ -177,20 +168,18 @@ const Schedule = () => {
                       <Box>{game.teams.away.team.name}</Box>
                       {viewMoreData ? (
                         <Box>
-                          {liveDataLoading ? null : (
-                            <Box>
-                              {game.liveData.liveData.linescore.teams.away
-                                .powerPlay ? null : (
-                                <Text fontSize="xs">
-                                  Coach&nbsp;
-                                  {
-                                    game.liveData.liveData.boxscore.teams.away
-                                      .coaches[0].person.fullName
-                                  }
-                                </Text>
-                              )}
-                            </Box>
-                          )}
+                          <Box>
+                            {game.liveData.liveData.linescore.teams.away
+                              .powerPlay ? null : (
+                              <Text fontSize="xs">
+                                Coach&nbsp;
+                                {
+                                  game.liveData.liveData.boxscore.teams.away
+                                    .coaches[0].person.fullName
+                                }
+                              </Text>
+                            )}
+                          </Box>
                         </Box>
                       ) : null}
                       {viewMoreData ? (
@@ -204,14 +193,12 @@ const Schedule = () => {
                       ) : null}
 
                       <Box>
-                        {liveDataLoading ? null : (
-                          <Text fontSize="xs">
-                            {game.liveData.liveData.linescore.teams.away
-                              .powerPlay ? (
-                              <Badge colorScheme="red">On Power Play</Badge>
-                            ) : null}
-                          </Text>
-                        )}
+                        <Text fontSize="xs">
+                          {game.liveData.liveData.linescore.teams.away
+                            .powerPlay ? (
+                            <Badge colorScheme="red">On Power Play</Badge>
+                          ) : null}
+                        </Text>
                       </Box>
 
                       <Box>
@@ -226,115 +213,54 @@ const Schedule = () => {
                         <Box>
                           <Box>
                             <Text display="inline-block">Shots &nbsp;</Text>
-                            {liveDataLoading ? (
-                              <Skeleton
-                                height="20px"
-                                width="20px"
-                                display="inline-block"
-                                position="relative"
-                                top="3px"
-                              />
-                            ) : (
-                              <Text
-                                display="inline-block"
-                                fontWeight="extrabold"
-                              >
-                                {
-                                  game.liveData.liveData.boxscore.teams.away
-                                    .teamStats.teamSkaterStats.shots
-                                }
-                              </Text>
-                            )}
+
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.away
+                                  .teamStats.teamSkaterStats.shots
+                              }
+                            </Text>
                           </Box>
                           <Box>
                             <Text display="inline-block">Faceoff % &nbsp;</Text>
-                            {liveDataLoading ? (
-                              <Skeleton
-                                height="20px"
-                                width="20px"
-                                display="inline-block"
-                                position="relative"
-                                top="3px"
-                              />
-                            ) : (
-                              <Text
-                                display="inline-block"
-                                fontWeight="extrabold"
-                              >
-                                {
-                                  game.liveData.liveData.boxscore.teams.away
-                                    .teamStats.teamSkaterStats
-                                    .faceOffWinPercentage
-                                }
-                              </Text>
-                            )}
+
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.away
+                                  .teamStats.teamSkaterStats
+                                  .faceOffWinPercentage
+                              }
+                            </Text>
                           </Box>
                           <Box>
                             <Text display="inline-block">Hits &nbsp;</Text>
-                            {liveDataLoading ? (
-                              <Skeleton
-                                height="20px"
-                                width="20px"
-                                display="inline-block"
-                                position="relative"
-                                top="3px"
-                              />
-                            ) : (
-                              <Text
-                                display="inline-block"
-                                fontWeight="extrabold"
-                              >
-                                {
-                                  game.liveData.liveData.boxscore.teams.away
-                                    .teamStats.teamSkaterStats.hits
-                                }
-                              </Text>
-                            )}
+
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.away
+                                  .teamStats.teamSkaterStats.hits
+                              }
+                            </Text>
                           </Box>
                           <Box>
                             <Text display="inline-block">PIM &nbsp;</Text>
-                            {liveDataLoading ? (
-                              <Skeleton
-                                height="20px"
-                                width="20px"
-                                display="inline-block"
-                                position="relative"
-                                top="3px"
-                              />
-                            ) : (
-                              <Text
-                                display="inline-block"
-                                fontWeight="extrabold"
-                              >
-                                {
-                                  game.liveData.liveData.boxscore.teams.away
-                                    .teamStats.teamSkaterStats.pim
-                                }
-                              </Text>
-                            )}
+
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.away
+                                  .teamStats.teamSkaterStats.pim
+                              }
+                            </Text>
                           </Box>
                           <Box>
                             <Text display="inline-block">PP% &nbsp;</Text>
-                            {liveDataLoading ? (
-                              <Skeleton
-                                height="20px"
-                                width="20px"
-                                display="inline-block"
-                                position="relative"
-                                top="3px"
-                              />
-                            ) : (
-                              <Text
-                                display="inline-block"
-                                fontWeight="extrabold"
-                              >
-                                {
-                                  game.liveData.liveData.boxscore.teams.away
-                                    .teamStats.teamSkaterStats
-                                    .powerPlayPercentage
-                                }
-                              </Text>
-                            )}
+
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.away
+                                  .teamStats.teamSkaterStats.powerPlayPercentage
+                              }
+                            </Text>
                           </Box>
                           {game.status.detailedState == "Final" ? null : (
                             <Box>
@@ -617,20 +543,18 @@ const Schedule = () => {
                       <Box>{game.teams.home.team.name}</Box>
                       {viewMoreData ? (
                         <Box>
-                          {liveDataLoading ? null : (
-                            <Box>
-                              {game.liveData.liveData.linescore.teams.home
-                                .powerPlay ? null : (
-                                <Text fontSize="xs">
-                                  Coach&nbsp;
-                                  {
-                                    game.liveData.liveData.boxscore.teams.home
-                                      .coaches[0].person.fullName
-                                  }
-                                </Text>
-                              )}
-                            </Box>
-                          )}
+                          <Box>
+                            {game.liveData.liveData.linescore.teams.home
+                              .powerPlay ? null : (
+                              <Text fontSize="xs">
+                                Coach&nbsp;
+                                {
+                                  game.liveData.liveData.boxscore.teams.home
+                                    .coaches[0].person.fullName
+                                }
+                              </Text>
+                            )}
+                          </Box>
                         </Box>
                       ) : null}
                       {viewMoreData ? (
@@ -644,14 +568,12 @@ const Schedule = () => {
                       ) : null}
 
                       <Box>
-                        {liveDataLoading ? null : (
-                          <Text fontSize="xs">
-                            {game.liveData.liveData.linescore.teams.home
-                              .powerPlay ? (
-                              <Badge colorScheme="red">On Power Play</Badge>
-                            ) : null}
-                          </Text>
-                        )}
+                        <Text fontSize="xs">
+                          {game.liveData.liveData.linescore.teams.home
+                            .powerPlay ? (
+                            <Badge colorScheme="red">On Power Play</Badge>
+                          ) : null}
+                        </Text>
                       </Box>
                       <Box>
                         {viewMoreData ? (
@@ -666,115 +588,49 @@ const Schedule = () => {
                         <Box>
                           <Box>
                             <Text display="inline-block">Shots &nbsp;</Text>
-                            {liveDataLoading ? (
-                              <Skeleton
-                                height="20px"
-                                width="20px"
-                                display="inline-block"
-                                position="relative"
-                                top="3px"
-                              />
-                            ) : (
-                              <Text
-                                display="inline-block"
-                                fontWeight="extrabold"
-                              >
-                                {
-                                  game.liveData.liveData.boxscore.teams.home
-                                    .teamStats.teamSkaterStats.shots
-                                }
-                              </Text>
-                            )}
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.home
+                                  .teamStats.teamSkaterStats.shots
+                              }
+                            </Text>
                           </Box>
                           <Box>
                             Faceoff % &nbsp;
-                            {liveDataLoading ? (
-                              <Skeleton
-                                height="20px"
-                                width="20px"
-                                display="inline-block"
-                                position="relative"
-                                top="3px"
-                              />
-                            ) : (
-                              <Text
-                                display="inline-block"
-                                fontWeight="extrabold"
-                              >
-                                {
-                                  game.liveData.liveData.boxscore.teams.home
-                                    .teamStats.teamSkaterStats
-                                    .faceOffWinPercentage
-                                }
-                              </Text>
-                            )}
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.home
+                                  .teamStats.teamSkaterStats
+                                  .faceOffWinPercentage
+                              }
+                            </Text>
                           </Box>
                           <Box>
                             Hits &nbsp;
-                            {liveDataLoading ? (
-                              <Skeleton
-                                height="20px"
-                                width="20px"
-                                display="inline-block"
-                                position="relative"
-                                top="3px"
-                              />
-                            ) : (
-                              <Text
-                                display="inline-block"
-                                fontWeight="extrabold"
-                              >
-                                {
-                                  game.liveData.liveData.boxscore.teams.home
-                                    .teamStats.teamSkaterStats.hits
-                                }
-                              </Text>
-                            )}
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.home
+                                  .teamStats.teamSkaterStats.hits
+                              }
+                            </Text>
                           </Box>
                           <Box>
                             PIM &nbsp;
-                            {liveDataLoading ? (
-                              <Skeleton
-                                height="20px"
-                                width="20px"
-                                display="inline-block"
-                                position="relative"
-                                top="3px"
-                              />
-                            ) : (
-                              <Text
-                                display="inline-block"
-                                fontWeight="extrabold"
-                              >
-                                {
-                                  game.liveData.liveData.boxscore.teams.home
-                                    .teamStats.teamSkaterStats.pim
-                                }
-                              </Text>
-                            )}
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.home
+                                  .teamStats.teamSkaterStats.pim
+                              }
+                            </Text>
                           </Box>
                           <Box>
                             PP% &nbsp;
-                            {liveDataLoading ? (
-                              <Skeleton
-                                height="20px"
-                                width="20px"
-                                display="inline-block"
-                                position="relative"
-                                top="3px"
-                              />
-                            ) : (
-                              <Text
-                                display="inline-block"
-                                fontWeight="extrabold"
-                              >
-                                {
-                                  game.liveData.liveData.boxscore.teams.home
-                                    .teamStats.teamSkaterStats
-                                    .powerPlayPercentage
-                                }
-                              </Text>
-                            )}
+                            <Text display="inline-block" fontWeight="extrabold">
+                              {
+                                game.liveData.liveData.boxscore.teams.home
+                                  .teamStats.teamSkaterStats.powerPlayPercentage
+                              }
+                            </Text>
                           </Box>
                           {game.status.detailedState == "Final" ? null : (
                             <Box>
@@ -1041,26 +897,16 @@ const Schedule = () => {
                     {/* START LIVE DATA SECTION */}
                     {viewMoreData ? (
                       <Box>
-                        {liveDataLoading ? (
-                          <Skeleton
-                            height="20px"
-                            width="100%"
-                            display="inline-block"
-                            position="relative"
-                            top="3px"
-                          />
-                        ) : (
-                          <Box>
-                            {game.liveData.liveData.plays.currentPlay ? (
-                              <Text>
-                                {
-                                  game.liveData.liveData.plays.currentPlay
-                                    .result.description
-                                }
-                              </Text>
-                            ) : null}
-                          </Box>
-                        )}
+                        <Box>
+                          {game.liveData.liveData.plays.currentPlay ? (
+                            <Text>
+                              {
+                                game.liveData.liveData.plays.currentPlay.result
+                                  .description
+                              }
+                            </Text>
+                          ) : null}
+                        </Box>
                       </Box>
                     ) : null}
                     {/* END LIVE DATA SECTION */}
