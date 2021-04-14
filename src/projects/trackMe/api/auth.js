@@ -33,7 +33,7 @@ export const checkLoggedInStatus = async () => {
         : "https://jasonschmitt-dev-api-9w29o.ondigitalocean.app"
 
     try {
-      const resp = await axios.get(`${baseURL}/hockey/user/${user_id}`, {
+      const resp = await axios.get(`${baseURL}/trackMe/user/${user_id}`, {
         headers: headers,
       })
       console.log(resp.data)
