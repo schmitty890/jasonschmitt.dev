@@ -40,7 +40,8 @@ export const getSchedule = async () => {
 
       console.log(Object.entries(contentData.data.media.milestones).length)
       if (Object.entries(contentData.data.media.milestones).length > 0) {
-        console.log(contentData.data.media.milestones)
+        // console.log(contentData.data.media.milestones)
+        // console.log(contentData.data.highlights)
 
         for (
           var i = 0;
@@ -49,6 +50,19 @@ export const getSchedule = async () => {
         ) {
           contentData.data.media.milestones.items[i].timeAbsolute = dayjs(
             contentData.data.media.milestones.items[i].timeAbsolute
+          ).fromNow()
+        }
+      }
+
+      // console.log(contentData.data.highlights)
+      if (contentData.data.highlights.gameCenter.items.length > 0) {
+        for (
+          var i = 0;
+          i < contentData.data.highlights.gameCenter.items.length;
+          i++
+        ) {
+          contentData.data.highlights.gameCenter.items[i].date = dayjs(
+            contentData.data.highlights.gameCenter.items[i].date
           ).fromNow()
         }
       }

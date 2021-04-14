@@ -25,6 +25,7 @@ import Card from "./Card"
 import DetailedState from "./DetailedState"
 import CurrentPlay from "./CurrentPlay"
 import MileStones from "./MileStones"
+import GameCenter from "./GameCenter"
 import { ScheduleConsumer } from "../../contexts/ScheduleContext"
 
 const ScheduleGrid = () => {
@@ -69,6 +70,8 @@ const ScheduleGrid = () => {
               {/* END LIVE DATA SECTION */}
 
               <MileStones game={game} />
+
+              <GameCenter game={game} />
             </Box>
           ))}
         </Grid>

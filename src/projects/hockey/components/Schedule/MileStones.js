@@ -21,6 +21,7 @@ import {
   Progress,
 } from "@chakra-ui/react"
 import { ScheduleConsumer } from "../../contexts/ScheduleContext"
+import ReactPlayer from "react-player/lazy"
 
 const MileStones = props => {
   return (
@@ -32,14 +33,31 @@ const MileStones = props => {
               <Box>
                 {props.game.contentData.media.milestones.items ? (
                   <Box>
+                    <Text>Milestones</Text>
                     {props.game.contentData.media.milestones.items
-                      .slice(0, 3)
                       .reverse()
                       .map((milestone, index) => (
                         <Box key={index}>
                           <Text>
                             {milestone.description}: {milestone.timeAbsolute}
                           </Text>
+                          {milestone.highlight.image ? (
+                            <Image
+                              w="50%"
+                              src={
+                                milestone.highlight.image.cuts["568x320"].src
+                              }
+                              alt={milestone.highlight.description}
+                            />
+                          ) : null}
+
+                          {/* {milestone.highlight.playbacks ? (
+                            <ReactPlayer
+                              url={milestone.highlight.playbacks[0].url}
+                            />
+                          ) : (
+                            <Text>no playback</Text>
+                          )} */}
                         </Box>
                       ))}
                   </Box>
