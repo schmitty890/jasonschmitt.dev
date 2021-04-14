@@ -35,8 +35,28 @@ export const getSchedule = async () => {
 
       let liveDataURL = `https://statsapi.web.nhl.com${game.link}`
       const liveData = await axios.get(liveDataURL)
+      let contentDataURL = `https://statsapi.web.nhl.com/api/v1/game/${game.gamePk}/content`
+      const contentData = await axios.get(contentDataURL)
+
+      console.log(Object.entries(contentData.data.media.milestones).length)
+      if (Object.entries(contentData.data.media.milestones).length > 0) {
+        console.log(contentData.data.media.milestones)
+
+        for (
+          var i = 0;
+          i < contentData.data.media.milestones.items.length;
+          i++
+        ) {
+          contentData.data.media.milestones.items[i].timeAbsolute = dayjs(
+            contentData.data.media.milestones.items[i].timeAbsolute
+          ).fromNow()
+        }
+      }
+
       // console.log(liveData)
+      console.log(contentData)
       game.liveData = liveData.data
+      game.contentData = contentData.data
 
       // make axios call to get player roster and who is on the ice by player id
       // console.log(game.liveData.liveData.boxscore.teams)
