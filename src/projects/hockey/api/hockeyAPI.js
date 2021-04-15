@@ -1,13 +1,14 @@
 import axios from "axios"
 import dayjs from "dayjs"
 import hockeyLogos from "../data/teamIconData.json"
+import eventTypeIdData from "../data/eventTypeIdData.json"
 var relativeTime = require("dayjs/plugin/relativeTime")
 dayjs.extend(relativeTime)
 
 export const getSchedule = async () => {
   try {
-    let URL = "https://statsapi.web.nhl.com/api/v1/schedule"
-    // let URL = "https://statsapi.web.nhl.com/api/v1/schedule?date=2021-04-14"
+    // let URL = "https://statsapi.web.nhl.com/api/v1/schedule"
+    let URL = "https://statsapi.web.nhl.com/api/v1/schedule?date=2021-04-14"
     // fetch data from a url endpoint
     const response = await axios.get(`${URL}`)
     // console.log(response)
@@ -58,6 +59,7 @@ export const getSchedule = async () => {
       const shots = []
       const goals = []
       const penalties = []
+      const eventTypeColors = []
       // console.log(liveData)
       liveData.data.liveData.plays.allPlays.map(play => {
         play.about.dateTime = dayjs(play.about.dateTime).fromNow()
@@ -70,10 +72,31 @@ export const getSchedule = async () => {
         } else if (play.result.eventTypeId == "PENALTY") {
           penalties.push(play.result)
         }
+
+        if (play.players) {
+          console.log("getting logos")
+          hockeyLogos.forEach(team => {
+            // console.log(team)
+            if (team.id === play.team.id) {
+              play.team.logo = team.src
+              play.team.logoAlt = team.srcAlt
+              play.team.logoBgColor = team.logoBgColor
+            }
+          })
+
+          eventTypeIdData.forEach(eventType => {
+            if (eventType.eventTypeId === play.result.eventTypeId) {
+              play.result.badgeColorScheme = eventType.colorScheme
+              play.result.badgeVariant = eventType.variant
+            }
+          })
+        }
       })
       // console.log(shots)
       // reverse arrays to save directly to state vs manipulating in component
-      // liveData.data.liveData.plays.allPlays = liveData.data.liveData.plays.allPlays.reverse()
+      liveData.data.liveData.plays.allPlays = liveData.data.liveData.plays.allPlays
+        .reverse()
+        .slice(0, 10)
       liveData.data.liveData.plays.shots = shots.reverse()
       liveData.data.liveData.plays.goals = goals.reverse()
       liveData.data.liveData.plays.penalties = penalties.reverse()

@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "eventTypeId": "GOAL",
+    "colorScheme": "red",
+    "variant": "solid"
+  },
+  {
+    "id": 2,
+    "eventTypeId": "PENALTY",
+    "colorScheme": "blue",
+    "variant": "outline"
+  },
+  {
+    "id": 3,
+    "eventTypeId": "SHOT",
+    "colorScheme": "green",
+    "variant": "solid"
+  },
+  {
+    "id": 4,
+    "eventTypeId": "FACEOFF",
+    "colorScheme": "green",
+    "variant": "solid"
+  },
+  {
+    "id": 5,
+    "eventTypeId": "MISSED_SHOT",
+    "colorScheme": "green",
+    "variant": "outline"
+  },
+  {
+    "id": 6,
+    "eventTypeId": "GIVEAWAY",
+    "colorScheme": "green",
+    "variant": "solid"
+  },
+  {
+    "id": 7,
+    "eventTypeId": "HIT",
+    "colorScheme": "green",
+    "variant": "outline"
+  },
+  {
+    "id": 8,
+    "eventTypeId": "BLOCKED_SHOT",
+    "colorScheme": "green",
+    "variant": "outline"
+  },
+  {
+    "id": 8,
+    "eventTypeId": "TAKEAWAY",
+    "colorScheme": "green",
+    "variant": "outline"
+  }
+]

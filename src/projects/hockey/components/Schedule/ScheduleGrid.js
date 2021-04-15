@@ -28,6 +28,7 @@ import MileStones from "./MileStones"
 import GameCenter from "./GameCenter"
 import LiveStatsCard from "./LiveStatsCard"
 import { ScheduleConsumer } from "../../contexts/ScheduleContext"
+import PlayByPlay from "./PlayByPlay"
 
 const ScheduleGrid = () => {
   return (
@@ -73,6 +74,8 @@ const ScheduleGrid = () => {
               {/* <MileStones game={game} /> */}
 
               {/* <GameCenter game={game} /> */}
+
+              <PlayByPlay game={game} />
 
               <Grid
                 templateColumns={{

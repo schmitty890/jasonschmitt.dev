@@ -62,7 +62,7 @@ const Card = props => {
                   <Text fontSize="xs">
                     Coach&nbsp;
                     {
-                      props.game.liveData.liveData.boxscore.teams.away
+                      props.game.liveData.liveData.boxscore.teams[props.team]
                         .coaches[0].person.fullName
                     }
                   </Text>
