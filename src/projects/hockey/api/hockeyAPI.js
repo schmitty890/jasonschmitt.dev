@@ -55,6 +55,13 @@ export const getSchedule = async () => {
       }
 
       // console.log(liveData)
+      liveData.data.liveData.plays.allPlays.map(play => {
+        play.about.dateTime = dayjs(play.about.dateTime).fromNow()
+      })
+      // reverse arrays to save directly to state vs manipulating in component
+      liveData.data.liveData.plays.allPlays = liveData.data.liveData.plays.allPlays.reverse()
+
+      // console.log(liveData)
       console.log(contentData)
       game.liveData = liveData.data
       game.contentData = contentData.data

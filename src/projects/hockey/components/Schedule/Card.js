@@ -33,6 +33,11 @@ const Card = props => {
           borderRadius="5px"
           // m="2"
           p="2"
+          className={
+            props.game.liveData.liveData.linescore.teams[props.team].powerPlay
+              ? "pulsate"
+              : null
+          }
         >
           <Image
             src={props.game.teams[props.team].team.logo}
@@ -275,16 +280,9 @@ const Card = props => {
                               <Tr>
                                 <Th>#</Th>
                                 <Th>Name</Th>
-                                <Th
-                                  display={{
-                                    base: "none",
-                                    lg: "table-cell",
-                                  }}
-                                >
-                                  POS
-                                </Th>
-                                <Th>Stamina</Th>
-                                <Th>Shift length</Th>
+                                <Th>POS</Th>
+                                {/* <Th>Stamina</Th>
+                                <Th>Shift length</Th> */}
                               </Tr>
                             </Thead>
                             <Tbody>
@@ -305,18 +303,13 @@ const Card = props => {
                                       <Badge colorScheme="blue">Rookie</Badge>
                                     ) : null}
                                   </Td>
-                                  <Td
-                                    display={{
-                                      base: "none",
-                                      lg: "table-cell",
-                                    }}
-                                  >
+                                  <Td>
                                     {
                                       player.data.people[0].primaryPosition
                                         .abbreviation
                                     }
                                   </Td>
-                                  <Td>
+                                  {/* <Td>
                                     {player.stamina > 70 ? (
                                       <Progress
                                         value={player.stamina}
@@ -357,7 +350,7 @@ const Card = props => {
                                         colorScheme="red"
                                       />
                                     )}
-                                  </Td>
+                                  </Td> */}
                                 </Tr>
                               ))}
                             </Tbody>

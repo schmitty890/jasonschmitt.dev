@@ -64,3 +64,25 @@
     border-color: var(--chakra-colors-gray-100);
   }
 }
+
+/* START hockey project styles */
+@keyframes border-pulsate {
+  0% {
+    border-color: rgb(255, 0, 0);
+  }
+  50% {
+    border-color: rgba(0, 255, 255, 0);
+  }
+  100% {
+    border-color: rgb(255, 0, 0);
+  }
+}
+
+.pulsate {
+  display: block;
+  margin: 20px auto;
+  border: 20px solid rgb(255, 0, 0);
+  animation: border-pulsate 2s infinite;
+}
+
+/* END hockey project styles */

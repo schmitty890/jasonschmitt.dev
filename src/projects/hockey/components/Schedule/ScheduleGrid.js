@@ -26,6 +26,7 @@ import DetailedState from "./DetailedState"
 import CurrentPlay from "./CurrentPlay"
 import MileStones from "./MileStones"
 import GameCenter from "./GameCenter"
+import LiveStatsCard from "./LiveStatsCard"
 import { ScheduleConsumer } from "../../contexts/ScheduleContext"
 
 const ScheduleGrid = () => {
@@ -71,7 +72,73 @@ const ScheduleGrid = () => {
 
               {/* <MileStones game={game} /> */}
 
-              <GameCenter game={game} />
+              {/* <GameCenter game={game} /> */}
+
+              <Grid
+                templateColumns={{
+                  base: "repeat(1, 1fr)",
+                  md: "repeat(2, 1fr)",
+                  lg: "repeat(3, 1fr)",
+                }}
+                gap={6}
+                display={viewMoreData ? "grid" : "none"}
+              >
+                <LiveStatsCard
+                  game={game}
+                  eventType="GOAL"
+                  eventTitle="Goals"
+                />
+                <LiveStatsCard
+                  game={game}
+                  eventType="SHOT"
+                  eventTitle="Shots"
+                />
+
+                <LiveStatsCard
+                  game={game}
+                  eventType="PENALTY"
+                  eventTitle="Penalties"
+                />
+
+                {/* <LiveStatsCard
+                  game={game}
+                  eventType="BLOCKED_SHOT"
+                  eventTitle="Blocked Shots"
+                />
+
+
+                <LiveStatsCard
+                  game={game}
+                  eventType="FACEOFF"
+                  eventTitle="Faceoffs"
+                />
+
+                <LiveStatsCard
+                  game={game}
+                  eventType="MISSED_SHOT"
+                  eventTitle="Missed Shots"
+                />
+
+                <LiveStatsCard
+                  game={game}
+                  eventType="STOP"
+                  eventTitle="Stoppage"
+                />
+
+                <LiveStatsCard
+                  game={game}
+                  eventType="TAKEAWAY"
+                  eventTitle="Takeaways"
+                />
+
+                <LiveStatsCard game={game} eventType="HIT" eventTitle="Hits" />
+
+                <LiveStatsCard
+                  game={game}
+                  eventType="GIVEAWAY"
+                  eventTitle="Giveaways"
+                /> */}
+              </Grid>
             </Box>
           ))}
         </Grid>
