@@ -20,6 +20,7 @@ import {
   Td,
   Progress,
   Divider,
+  Link,
 } from "@chakra-ui/react"
 import { ScheduleConsumer } from "../../contexts/ScheduleContext"
 
@@ -29,7 +30,7 @@ const LiveStatsCard = props => {
       {({ schedule, viewMoreData }) => (
         <Grid>
           {viewMoreData ? (
-            <Box border="1px solid" borderRadius="5" p="2">
+            <Box border="1px solid" borderRadius="5" p="2" bg="gray.100">
               <Text fontWeight="extrabold">{props.eventTitle}</Text>
               <Box>
                 {props.game.liveData.liveData.plays.allPlays ? (
@@ -39,13 +40,13 @@ const LiveStatsCard = props => {
                         <Th></Th>
                       </Tr>
                     </Thead>
-                    <Tbody>
-                      {props.game.liveData.liveData.plays.allPlays.map(
+                    <Tbody className={props.eventTitle}>
+                      {props.game.liveData.liveData.plays[props.eventType].map(
                         (play, index) => (
                           <Tr key={index}>
-                            {play.result.eventTypeId == props.eventType ? (
-                              <Td>{play.result.description}</Td>
-                            ) : null}
+                            <Td borderBottom="1px" borderBottomColor="gray.300">
+                              {play.description}
+                            </Td>
                           </Tr>
                         )
                       )}

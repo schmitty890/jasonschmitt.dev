@@ -7,14 +7,15 @@ dayjs.extend(relativeTime)
 export const getSchedule = async () => {
   try {
     let URL = "https://statsapi.web.nhl.com/api/v1/schedule"
+    // let URL = "https://statsapi.web.nhl.com/api/v1/schedule?date=2021-04-14"
     // fetch data from a url endpoint
     const response = await axios.get(`${URL}`)
-    console.log(response)
+    // console.log(response)
 
     response.data.dates[0].games.forEach(async game => {
       game.gameDate = dayjs(game.gameDate).fromNow()
-      console.log(game)
-      console.log(game.link)
+      // console.log(game)
+      // console.log(game.link)
       // console.log(game.teams)
       // console.log(game.teams.away.team.id)
       // console.log(game.teams.home.team.id)
@@ -38,7 +39,7 @@ export const getSchedule = async () => {
       let contentDataURL = `https://statsapi.web.nhl.com/api/v1/game/${game.gamePk}/content`
       const contentData = await axios.get(contentDataURL)
 
-      console.log(Object.entries(contentData.data.media.milestones).length)
+      // console.log(Object.entries(contentData.data.media.milestones).length)
       if (Object.entries(contentData.data.media.milestones).length > 0) {
         // console.log(contentData.data.media.milestones)
         // console.log(contentData.data.highlights)
@@ -54,15 +55,33 @@ export const getSchedule = async () => {
         }
       }
 
+      const shots = []
+      const goals = []
+      const penalties = []
       // console.log(liveData)
       liveData.data.liveData.plays.allPlays.map(play => {
         play.about.dateTime = dayjs(play.about.dateTime).fromNow()
+        // console.log(play)
+
+        if (play.result.eventTypeId == "SHOT") {
+          shots.push(play.result)
+        } else if (play.result.eventTypeId == "GOAL") {
+          goals.push(play.result)
+        } else if (play.result.eventTypeId == "PENALTY") {
+          penalties.push(play.result)
+        }
       })
+      // console.log(shots)
       // reverse arrays to save directly to state vs manipulating in component
-      liveData.data.liveData.plays.allPlays = liveData.data.liveData.plays.allPlays.reverse()
+      // liveData.data.liveData.plays.allPlays = liveData.data.liveData.plays.allPlays.reverse()
+      liveData.data.liveData.plays.shots = shots.reverse()
+      liveData.data.liveData.plays.goals = goals.reverse()
+      liveData.data.liveData.plays.penalties = penalties.reverse()
+
+      // console.log(liveData.data.liveData.plays.allPlays)
 
       // console.log(liveData)
-      console.log(contentData)
+      // console.log(contentData)
       game.liveData = liveData.data
       game.contentData = contentData.data
 
@@ -71,10 +90,10 @@ export const getSchedule = async () => {
       Object.keys(game.liveData.liveData.boxscore.teams).forEach(function (
         item
       ) {
-        console.log(item) // key
-        console.log(game.liveData.liveData.boxscore.teams[item]) // value
+        // console.log(item) // key
+        // console.log(game.liveData.liveData.boxscore.teams[item]) // value
         // get skaters
-        console.log(game.liveData.liveData.boxscore.teams[item].skaters)
+        // console.log(game.liveData.liveData.boxscore.teams[item].skaters)
         const skaters = game.liveData.liveData.boxscore.teams[item].skaters
         const skaterData = []
         skaters.forEach(async skater => {
@@ -106,7 +125,7 @@ export const getSchedule = async () => {
         const onIcePlayersData = []
         onIcePlayers.forEach(async player => {
           // console.log(player)
-          console.log(player)
+          // console.log(player)
           let onIceURL = `https://statsapi.web.nhl.com/api/v1/people/${player.playerId}`
           const onIceDataToReturn = await axios.get(onIceURL)
           // console.log(onIceDataToReturn)

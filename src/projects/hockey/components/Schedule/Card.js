@@ -32,9 +32,13 @@ const Card = props => {
           border="1px"
           borderRadius="5px"
           // m="2"
+          bg="gray.100"
           p="2"
           className={
-            props.game.liveData.liveData.linescore.teams[props.team].powerPlay
+            props.game.status.detailedState == "Final"
+              ? null
+              : props.game.liveData.liveData.linescore.teams[props.team]
+                  .powerPlay
               ? "pulsate"
               : null
           }
@@ -77,12 +81,14 @@ const Card = props => {
           ) : null}
 
           <Box>
-            <Text fontSize="xs">
-              {props.game.liveData.liveData.linescore.teams[props.team]
-                .powerPlay ? (
-                <Badge colorScheme="red">On Power Play</Badge>
-              ) : null}
-            </Text>
+            {props.game.status.detailedState == "Final" ? null : (
+              <Text fontSize="xs">
+                {props.game.liveData.liveData.linescore.teams[props.team]
+                  .powerPlay ? (
+                  <Badge colorScheme="red">On Power Play</Badge>
+                ) : null}
+              </Text>
+            )}
           </Box>
 
           <Box>

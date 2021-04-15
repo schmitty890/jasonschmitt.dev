@@ -27,7 +27,8 @@ const GameClock = props => {
     <ScheduleConsumer>
       {({ schedule, viewMoreData }) => (
         <Grid templateColumns="repeat(2, 1fr)">
-          {props.game.liveData.liveData.linescore.currentPeriodOrdinal ? (
+          {props.game.status.detailedState == "Final" ? null : props.game
+              .liveData.liveData.linescore.currentPeriodOrdinal ? (
             <Box align="left">
               {props.game.liveData.liveData.linescore.currentPeriodOrdinal}
               &nbsp;

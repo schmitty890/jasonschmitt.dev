@@ -85,18 +85,18 @@ const ScheduleGrid = () => {
               >
                 <LiveStatsCard
                   game={game}
-                  eventType="GOAL"
+                  eventType="goals"
                   eventTitle="Goals"
                 />
                 <LiveStatsCard
                   game={game}
-                  eventType="SHOT"
+                  eventType="shots"
                   eventTitle="Shots"
                 />
 
                 <LiveStatsCard
                   game={game}
-                  eventType="PENALTY"
+                  eventType="penalties"
                   eventTitle="Penalties"
                 />
 

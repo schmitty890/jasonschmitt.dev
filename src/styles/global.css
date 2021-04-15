@@ -85,4 +85,11 @@
   animation: border-pulsate 2s infinite;
 }
 
+.Shots tr {
+  display: none;
+}
+.Shots tr:nth-child(-n + 10) {
+  display: block;
+}
+
 /* END hockey project styles */
