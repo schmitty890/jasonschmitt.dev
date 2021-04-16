@@ -68,7 +68,7 @@ const ScheduleGrid = () => {
               {/* START GAME SECTION */}
 
               {/* START LIVE DATA SECTION */}
-              <CurrentPlay game={game} />
+              {/* <CurrentPlay game={game} /> */}
               {/* END LIVE DATA SECTION */}
 
               {/* <MileStones game={game} /> */}

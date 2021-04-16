@@ -29,30 +29,20 @@ const PlayByPlay = props => {
   return (
     <ScheduleConsumer>
       {({ schedule, viewMoreData }) => (
-        <Grid>
+        <Grid templateColumns="repeat(12, 1fr)">
           {viewMoreData ? (
-            <Box>
+            <GridItem colSpan={12}>
               {props.game.contentData.highlights.gameCenter.items ? (
                 <Grid templateColumns="repeat(1, 1fr)">
+                  <Text>Play by play (last 10 plays)</Text>
                   {props.game.liveData.liveData.plays.allPlays.map(
                     (play, index) => (
-                      <Grid
-                        key={index}
-                        templateColumns="repeat(1, 1fr)"
-                        border="1px solid"
-                      >
+                      <Grid key={index} templateColumns="repeat(1, 1fr)">
+                        <Divider />
                         {play.players ? (
-                          <Grid
-                            templateColumns="repeat(3, 1fr)"
-                            border="1px solid"
-                          >
+                          <Grid templateColumns="repeat(3, 1fr)">
                             <GridItem bg="gray.100" colSpan={1}>
-                              <Stack
-                                direction="row"
-                                h="100px"
-                                border="black"
-                                p={4}
-                              >
+                              <Stack direction="row" h="100px" p={4}>
                                 <Divider orientation="vertical" />
                                 <Box align="left">
                                   <Image
@@ -88,10 +78,7 @@ const PlayByPlay = props => {
                             </GridItem>
                           </Grid>
                         ) : (
-                          <Grid
-                            templateColumns="repeat(1, 1fr)"
-                            border="1px solid"
-                          >
+                          <Grid templateColumns="repeat(1, 1fr)">
                             <Box bg="gray.100">
                               <Stack direction="row" p={4}>
                                 <Divider orientation="vertical" />
@@ -108,7 +95,7 @@ const PlayByPlay = props => {
                   )}
                 </Grid>
               ) : null}
-            </Box>
+            </GridItem>
           ) : null}
         </Grid>
       )}
