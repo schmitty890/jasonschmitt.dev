@@ -61,10 +61,10 @@ const ScheduleGrid = () => {
               {/* END INDIVIDUAL GAME 2ND TOP SECTION */}
 
               {/* START GAME SECTION */}
-              <Card game={game} team="away" />
+              <Card game={game} team="away" teamStats="awayTeamStats" />
               {/* END GAME SECTION */}
               {/* START GAME SECTION */}
-              <Card game={game} team="home" />
+              <Card game={game} team="home" teamStats="homeTeamStats" />
               {/* START GAME SECTION */}
 
               {/* START LIVE DATA SECTION */}

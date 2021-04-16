@@ -57,15 +57,21 @@ const Card = props => {
           {viewMoreData ? (
             <Box>
               <Box>
-                {props.game.liveData.liveData.linescore.teams.away
+                {props.game.liveData.liveData.linescore.teams[props.team]
                   .powerPlay ? null : (
-                  <Text fontSize="xs">
-                    Coach&nbsp;
-                    {
-                      props.game.liveData.liveData.boxscore.teams[props.team]
-                        .coaches[0].person.fullName
-                    }
-                  </Text>
+                  <Box>
+                    {props.game.liveData.liveData.boxscore.teams[props.team]
+                      .coaches[0] ? (
+                      <Text fontSize="xs">
+                        Coach&nbsp;
+                        {
+                          props.game.liveData.liveData.boxscore.teams[
+                            props.team
+                          ].coaches[0].person.fullName
+                        }
+                      </Text>
+                    ) : null}
+                  </Box>
                 )}
               </Box>
             </Box>
@@ -91,65 +97,117 @@ const Card = props => {
             )}
           </Box>
 
-          <Box>
-            {viewMoreData ? (
-              <Text display="inline-block">Goals &nbsp;</Text>
-            ) : null}
-            <Text display="inline-block" fontWeight="extrabold">
-              {props.game.teams[props.team].score}
-            </Text>
-          </Box>
           {viewMoreData ? (
             <Box>
               <Box>
-                <Text display="inline-block">Shots &nbsp;</Text>
+                {props.game.status.abstractGameState == "Preview" ? (
+                  <Box>
+                    <Text display="inline-block">Overall &nbsp;</Text>
+                    <Text display="inline-block" fontWeight="extrabold">
+                      {props.game[props.teamStats][1].splits[0].stat.evGGARatio}
+                    </Text>
+                  </Box>
+                ) : null}
+              </Box>
+              {props.game.status.abstractGameState == "Preview" ? (
+                <Box>
+                  <Text display="inline-block">Points &nbsp;</Text>
 
-                <Text display="inline-block" fontWeight="extrabold">
-                  {
-                    props.game.liveData.liveData.boxscore.teams[props.team]
-                      .teamStats.teamSkaterStats.shots
-                  }
-                </Text>
+                  <Text display="inline-block" fontWeight="extrabold">
+                    {props.game[props.teamStats][0].splits[0].stat.pts}
+                  </Text>
+                </Box>
+              ) : null}
+              <Box>
+                <Text display="inline-block">Goals &nbsp;</Text>
+                {props.game.status.abstractGameState == "Preview" ? (
+                  <Text display="inline-block" fontWeight="extrabold">
+                    {props.game[props.teamStats][1].splits[0].stat.goalsPerGame}
+                  </Text>
+                ) : (
+                  <Text display="inline-block" fontWeight="extrabold">
+                    {props.game.teams[props.team].score}
+                  </Text>
+                )}
+              </Box>
+              <Box>
+                <Text display="inline-block">Shots &nbsp;</Text>
+                {props.game.status.abstractGameState == "Preview" ? (
+                  <Text display="inline-block" fontWeight="extrabold">
+                    {props.game[props.teamStats][1].splits[0].stat.shotsPerGame}
+                  </Text>
+                ) : (
+                  <Text display="inline-block" fontWeight="extrabold">
+                    {
+                      props.game.liveData.liveData.boxscore.teams[props.team]
+                        .teamStats.teamSkaterStats.shots
+                    }
+                  </Text>
+                )}
               </Box>
               <Box>
                 <Text display="inline-block">Faceoff % &nbsp;</Text>
 
-                <Text display="inline-block" fontWeight="extrabold">
-                  {
-                    props.game.liveData.liveData.boxscore.teams[props.team]
-                      .teamStats.teamSkaterStats.faceOffWinPercentage
-                  }
-                </Text>
+                {props.game.status.abstractGameState == "Preview" ? (
+                  <Text display="inline-block" fontWeight="extrabold">
+                    {
+                      props.game[props.teamStats][1].splits[0].stat
+                        .faceOffWinPercentage
+                    }
+                  </Text>
+                ) : (
+                  <Text display="inline-block" fontWeight="extrabold">
+                    {
+                      props.game.liveData.liveData.boxscore.teams[props.team]
+                        .teamStats.teamSkaterStats.faceOffWinPercentage
+                    }
+                  </Text>
+                )}
               </Box>
-              <Box>
-                <Text display="inline-block">Hits &nbsp;</Text>
+              {props.game.status.abstractGameState == "Preview" ? null : (
+                <Box>
+                  <Text display="inline-block">Hits &nbsp;</Text>
 
-                <Text display="inline-block" fontWeight="extrabold">
-                  {
-                    props.game.liveData.liveData.boxscore.teams[props.team]
-                      .teamStats.teamSkaterStats.hits
-                  }
-                </Text>
-              </Box>
-              <Box>
-                <Text display="inline-block">PIM &nbsp;</Text>
+                  <Text display="inline-block" fontWeight="extrabold">
+                    {
+                      props.game.liveData.liveData.boxscore.teams[props.team]
+                        .teamStats.teamSkaterStats.hits
+                    }
+                  </Text>
+                </Box>
+              )}
 
-                <Text display="inline-block" fontWeight="extrabold">
-                  {
-                    props.game.liveData.liveData.boxscore.teams[props.team]
-                      .teamStats.teamSkaterStats.pim
-                  }
-                </Text>
-              </Box>
+              {props.game.status.abstractGameState == "Preview" ? null : (
+                <Box>
+                  <Text display="inline-block">PIM &nbsp;</Text>
+
+                  <Text display="inline-block" fontWeight="extrabold">
+                    {
+                      props.game.liveData.liveData.boxscore.teams[props.team]
+                        .teamStats.teamSkaterStats.pim
+                    }
+                  </Text>
+                </Box>
+              )}
+
               <Box>
                 <Text display="inline-block">PP% &nbsp;</Text>
 
-                <Text display="inline-block" fontWeight="extrabold">
-                  {
-                    props.game.liveData.liveData.boxscore.teams[props.team]
-                      .teamStats.teamSkaterStats.powerPlayPercentage
-                  }
-                </Text>
+                {props.game.status.abstractGameState == "Preview" ? (
+                  <Text display="inline-block" fontWeight="extrabold">
+                    {
+                      props.game[props.teamStats][1].splits[0].stat
+                        .powerPlayPercentage
+                    }
+                  </Text>
+                ) : (
+                  <Text display="inline-block" fontWeight="extrabold">
+                    {
+                      props.game.liveData.liveData.boxscore.teams[props.team]
+                        .teamStats.teamSkaterStats.powerPlayPercentage
+                    }
+                  </Text>
+                )}
               </Box>
               {props.game.status.detailedState == "Final" ? null : (
                 <Box>
@@ -370,7 +428,13 @@ const Card = props => {
                 </Box>
               )}
             </Box>
-          ) : null}
+          ) : (
+            <Box>
+              <Text display="inline-block" fontWeight="extrabold">
+                {props.game.teams[props.team].score}
+              </Text>
+            </Box>
+          )}
         </Box>
       )}
     </ScheduleConsumer>

@@ -7,8 +7,8 @@ dayjs.extend(relativeTime)
 
 export const getSchedule = async () => {
   try {
-    let URL = "https://statsapi.web.nhl.com/api/v1/schedule"
-    // let URL = "https://statsapi.web.nhl.com/api/v1/schedule?date=2021-04-14"
+    // let URL = "https://statsapi.web.nhl.com/api/v1/schedule"
+    let URL = "https://statsapi.web.nhl.com/api/v1/schedule?date=2021-04-17"
     // fetch data from a url endpoint
     const response = await axios.get(`${URL}`)
     // console.log(response)
@@ -20,6 +20,16 @@ export const getSchedule = async () => {
       // console.log(game.teams)
       // console.log(game.teams.away.team.id)
       // console.log(game.teams.home.team.id)
+      console.log(game.teams.away.team.link)
+      const awayTeamStatsURL = `https://statsapi.web.nhl.com${game.teams.away.team.link}/stats`
+      const awayTeamStats = await axios.get(awayTeamStatsURL)
+
+      const homeTeamStatsURL = `https://statsapi.web.nhl.com${game.teams.home.team.link}/stats`
+      const homeTeamStats = await axios.get(homeTeamStatsURL)
+
+      // game.teams.forEach(team => {
+      //   console.log(team.id)
+      // })
       // console.log(hockeyLogos)
       hockeyLogos.forEach(team => {
         // console.log(team)
@@ -74,7 +84,6 @@ export const getSchedule = async () => {
         }
 
         if (play.players) {
-          console.log("getting logos")
           hockeyLogos.forEach(team => {
             // console.log(team)
             if (team.id === play.team.id) {
@@ -107,6 +116,8 @@ export const getSchedule = async () => {
       // console.log(contentData)
       game.liveData = liveData.data
       game.contentData = contentData.data
+      game.awayTeamStats = awayTeamStats.data.stats
+      game.homeTeamStats = homeTeamStats.data.stats
 
       // make axios call to get player roster and who is on the ice by player id
       // console.log(game.liveData.liveData.boxscore.teams)
