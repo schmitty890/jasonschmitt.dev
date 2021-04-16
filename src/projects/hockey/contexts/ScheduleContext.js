@@ -18,7 +18,9 @@ class ScheduleProvider extends Component {
     this.getData()
     // this.getGithubData()
     // this.submitNewUser()
-    this.getDataAgain()
+    setTimeout(() => {
+      this.getDataAgain()
+    }, 10000)
   }
 
   getData = async () => {
@@ -29,7 +31,7 @@ class ScheduleProvider extends Component {
     // })
     setTimeout(() => {
       this.setState({ schedule: schedule.data })
-    }, 3000)
+    }, 5000)
 
     setTimeout(() => {
       this.setState({ loading: false })
@@ -37,14 +39,14 @@ class ScheduleProvider extends Component {
       console.log("LOGGING STATE")
       console.log(this.state)
       console.log("LOGGING STATE")
-    }, 3000)
+    }, 5000)
   }
 
   getDataAgain = async () => {
     setInterval(() => {
       console.log("get new data")
       this.getData()
-    }, 60000)
+    }, 30000)
   }
 
   toggleMoreData = value => {
