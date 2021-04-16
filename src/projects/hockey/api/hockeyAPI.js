@@ -7,8 +7,8 @@ dayjs.extend(relativeTime)
 
 export const getSchedule = async () => {
   try {
-    // let URL = "https://statsapi.web.nhl.com/api/v1/schedule"
-    let URL = "https://statsapi.web.nhl.com/api/v1/schedule?date=2021-04-17"
+    let URL = "https://statsapi.web.nhl.com/api/v1/schedule"
+    // let URL = "https://statsapi.web.nhl.com/api/v1/schedule?date=2021-04-17"
     // fetch data from a url endpoint
     const response = await axios.get(`${URL}`)
     // console.log(response)
