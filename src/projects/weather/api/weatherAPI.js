@@ -18,3 +18,22 @@ export const getZipCode = async () => {
     console.log(error) // catches both errors
   }
 }
+
+export const postZipCode = async zipCode => {
+  console.log("post a new zip code to the backend")
+  const dataObj = zipCode
+  console.log(dataObj)
+  console.log("VERIFY DATAOBJ OBJECT HERE")
+  try {
+    let baseURL =
+      window.location.hostname === "localhost"
+        ? "http://localhost:8081"
+        : "https://jasonschmitt-dev-api-9w29o.ondigitalocean.app"
+    // post data to a url endpoint
+    const response = await axios.post(`${baseURL}/postZipCode`, dataObj)
+    console.log(response.data)
+    return response
+  } catch (error) {
+    // console.log(error) // catches both errors
+  }
+}
