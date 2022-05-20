@@ -35,8 +35,8 @@ const Header = () => {
         <Box ml="3">
           <Text fontWeight="bold">
             UNC Charlotte
-            <Badge ml="1" colorScheme="yellow">
-              In Progress
+            <Badge ml="1" colorScheme="green">
+              Complete
             </Badge>
           </Text>
           <Text fontSize="sm">Information Technology, M.S.</Text>
