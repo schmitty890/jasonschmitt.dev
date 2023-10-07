@@ -29,7 +29,15 @@ const About = () => {
             the API repo was last updated {apiRepoLastUpdated}, and is hosted on
             digital ocean. I enjoy tinkering and testing out projects and new
             node modules with this playground site, that also acts as a
-            portfolio site.!
+            portfolio site.
+          </Text>
+          <Text fontSize="md" mt={4}>
+            One of the biggest opportunities working with a fortune 500 company
+            is the size and number of teams to work with. My core responsibility
+            involved building a global styleguide for our internal application
+            teams which grew into an entire front-end framework involving the
+            dynamic creation of components, modules, utilities, helpers, and
+            more.
           </Text>
           <Text fontSize="md" mt={4}>
             Feel free to put a 15 minute meeting on my calendar or use the
