@@ -37,7 +37,7 @@ const About = () => {
             involved building a global styleguide for our internal application
             teams which grew into an entire front-end framework involving the
             dynamic creation of components, modules, utilities, helpers, and
-            more!
+            more.
           </Text>
           <Text fontSize="md" mt={4}>
             Feel free to put a 15 minute meeting on my calendar or use the
