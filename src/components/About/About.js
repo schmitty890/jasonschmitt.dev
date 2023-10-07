@@ -29,7 +29,7 @@ const About = () => {
             the API repo was last updated {apiRepoLastUpdated}, and is hosted on
             digital ocean. I enjoy tinkering and testing out projects and new
             node modules with this playground site, that also acts as a
-            portfolio site.
+            portfolio site.!
           </Text>
           <Text fontSize="md" mt={4}>
             Feel free to put a 15 minute meeting on my calendar or use the
