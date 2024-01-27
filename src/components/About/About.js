@@ -15,11 +15,11 @@ const About = () => {
         >
           <Text fontSize="2xl">About me</Text>
           <Text fontSize="md">
-            Hi, I am Jason, a North Carolina based front end web developer.
-            Currently pursuing a Masters in Information Technology,
-            concentrating in Software Systems Design and Engineering at UNC
-            Charlotte, I am excited about progressing my career in full stack
-            web development as well as learning more about website architecture.
+            Hi, I'm Jason. A North carolina based front end engineer who
+            recently completed a Masters in Information Technology concentrating
+            in Web Developement from UNC Charlotte. I am excited about
+            progressing my career in full stack web development as well as
+            learning more about website architecture.
           </Text>
           <Text fontSize="md" mt={4}>
             This site also acts as a playground for my UI and API projects. The
